@@ -1,281 +1,391 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Artan Studio - Engenharia Digital, Landing Pages & Sistemas Web</title>
-    <meta name="description" content="Engenharia digital, landing pages de alta conversão, automações e sistemas web sob medida para a sua empresa.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="arthurfotodeperfil.jpeg">
-    
-    <!-- Open Graph / Meta Tags Sociais -->
-    <meta property="og:title" content="Artan Studio - Engenharia Digital & Sistemas Web">
-    <meta property="og:description" content="Transforme a presença digital da sua empresa em um canal de vendas contínuo.">
-    <meta property="og:image" content="arthurfotodeperfil.jpeg">
-    <meta property="og:type" content="website">
-
-    <!-- Tailwind CSS CDN -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artan Studio - Engenharia Digital & Sistemas Web</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0B0F17;
-            color: #F3F4F6;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b1320;
+            color: #94a3b8;
         }
-        .glow-effect {
-            box-shadow: 0 0 50px -12px rgba(6, 182, 212, 0.25);
+        .bg-glass {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(12px);
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .bg-card {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.08);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-cyan-500 selection:text-white">
+<body class="antialiased selection:bg-cyan-500 selection:text-slate-950">
 
-    <!-- CABEÇALHO / NAVBAR -->
-    <header class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60">
+    <!-- NAVBAR -->
+    <header class="fixed top-0 w-full z-50 bg-glass border-b border-slate-800/60">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-3">
-                <span class="font-bold text-2xl tracking-tight text-white">Artan Studio</span>
+            <a href="#" class="text-white font-bold text-xl tracking-tight flex items-center gap-2">
+                Artan Studio
             </a>
             
             <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
-                <a href="#servicos" class="hover:text-cyan-400 transition-colors">Serviços</a>
-                <a href="#metodologia" class="hover:text-cyan-400 transition-colors">Metodologia</a>
-                <a href="#sobre" class="hover:text-cyan-400 transition-colors">Sobre</a>
-                <a href="#faq" class="hover:text-cyan-400 transition-colors">FAQ</a>
+                <a href="#metodologia" class="hover:text-cyan-400 transition">Metodologia</a>
+                <a href="#solucoes" class="hover:text-cyan-400 transition">Soluções</a>
+                <a href="#fundador" class="hover:text-cyan-400 transition">Fundador</a>
+                <a href="#piloto" class="hover:text-cyan-400 transition">Projeto Piloto</a>
+                <a href="#faq" class="hover:text-cyan-400 transition">FAQ</a>
             </nav>
 
-            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Artan%20Studio%20e%20gostaria%20de%20um%20diagn%C3%B3stico%20digital%20gratuito." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-cyan-500/20 hover:scale-[1.02]">
-                <i data-lucide="message-square" class="w-4 h-4"></i>
-                Falar com Fundador
+            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Artan%20Studio%20e%20gostaria%20de%20solicitar%20um%20diagn%C3%B3stico." target="_blank" class="bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-sm font-bold px-5 py-2.5 rounded-lg transition shadow-lg shadow-cyan-500/10">
+                Solicitar Diagnóstico
             </a>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="pt-36 pb-20 md:pt-44 md:pb-28 relative overflow-hidden">
-        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        
-        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-8">
-                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                Engenharia Digital & Automação Inteligente
-            </div>
-
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.15] mb-8">
-                Transformamos a sua presença digital em um <span class="gradient-text">canal de vendas contínuo.</span>
-            </h1>
-
-            <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
-                Negócios locais tratados com a engenharia e a presença de marcas de escala nacional. Criamos landing pages de alta conversão e sistemas web sob medida focados em resultados diários.
-            </p>
-
-            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Quero%20solicitar%20um%20diagn%C3%B3stico%20digital%20gratuito%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-4 rounded-xl transition-all shadow-xl shadow-cyan-500/25 hover:scale-[1.02]">
-                    <i data-lucide="zap" class="w-5 h-5"></i>
-                    Solicitar Diagnóstico Gratuito
-                </a>
-                <a href="#servicos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold px-8 py-4 rounded-xl border border-slate-800 transition-all">
-                    Conhecer Soluções
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- INDICADORES DE PERFORMANCE -->
-    <section class="py-12 bg-slate-950 border-y border-slate-900">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-                <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800/60">
-                    <span class="block text-3xl font-extrabold text-cyan-400">&lt; 1.5s</span>
-                    <span class="text-xs text-slate-400 mt-1 block">Tempo de Carregamento</span>
+    <section class="pt-36 pb-20 md:pt-44 md:pb-28 max-w-6xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Lado Esquerdo: Texto Principal -->
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-800/50 text-cyan-400 text-xs font-semibold tracking-wide mb-6">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                    ARTAN STUDIO • ENGENHARIA DIGITAL & IA
                 </div>
-                <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800/60">
-                    <span class="block text-3xl font-extrabold text-cyan-400">100%</span>
-                    <span class="text-xs text-slate-400 mt-1 block">Rastreamento de Origem do Lead</span>
-                </div>
-                <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800/60">
-                    <span class="block text-3xl font-extrabold text-cyan-400">Direto</span>
-                    <span class="text-xs text-slate-400 mt-1 block">Resposta Automática no WhatsApp</span>
-                </div>
-                <div class="p-4 bg-slate-900/50 rounded-2xl border border-slate-800/60">
-                    <span class="block text-3xl font-extrabold text-cyan-400">Otimizado</span>
-                    <span class="text-xs text-slate-400 mt-1 block">Posição no Google Maps</span>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- SEÇÃO DE SERVIÇOS E SOLUÇÕES -->
-    <section id="servicos" class="py-24 bg-slate-950">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Engenharia Digital para o seu Negócio</h2>
-                <p class="text-slate-400 max-w-2xl mx-auto text-lg">
-                    Da atração de novos clientes à automação e gestão da sua operação interna.
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+                    Negócios locais tratados como marcas de escala nacional
+                </h1>
+
+                <p class="text-slate-400 text-base sm:text-lg mb-8 leading-relaxed max-w-xl">
+                    Projetamos presenças digitais que carregam em menos de 1,2s, ocupam o topo do Google e transformam cada visita em uma chamada de WhatsApp — com engenharia de ponta, sistemas CRM e automações de IA.
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Card 1: Landing Pages & Sites -->
-                <div class="bg-slate-900/60 p-8 md:p-10 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 glow-effect">
-                    <div class="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center font-bold text-xl mb-6 border border-cyan-500/20">
-                        01
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Landing Pages & Sites de Alta Conversão</h3>
-                    <p class="text-slate-300 mb-6 leading-relaxed">
-                        Páginas ultrarrápidas projetadas para transformar visitantes em chamadas diretas no seu WhatsApp. Estrutura focada em autoridade e vendas para empresas locais.
-                    </p>
-                    <ul class="space-y-3 text-sm text-slate-400 border-t border-slate-800/80 pt-6">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i> Design moderno e responsivo para celular</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i> Carregamento instantâneo e integração com WhatsApp</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i> Otimizado para aparecer nas buscas do Google</li>
-                    </ul>
-                </div>
-
-                <!-- Card 2: Sistemas & CRM Sob Medida -->
-                <div class="bg-slate-900/60 p-8 md:p-10 rounded-2xl border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 glow-effect">
-                    <div class="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-xl flex items-center justify-center font-bold text-xl mb-6 border border-indigo-500/20">
-                        02
-                    </div>
-                    <h3 class="text-2xl font-bold mb-4 text-white">Sistemas Web & CRM Sob Medida</h3>
-                    <p class="text-slate-300 mb-6 leading-relaxed">
-                        Plataformas e painéis inteligentes para organizar sua empresa. Agendamentos automáticos, gestão de clientes (CRM) e controle de processos sem mensalidades abusivas.
-                    </p>
-                    <ul class="space-y-3 text-sm text-slate-400 border-t border-slate-800/80 pt-6">
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400"></i> Painéis de gestão e agendamento automático</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400"></i> CRM personalizado para a rotina da sua equipe</li>
-                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400"></i> Automação de processos para economizar tempo</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- METODOLOGIA DE TRABALHO -->
-    <section id="metodologia" class="py-24 border-t border-slate-900">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <span class="text-xs font-semibold text-cyan-400 uppercase tracking-widest bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/20">Processo Claro & Transparente</span>
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mt-4">Nossa Metodologia de Trabalho</h2>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800/80">
-                    <span class="text-3xl font-black text-cyan-400 mb-4 block">01</span>
-                    <h4 class="text-xl font-bold text-white mb-2">Diagnóstico</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">Análise da sua presença digital atual, concorrentes da região e oportunidades não exploradas.</p>
-                </div>
-
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800/80">
-                    <span class="text-3xl font-black text-cyan-400 mb-4 block">02</span>
-                    <h4 class="text-xl font-bold text-white mb-2">Arquitetura</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">Criação da estrutura de copy persuasiva, wireframe visual e fluxo focado em conversão.</p>
-                </div>
-
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800/80">
-                    <span class="text-3xl font-black text-cyan-400 mb-4 block">03</span>
-                    <h4 class="text-xl font-bold text-white mb-2">Engenharia</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">Desenvolvimento limpo em código puro, garantindo velocidade máxima e segurança de dados.</p>
-                </div>
-
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800/80">
-                    <span class="text-3xl font-black text-cyan-400 mb-4 block">04</span>
-                    <h4 class="text-xl font-bold text-white mb-2">Lançamento</h4>
-                    <p class="text-sm text-slate-400 leading-relaxed">Publicação na nuvem, testes de performance mobile e integração direta ao seu WhatsApp.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEÇÃO SOBRE O FUNDADOR -->
-    <section id="sobre" class="py-24 bg-slate-900/30">
-        <div class="max-w-5xl mx-auto px-6">
-            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-10">
-                <div class="relative w-44 h-44 md:w-52 md:h-52 flex-shrink-0">
-                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500 to-indigo-500 rounded-2xl rotate-3 blur opacity-30"></div>
-                    <img src="arthurfotodeperfil.jpeg" alt="Arthur - Fundador da Artan Studio" class="relative w-full h-full object-cover rounded-2xl border border-slate-700 shadow-2xl">
-                </div>
-                
-                <div>
-                    <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Fundador & Liderança Técnica</span>
-                    <h3 class="text-3xl font-extrabold text-white mt-1 mb-4">Atendimento Direto com Especialista</h3>
-                    <p class="text-slate-300 leading-relaxed mb-6">
-                        Na Artan Studio, tratamos negócios locais com a engenharia e a presença de marcas de escala nacional. Acompanho cada projeto desde a fase de diagnóstico até à entrega final, garantindo alta performance, segurança e código otimizado sem burocracias.
-                    </p>
-                    <div class="flex items-center gap-4 text-slate-400 text-sm">
-                        <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i> Suporte Dedicado</span>
-                        <span class="flex items-center gap-1.5"><i data-lucide="code" class="w-4 h-4 text-cyan-400"></i> Código Próprio</span>
+            <!-- Lado Direito: Tabela de Métricas -->
+            <div class="lg:col-span-5">
+                <div class="bg-card rounded-2xl p-6 shadow-2xl">
+                    <div class="space-y-4 text-sm">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                            <span class="text-slate-400">Tempo de carregamento</span>
+                            <span class="font-semibold text-white flex items-center gap-2">
+                                1.08s <span class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800/60 px-2 py-0.5 rounded">ótimo</span>
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                            <span class="text-slate-400">Origem do lead</span>
+                            <span class="font-semibold text-white">WhatsApp direto</span>
+                        </div>
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                            <span class="text-slate-400">Resposta automática</span>
+                            <span class="font-semibold text-white flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full bg-emerald-400"></span> ativa 24h
+                            </span>
+                        </div>
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                            <span class="text-slate-400">Posição no Google Maps</span>
+                            <span class="font-semibold text-white">#1 na região</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-400">Stack</span>
+                            <span class="font-semibold text-white text-xs bg-slate-800 px-2.5 py-1 rounded-md">HTML5 • Tailwind • Cloudflare</span>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- PERGUNTAS FREQUENTES (FAQ) -->
-    <section id="faq" class="py-24 bg-slate-950">
-        <div class="max-w-4xl mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Perguntas Frequentes</h2>
-                <p class="text-slate-400 text-lg">Tudo o que você precisa saber antes de iniciarmos o seu projeto.</p>
+    <!-- METRICS STRIP -->
+    <section class="py-12 border-y border-slate-800/60 bg-slate-950/40">
+        <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <span class="text-3xl font-extrabold text-white block mb-2">&lt; 1.2s</span>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Carregamento em qualquer conexão — cada segundo perdido é cliente que desiste antes de ligar.
+                </p>
             </div>
-
-            <div class="space-y-6">
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="help-circle" class="w-5 h-5 text-cyan-400"></i> Quanto tempo demora para meu site ou sistema ficar pronto?</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed pl-7">Landing pages e sites institucionais são entregues em até 5 a 7 dias úteis após o envio das informações. Sistemas Web e CRMs personalizados variam de acordo com o escopo combinado.</p>
-                </div>
-
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="help-circle" class="w-5 h-5 text-cyan-400"></i> Vou ter mensalidades fixas para manter o site no ar?</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed pl-7">Não! Diferente de agências tradicionais que cobram mensalidades abusivas de manutenção, estruturamos seu projeto para rodar em infraestrutura gratuita de alta performance (como Vercel/GitHub).</p>
-                </div>
-
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="help-circle" class="w-5 h-5 text-cyan-400"></i> O site funciona bem no celular?</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed pl-7">100% responsivo. Desenvolvemos com foco total na experiência mobile (Mobile-First), já que mais de 80% dos acessos do seu público virão do smartphone.</p>
-                </div>
-
-                <div class="bg-slate-900/60 p-6 rounded-2xl border border-slate-800">
-                    <h4 class="text-lg font-bold text-white mb-2 flex items-center gap-2"><i data-lucide="help-circle" class="w-5 h-5 text-cyan-400"></i> Como funciona a integração com o WhatsApp?</h4>
-                    <p class="text-slate-400 text-sm leading-relaxed pl-7">Configuramos botões de chamada rápida estrategicamente posicionados que abrem o seu aplicativo do WhatsApp automaticamente com mensagens personalizadas já preenchidas.</p>
-                </div>
+            <div>
+                <span class="text-3xl font-extrabold text-white block mb-2">100% mobile</span>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Design pensado para o polegar: a maioria dos seus clientes chega pelo celular, não pelo desktop.
+                </p>
+            </div>
+            <div>
+                <span class="text-3xl font-extrabold text-cyan-400 block mb-2">Foco em chamada</span>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Cada seção é construída para gerar uma ação direta no WhatsApp, não um formulário esquecido.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- CALL TO ACTION FINAL -->
-    <section class="py-20 bg-gradient-to-b from-slate-900 to-slate-950 text-center relative">
-        <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6">Pronto para elevar o nível digital da sua empresa?</h2>
-            <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
-                Entre em contato diretamente comigo pelo WhatsApp e solicite um diagnóstico sem qualquer compromisso.
+    <!-- COMPARATIVO: A DIFERENÇA ESTÁ NA ARQUITETURA -->
+    <section id="metodologia" class="py-24 max-w-6xl mx-auto px-6">
+        <div class="mb-12">
+            <span class="text-xs font-semibold text-cyan-400 tracking-wider uppercase block mb-2">Por que a Artan Studio</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+                A diferença está na arquitetura, não na aparência
+            </h2>
+            <p class="text-slate-400 text-sm mt-3 max-w-2xl leading-relaxed">
+                A maioria dos sites de empresas locais é construída sobre plataformas genéricas, pesadas e lentas. Nós construímos como estúdios de tecnologia constroem produtos: código limpo, infraestrutura de ponta e zero fricção para você.
             </p>
-            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20conversa%20para%20avaliar%20um%20projeto%20com%20a%20Artan%20Studio." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-10 py-5 rounded-2xl transition-all shadow-2xl shadow-cyan-500/30 hover:scale-105 text-lg">
-                <i data-lucide="message-circle" class="w-6 h-6"></i>
-                Falar pelo WhatsApp Agora
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- O que o mercado entrega -->
+            <div class="bg-card rounded-2xl p-8">
+                <h3 class="text-base font-bold text-slate-300 mb-6">O que o mercado entrega</h3>
+                <ul class="space-y-4 text-xs text-slate-400">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x-square" class="w-4 h-4 text-slate-500 shrink-0 mt-0.5"></i>
+                        <span>Construtores genéricos (Wix, templates prontos) que carregam devagar em 4G</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x-square" class="w-4 h-4 text-slate-500 shrink-0 mt-0.5"></i>
+                        <span>Design que se parece com o de qualquer concorrente</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x-square" class="w-4 h-4 text-slate-500 shrink-0 mt-0.5"></i>
+                        <span>Formulário de contato que ninguém responde a tempo</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="x-square" class="w-4 h-4 text-slate-500 shrink-0 mt-0.5"></i>
+                        <span>Suporte terceirizado e sem dono visível</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- O que a Artan Studio entrega -->
+            <div class="bg-card rounded-2xl p-8 border-cyan-500/30 relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cyan-500/10 rounded-full blur-2xl"></div>
+                <h3 class="text-base font-bold text-cyan-400 mb-6">O que a Artan Studio entrega</h3>
+                <ul class="space-y-4 text-xs text-slate-300">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-square" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+                        <span>Arquitetura em HTML5 e Tailwind, hospedada em nuvem — leve, rápida e estável</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-square" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+                        <span>Design exclusivo, desenhado a partir do seu negócio, não de um template</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-square" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+                        <span>Chamada direta no WhatsApp com resposta automatizada por IA</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-square" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+                        <span>Sistemas Web e CRM sob medida para gestão de clientes e agendamentos</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-square" class="w-4 h-4 text-cyan-400 shrink-0 mt-0.5"></i>
+                        <span>Execução acompanhada pessoalmente pelo fundador do estúdio</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRÊS FRENTES TRABALHANDO JUNTAS -->
+    <section id="solucoes" class="py-20 bg-slate-950/60 border-y border-slate-800/60">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="mb-14">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">
+                    Soluções trabalhando juntas pela sua conversão
+                </h2>
+                <p class="text-slate-400 text-sm max-w-2xl">
+                    Não entregamos peças soltas. Cada solução foi desenhada para reforçar a seguinte, criando um ecossistema que atrai, atende e gerencia.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Frente 1 -->
+                <div class="bg-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-cyan-950 text-cyan-400 rounded-lg flex items-center justify-center mb-6 border border-cyan-800/50">
+                            <i data-lucide="layout" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-3">Landing Pages de Alta Performance</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                            Design exclusivo para o seu negócio, responsivo em qualquer tela e construído com um único objetivo: levar o visitante até o botão de WhatsApp.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 px-2.5 py-1 rounded">Design exclusivo</span>
+                        <span class="text-[10px] bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 px-2.5 py-1 rounded">Responsivo total</span>
+                    </div>
+                </div>
+
+                <!-- Frente 2 -->
+                <div class="bg-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-cyan-950 text-cyan-400 rounded-lg flex items-center justify-center mb-6 border border-cyan-800/50">
+                            <i data-lucide="globe" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-3">Presença & Otimização para Google</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                            Estruturamos seu perfil e seus dados locais para que sua empresa apareça no topo do mapa e das buscas de quem já está pronto para comprar.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 px-2.5 py-1 rounded">Google Meu Negócio</span>
+                        <span class="text-[10px] bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 px-2.5 py-1 rounded">SEO local</span>
+                    </div>
+                </div>
+
+                <!-- Frente 3 -->
+                <div class="bg-card rounded-2xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="w-10 h-10 bg-cyan-950 text-cyan-400 rounded-lg flex items-center justify-center mb-6 border border-cyan-800/50">
+                            <i data-lucide="bot" class="w-5 h-5"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-3">Sistemas Web, CRM & IA</h3>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-6">
+                            Respostas automáticas por IA e painéis CRM sob medida que acolhem e qualificam o lead nos primeiros segundos, sem deixar nenhum cliente esperando.
+                        </p>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="text-[10px] bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 px-2.5 py-1 rounded">Resposta imediata</span>
+                        <span class="text-[10px] bg-cyan-950/80 text-cyan-400 border border-cyan-800/60 px-2.5 py-1 rounded">Gestão de CRM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO DO FUNDADOR -->
+    <section id="fundador" class="py-24 max-w-5xl mx-auto px-6">
+        <div class="bg-card rounded-3xl p-8 md:p-12 border border-slate-800">
+            <blockquote class="text-lg sm:text-xl font-semibold text-slate-200 leading-relaxed mb-8">
+                "Todo projeto que sai da Artan Studio passa pela minha mesa antes de ir ao ar. Não terceirizo a arquitetura, e não entrego nada que eu mesmo não usaria no meu próprio negócio."
+            </blockquote>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-4 text-center md:text-left">
+                    <div class="w-28 h-28 mx-auto md:mx-0 rounded-full p-1 bg-gradient-to-tr from-cyan-400 to-indigo-500 mb-4">
+                        <img src="arthurfotodeperfil.jpeg" alt="Arthur Andrade" class="w-full h-full object-cover rounded-full border-2 border-slate-900">
+                    </div>
+                    <h4 class="text-white font-bold text-base">Arthur Andrade</h4>
+                    <p class="text-xs text-cyan-400">Fundador & Diretor de Tecnologia</p>
+                </div>
+
+                <div class="md:col-span-8 space-y-4 text-xs text-slate-400 leading-relaxed">
+                    <p>
+                        Arthur Andrade lidera pessoalmente a estratégia e a engenharia por trás de cada projeto da Artan Studio. Formado na prática de construir produtos digitais rápidos e sob medida, ele estruturou o estúdio para operar como uma equipe de tecnologia enxuta — sem camadas de atendimento entre você e quem decide.
+                    </p>
+
+                    <ul class="space-y-2 pt-2">
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                            <strong class="text-slate-200">Compromisso direto do fundador</strong> — você fala com quem constrói, não com um intermediário comercial.
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                            <strong class="text-slate-200">Transparência técnica</strong> — cada decisão de arquitetura é explicada em linguagem que faz sentido para o seu negócio.
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                            <strong class="text-slate-200">Execução de nível elite</strong> — os mesmos padrões de estúdios internacionais aplicados a empresas locais.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETO PILOTO -->
+    <section id="piloto" class="py-12 max-w-5xl mx-auto px-6">
+        <div class="bg-card rounded-2xl p-8 border border-slate-800 relative overflow-hidden">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7">
+                    <span class="text-[11px] font-semibold text-cyan-400 tracking-wider uppercase block mb-2">Seleção exclusiva de parceiros locais</span>
+                    <h3 class="text-2xl font-extrabold text-white mb-3">Projeto piloto de expansão da Artan Studio</h3>
+                    <p class="text-xs text-slate-400 mb-6 leading-relaxed">
+                        Estamos selecionando um número limitado de empresas da região para o projeto piloto de expansão do estúdio.
+                    </p>
+                    <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Quero%20concorrer%20a%20uma%20vaga%20no%20Projeto%20Piloto." target="_blank" class="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs px-5 py-3 rounded-lg transition">
+                        Quero concorrer a uma vaga
+                    </a>
+                </div>
+                <div class="lg:col-span-5 text-right">
+                    <p class="text-xs text-slate-400 leading-relaxed bg-slate-950/60 p-4 rounded-xl border border-slate-800 inline-block text-left">
+                        <strong class="text-white block mb-1">Vagas limitadas por região</strong>
+                        atendimento por ordem de chegada no WhatsApp.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-24 max-w-4xl mx-auto px-6">
+        <div class="mb-12">
+            <span class="text-xs font-semibold text-cyan-400 tracking-wider uppercase block mb-1">Perguntas frequentes</span>
+            <h2 class="text-3xl font-extrabold text-white">Antes de você chamar no WhatsApp</h2>
+        </div>
+
+        <div class="space-y-4">
+            <div class="bg-card rounded-xl p-6 border border-slate-800">
+                <h4 class="text-sm font-bold text-white mb-2 flex items-center justify-between">
+                    Quanto tempo leva para o site ou sistema ficar no ar?
+                    <i data-lucide="x" class="w-4 h-4 text-slate-500"></i>
+                </h4>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Projetos piloto da Artan Studio são entregues em tempo recorde (48h a 7 dias úteis) após o envio das informações básicas da empresa.
+                </p>
+            </div>
+
+            <div class="bg-card rounded-xl p-6 border border-slate-800">
+                <h4 class="text-sm font-bold text-white mb-2 flex items-center justify-between">
+                    A hospedagem está incluída?
+                    <i data-lucide="plus" class="w-4 h-4 text-slate-500"></i>
+                </h4>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Sim! Configuramos tudo em infraestrutura em nuvem de altíssima velocidade para você não se preocupar com servidores.
+                </p>
+            </div>
+
+            <div class="bg-card rounded-xl p-6 border border-slate-800">
+                <h4 class="text-sm font-bold text-white mb-2 flex items-center justify-between">
+                    E se eu precisar de suporte depois do site pronto?
+                    <i data-lucide="plus" class="w-4 h-4 text-slate-500"></i>
+                </h4>
+                <p class="text-xs text-slate-400 leading-relaxed">
+                    Você fala diretamente com o fundador pelo WhatsApp para qualquer ajuste ou melhoria técnica sem burocracias.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL BANNER -->
+    <section class="py-24 bg-slate-950 border-t border-slate-800/60 text-center">
+        <div class="max-w-3xl mx-auto px-6">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+                Descubra onde sua presença digital está perdendo clientes
+            </h2>
+            <p class="text-slate-400 text-xs sm:text-sm mb-8 leading-relaxed">
+                O Diagnóstico Digital é uma análise direta do seu negócio no Google e redes sociais com o plano prático do que a Artan Studio vai construir para você.
+            </p>
+            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Gostaria%20de%20um%20diagn%C3%B3stico%20pelo%20WhatsApp." target="_blank" class="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-sm px-8 py-4 rounded-xl transition shadow-xl shadow-cyan-500/10">
+                Solicitar Diagnóstico pelo WhatsApp
             </a>
         </div>
     </section>
 
-    <!-- RODAPÉ -->
-    <footer class="py-8 border-t border-slate-800/60 bg-slate-950 text-slate-500 text-sm text-center">
+    <!-- FOOTER -->
+    <footer class="py-8 border-t border-slate-900 text-center text-xs text-slate-600">
         <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; Artan Studio. Todos os direitos reservados.</p>
-            <p class="flex items-center gap-1">Desenvolvido por <span class="text-slate-300 font-semibold">Artan Studio</span></p>
+            <p>© Artan Studio. Todos os direitos reservados.</p>
+            <p>Engenharia Digital & Automações de IA</p>
         </div>
     </footer>
 
     <script>
-        // Inicializa os ícones do Lucide
         lucide.createIcons();
     </script>
 </body>
