@@ -1,587 +1,192 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Artan Studio — Engenharia Digital & IA</title>
-<meta name="description" content="Engenharia digital, landing pages de alta conversão e automação com IA para empresas e negócios locais.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Artan Studio - Engenharia Digital, Landing Pages & Sistemas Web</title>
+    <meta name="description" content="Engenharia digital, landing pages de alta conversão, automações e sistemas web sob medida para a sua empresa.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="arthurfotodeperfil.jpeg">
+    
+    <!-- Open Graph / Meta Tags Sociais -->
+    <meta property="og:title" content="Artan Studio - Engenharia Digital & Sistemas Web">
+    <meta property="og:description" content="Transforme a presença digital da sua empresa com landing pages de alta conversão e sistemas web sob medida.">
+    <meta property="og:image" content="arthurfotodeperfil.jpeg">
+    <meta property="og:type" content="website">
 
-<!-- Favicon -->
-<link rel="icon" type="image/jpeg" href="arthurfotodeperfil.jpeg">
-
-<!-- Open Graph -->
-<meta property="og:title" content="Artan Studio — Engenharia Digital & IA">
-<meta property="og:description" content="Transforme a presença digital da sua empresa com landing pages ultrarrápidas e automações com IA.">
-<meta property="og:image" content="arthurfotodeperfil.jpeg">
-<meta property="og:type" content="website">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg-main: #090A0F;
-    --bg-card: #12151E;
-    --accent: #00F0FF;
-    --accent-soft: rgba(0, 240, 255, 0.14);
-    --accent-glow: rgba(0, 240, 255, 0.35);
-    --text-main: #FFFFFF;
-    --text-sec: #94A3B8;
-    --border-soft: rgba(148, 163, 184, 0.14);
-    --border-accent: rgba(0, 240, 255, 0.3);
-    --font-display: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
-    --font-body: 'Inter', system-ui, sans-serif;
-    box-sizing: border-box;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-  html { scroll-padding-top: env(safe-area-inset-top, 0px); scroll-behavior: smooth; }
-  *, *::before, *::after { box-sizing: inherit; margin: 0; padding: 0; }
-
-  body {
-    background: var(--bg-main);
-    color: var(--text-main);
-    font-family: var(--font-body);
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  img, svg { max-width: 100%; display: block; }
-  a { color: inherit; text-decoration: none; }
-
-  .wrap {
-    max-width: 1160px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
-
-  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; color: var(--text-main); }
-
-  /* Ambient glow backdrops */
-  .glow-field { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
-  .glow-blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(110px);
-    opacity: 0.35;
-  }
-
-  /* Nav */
-  header {
-    position: sticky;
-    top: env(safe-area-inset-top, 0px);
-    z-index: 40;
-    background: rgba(9, 10, 15, 0.72);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border-soft);
-  }
-  .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 18px 28px; max-width: 1160px; margin: 0 auto; }
-  .brand { font-family: var(--font-display); font-weight: 800; font-size: 1.25rem; letter-spacing: -0.03em; color: #fff; }
-  nav.links { display: flex; gap: 32px; font-size: 0.92rem; color: var(--text-sec); }
-  nav.links a:hover { color: var(--text-main); }
-  .nav-cta {
-    padding: 10px 20px;
-    border-radius: 8px;
-    background: var(--accent);
-    color: #05070A;
-    font-weight: 700;
-    font-size: 0.9rem;
-    white-space: nowrap;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 0 15px var(--accent-glow); }
-  @media (max-width: 780px) { nav.links { display: none; } }
-
-  /* Hero */
-  .hero { position: relative; padding: 108px 0 90px; }
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 16px;
-    border-radius: 999px;
-    border: 1px solid var(--border-accent);
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.02em;
-    margin-bottom: 28px;
-  }
-  .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 8px 2px var(--accent-glow); }
-
-  .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
-  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
-
-  .hero h1 {
-    font-size: clamp(2.3rem, 4.6vw, 3.55rem);
-    line-height: 1.08;
-    max-width: 15ch;
-  }
-  .hero h1 .grad {
-    background: linear-gradient(100deg, var(--accent), #7C8CFF 65%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  .hero p.lead {
-    margin-top: 24px;
-    font-size: 1.1rem;
-    color: var(--text-sec);
-    max-width: 46ch;
-  }
-  .hero-ctas { display: flex; gap: 14px; margin-top: 38px; flex-wrap: wrap; }
-  .btn-primary {
-    padding: 15px 26px;
-    border-radius: 10px;
-    background: var(--accent);
-    color: #05070A;
-    font-weight: 700;
-    font-size: 0.96rem;
-    box-shadow: 0 0 0 1px rgba(0,240,255,0.4), 0 8px 30px -6px var(--accent-glow);
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(0,240,255,0.55), 0 14px 40px -6px var(--accent-glow); }
-  .btn-secondary {
-    padding: 15px 26px;
-    border-radius: 10px;
-    border: 1px solid var(--border-soft);
-    color: var(--text-main);
-    font-weight: 600;
-    font-size: 0.96rem;
-    transition: border-color 0.15s ease, background 0.15s ease;
-  }
-  .btn-secondary:hover { border-color: var(--border-accent); background: rgba(255,255,255,0.03); }
-
-  .hero-visual {
-    position: relative;
-    border-radius: 20px;
-    border: 1px solid var(--border-soft);
-    background: linear-gradient(160deg, rgba(18,21,30,0.9), rgba(9,10,15,0.6));
-    backdrop-filter: blur(20px);
-    padding: 26px;
-    box-shadow: 0 0 60px -18px var(--accent-glow), inset 0 1px 0 rgba(255,255,255,0.04);
-  }
-  .visual-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 4px; border-bottom: 1px solid var(--border-soft); font-size: 0.82rem; color: var(--text-sec); }
-  .visual-row:last-child { border-bottom: none; }
-  .visual-row strong { color: var(--text-main); font-weight: 600; }
-  .visual-pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px 2px var(--accent-glow); animation: pulse 2.2s ease-in-out infinite; }
-  @keyframes pulse { 0%, 100% { opacity: 0.5; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.15); } }
-  .visual-chip { display: inline-block; padding: 3px 10px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); font-size: 0.72rem; font-weight: 600; }
-
-  /* Sections */
-  section { position: relative; padding: 84px 0; }
-  .section-head { max-width: 640px; margin-bottom: 52px; }
-  .eyebrow { color: var(--accent); font-weight: 600; font-size: 0.9rem; margin-bottom: 12px; }
-  .section-head h2 { font-size: clamp(1.7rem, 3vw, 2.35rem); line-height: 1.2; }
-  .section-head p { color: var(--text-sec); margin-top: 14px; font-size: 1.02rem; max-width: 56ch; }
-
-  /* Metrics */
-  .metrics-band { border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); padding: 56px 0; }
-  .metrics-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  @media (max-width: 780px) { .metrics-grid { grid-template-columns: 1fr; gap: 40px; } }
-  .metric { text-align: left; }
-  .metric .num { font-family: var(--font-display); font-size: clamp(2.1rem, 4vw, 2.7rem); font-weight: 800; color: var(--text-main); }
-  .metric .num span { color: var(--accent); }
-  .metric .label { color: var(--text-sec); margin-top: 8px; font-size: 0.96rem; max-width: 30ch; }
-
-  /* Compare */
-  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-  @media (max-width: 780px) { .compare-grid { grid-template-columns: 1fr; } }
-  .compare-card {
-    border-radius: 16px;
-    padding: 32px;
-    border: 1px solid var(--border-soft);
-  }
-  .compare-card.old { background: rgba(148,163,184,0.04); }
-  .compare-card.new {
-    background: linear-gradient(160deg, rgba(0,240,255,0.06), rgba(18,21,30,0.7));
-    border-color: var(--border-accent);
-    box-shadow: 0 0 50px -22px var(--accent-glow);
-  }
-  .compare-card h4 { font-size: 1.05rem; margin-bottom: 20px; color: var(--text-sec); font-weight: 600; }
-  .compare-card.new h4 { color: var(--accent); }
-  .compare-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
-  .compare-list li { display: flex; gap: 12px; font-size: 0.96rem; color: var(--text-sec); align-items: flex-start; }
-  .compare-card.new .compare-list li { color: #E2E8F0; }
-  .compare-list .mark { flex-shrink: 0; width: 18px; height: 18px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; margin-top: 2px; }
-  .compare-card.old .mark { background: rgba(148,163,184,0.15); color: var(--text-sec); }
-  .compare-card.new .mark { background: var(--accent-soft); color: var(--accent); }
-
-  /* Services */
-  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  @media (max-width: 940px) { .services-grid { grid-template-columns: 1fr; } }
-  .service-card {
-    background: rgba(18,21,30,0.6);
-    border: 1px solid var(--border-soft);
-    border-radius: 18px;
-    padding: 32px 28px;
-    backdrop-filter: blur(16px);
-    transition: border-color 0.2s ease, transform 0.2s ease;
-  }
-  .service-card:hover { border-color: var(--border-accent); transform: translateY(-4px); }
-  .service-icon {
-    width: 46px; height: 46px; border-radius: 12px;
-    background: var(--accent-soft);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 22px;
-  }
-  .service-icon svg { width: 22px; height: 22px; stroke: var(--accent); }
-  .service-card h3 { font-size: 1.18rem; margin-bottom: 12px; }
-  .service-card p { color: var(--text-sec); font-size: 0.96rem; margin-bottom: 18px; }
-  .service-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-  .service-tags span { font-size: 0.76rem; color: var(--accent); background: var(--accent-soft); padding: 4px 10px; border-radius: 6px; }
-
-  /* Founder com Foto */
-  .founder-grid { display: grid; grid-template-columns: 0.55fr 1fr; gap: 52px; align-items: center; }
-  @media (max-width: 860px) { .founder-grid { grid-template-columns: 1fr; } }
-  .founder-card {
-    border-radius: 20px;
-    border: 1px solid var(--border-soft);
-    background: linear-gradient(160deg, rgba(18,21,30,0.9), rgba(9,10,15,0.7));
-    padding: 32px 24px;
-    text-align: center;
-    box-shadow: 0 0 50px -20px var(--accent-glow);
-  }
-  
-  .founder-avatar-img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center top;
-    margin: 0 auto 20px;
-    border: 2px solid var(--accent);
-    box-shadow: 0 0 25px var(--accent-glow);
-  }
-
-  .founder-card h3 { font-size: 1.25rem; }
-  .founder-card .role { color: var(--accent); font-size: 0.88rem; margin-top: 6px; font-weight: 600; }
-  .founder-quote { font-size: 1.28rem; line-height: 1.5; color: var(--text-main); font-family: var(--font-display); font-weight: 600; }
-  .founder-copy p { color: var(--text-sec); margin-top: 22px; font-size: 1rem; max-width: 54ch; }
-  .founder-points { display: flex; flex-direction: column; gap: 16px; margin-top: 28px; }
-  .founder-points .point { display: flex; gap: 14px; align-items: flex-start; }
-  .founder-points .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 8px; flex-shrink: 0; box-shadow: 0 0 8px 1px var(--accent-glow); }
-  .founder-points strong { color: var(--text-main); font-weight: 600; }
-  .founder-points span.d { color: var(--text-sec); }
-
-  /* Pilot */
-  .pilot-shell {
-    border-radius: 22px;
-    border: 1px solid var(--border-accent);
-    background: radial-gradient(circle at 20% 0%, rgba(0,240,255,0.1), transparent 55%), linear-gradient(160deg, rgba(18,21,30,0.9), rgba(9,10,15,0.85));
-    padding: 52px 48px;
-    box-shadow: 0 0 80px -20px var(--accent-glow);
-    position: relative;
-    overflow: hidden;
-  }
-  @media (max-width: 780px) { .pilot-shell { padding: 38px 26px; } }
-  .pilot-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: 40px; align-items: center; position: relative; z-index: 1; }
-  @media (max-width: 860px) { .pilot-grid { grid-template-columns: 1fr; } }
-  .pilot-tag { color: var(--accent); font-weight: 700; font-size: 0.85rem; margin-bottom: 14px; }
-  .pilot-shell h2 { font-size: clamp(1.6rem, 3vw, 2.15rem); line-height: 1.22; }
-  .pilot-shell p { color: var(--text-sec); margin-top: 16px; font-size: 1.02rem; max-width: 54ch; }
-  .pilot-side {
-    border-left: 1px solid var(--border-soft);
-    padding-left: 36px;
-  }
-  @media (max-width: 860px) { .pilot-side { border-left: none; border-top: 1px solid var(--border-soft); padding-left: 0; padding-top: 28px; } }
-  .pilot-counter { font-size: 0.88rem; color: var(--text-sec); margin-bottom: 20px; }
-  .pilot-counter strong { color: var(--text-main); }
-
-  /* FAQ */
-  .faq-list { display: flex; flex-direction: column; gap: 14px; max-width: 760px; }
-  .faq-item { border: 1px solid var(--border-soft); border-radius: 14px; background: rgba(18,21,30,0.5); overflow: hidden; }
-  .faq-q {
-    width: 100%; text-align: left; padding: 22px 24px;
-    background: none; border: none; color: var(--text-main);
-    font-family: var(--font-display); font-weight: 600; font-size: 1rem;
-    display: flex; justify-content: space-between; align-items: center; gap: 16px;
-    cursor: pointer;
-  }
-  .faq-q .plus { flex-shrink: 0; width: 22px; height: 22px; border-radius: 6px; border: 1px solid var(--border-accent); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1rem; transition: transform 0.2s ease; }
-  .faq-item.open .faq-q .plus { transform: rotate(45deg); }
-  .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.25s ease; }
-  .faq-a p { padding: 0 24px 22px; color: var(--text-sec); font-size: 0.95rem; max-width: 62ch; }
-  .faq-item.open .faq-a { max-height: 220px; }
-
-  /* Final CTA */
-  .final-cta { text-align: center; padding: 90px 0; }
-  .final-cta h2 { font-size: clamp(1.9rem, 4vw, 2.7rem); max-width: 18ch; margin: 0 auto; }
-  .final-cta p { color: var(--text-sec); margin: 18px auto 34px; max-width: 50ch; font-size: 1.05rem; }
-
-  /* Footer */
-  footer { border-top: 1px solid var(--border-soft); padding: 56px 0 40px; }
-  .footer-grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: 40px; }
-  @media (max-width: 780px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-  .footer-brand .brand { margin-bottom: 14px; }
-  .footer-brand p { color: var(--text-sec); font-size: 0.92rem; max-width: 32ch; }
-  .footer-col h5 { font-size: 0.85rem; color: var(--text-main); margin-bottom: 16px; font-weight: 600; }
-  .footer-col a, .footer-col span { display: block; color: var(--text-sec); font-size: 0.9rem; margin-bottom: 10px; }
-  .footer-col a:hover { color: var(--accent); }
-  .footer-bottom { margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--border-soft); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--text-sec); font-size: 0.82rem; }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
-  }
-
-  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-</style>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0B0F17;
+            color: #F3F4F6;
+        }
+        .glow-effect {
+            box-shadow: 0 0 50px -12px rgba(6, 182, 212, 0.25);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #38BDF8 0%, #818CF8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
 </head>
-<body>
+<body class="antialiased selection:bg-cyan-500 selection:text-white">
 
-<header>
-  <div class="nav-inner">
-    <div class="brand">Artan Studio</div>
-    <nav class="links">
-      <a href="#metodologia">Metodologia</a>
-      <a href="#solucoes">Soluções</a>
-      <a href="#fundador">Fundador</a>
-      <a href="#piloto">Projeto Piloto</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-    <a class="nav-cta" href="https://wa.me/5548998354558?text=Ol%C3%A1%20Arthur,%20gostaria%20de%20solicitar%20um%20diagn%C3%B3stico%20digital%20para%20o%20meu%20neg%C3%B3cio." target="_blank">Solicitar Diagnóstico</a>
-  </div>
-</header>
+    <!-- CABEÇALHO / NAVBAR -->
+    <header class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800/60">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-indigo-600 flex items-center justify-center font-extrabold text-white text-xl shadow-lg shadow-cyan-500/20">
+                    A
+                </div>
+                <span class="font-bold text-xl tracking-tight text-white">Artan <span class="text-cyan-400">Studio</span></span>
+            </a>
+            
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+                <a href="#servicos" class="hover:text-cyan-400 transition-colors">Serviços</a>
+                <a href="#diferenciais" class="hover:text-cyan-400 transition-colors">Diferenciais</a>
+                <a href="#sobre" class="hover:text-cyan-400 transition-colors">Sobre</a>
+            </nav>
 
-<main>
-  <!-- HERO -->
-  <section class="hero">
-    <div class="glow-field">
-      <div class="glow-blob" style="width:520px;height:520px;background:#00F0FF;top:-160px;right:-120px;"></div>
-      <div class="glow-blob" style="width:420px;height:420px;background:#6E7BFF;bottom:-180px;left:-100px;opacity:0.2;"></div>
-    </div>
-    <div class="wrap">
-      <span class="badge">ARTAN STUDIO • ENGENHARIA DIGITAL & IA</span>
-      <div class="hero-grid">
-        <div>
-          <h1>Negócios locais tratados como <span class="grad">marcas de escala nacional</span></h1>
-          <p class="lead">Projetamos presenças digitais que carregam em menos de 1,2s, ocupam o topo do Google e transformam cada visita em uma chamada de WhatsApp — com engenharia de ponta e automações de IA.</p>
-          <div class="hero-ctas">
-            <a href="https://wa.me/5548998354558?text=Ol%C3%A1%20Arthur,%20gostaria%20de%20solicitar%20um%20diagn%C3%B3stico%20digital%20para%20minha%20empresa." target="_blank" class="btn-primary">Solicitar Diagnóstico Digital</a>
-            <a href="#metodologia" class="btn-secondary">Ver Metodologia</a>
-          </div>
+            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Artan%20Studio%20e%20gostaria%20de%20um%20diagn%C3%B3stico%20digital%20gratuito." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-sm font-semibold px-5 py-2.5 rounded-xl transition-all shadow-lg shadow-cyan-500/20 hover:scale-[1.02]">
+                <i data-lucide="message-square" class="w-4 h-4"></i>
+                Falar com Fundador
+            </a>
         </div>
-        <div class="hero-visual">
-          <div class="visual-row"><span>Tempo de carregamento</span><strong>1.08s <span class="visual-chip">ótimo</span></strong></div>
-          <div class="visual-row"><span>Origem do lead</span><strong>WhatsApp direto</strong></div>
-          <div class="visual-row"><span>Resposta automática</span><strong style="display:flex;align-items:center;gap:8px;"><span class="visual-pulse"></span>ativa 24h</strong></div>
-          <div class="visual-row"><span>Posição no Google Maps</span><strong>#1 na região</strong></div>
-          <div class="visual-row"><span>Stack</span><strong>HTML5 · Tailwind · Cloudflare</strong></div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </header>
 
-  <!-- METRICS -->
-  <div class="metrics-band">
-    <div class="wrap metrics-grid">
-      <div class="metric">
-        <div class="num">&lt; <span>1.2s</span></div>
-        <div class="label">Carregamento em qualquer conexão — cada segundo perdido é cliente que desiste antes de ligar.</div>
-      </div>
-      <div class="metric">
-        <div class="num"><span>100%</span> mobile</div>
-        <div class="label">Design pensado para o polegar: a maioria dos seus clientes chega pelo celular, não pelo desktop.</div>
-      </div>
-      <div class="metric">
-        <div class="num">Foco em <span>chamada</span></div>
-        <div class="label">Cada seção é construída para gerar uma ação direta no WhatsApp, não um formulário esquecido.</div>
-      </div>
-    </div>
-  </div>
+    <!-- HERO SECTION -->
+    <section class="pt-36 pb-20 md:pt-44 md:pb-28 relative overflow-hidden">
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-6xl mx-auto px-6 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-900 border border-slate-800 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-8">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                Engenharia Digital & Automação Inteligente
+            </div>
 
-  <!-- METODOLOGIA -->
-  <section id="metodologia">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Por que a Artan Studio</div>
-        <h2>A diferença está na arquitetura, não na aparência</h2>
-        <p>A maioria dos sites de empresas locais é construída sobre plataformas genéricas, pesadas e lentas. Nós construímos como estúdios de tecnologia constroem produtos: código limpo, infraestrutura de ponta e zero fricção para você.</p>
-      </div>
-      <div class="compare-grid">
-        <div class="compare-card old">
-          <h4>O que o mercado entrega</h4>
-          <ul class="compare-list">
-            <li><span class="mark">×</span>Construtores genéricos (Wix, templates prontos) que carregam devagar em 4G</li>
-            <li><span class="mark">×</span>Design que se parece com o de qualquer concorrente</li>
-            <li><span class="mark">×</span>Formulário de contato que ninguém responde a tempo</li>
-            <li><span class="mark">×</span>Suporte terceirizado e sem dono visível</li>
-          </ul>
-        </div>
-        <div class="compare-card new">
-          <h4>O que a Artan Studio entrega</h4>
-          <ul class="compare-list">
-            <li><span class="mark">✓</span>Arquitetura em HTML5 e Tailwind, hospedada em nuvem — leve, rápida e estável</li>
-            <li><span class="mark">✓</span>Design exclusivo, desenhado a partir do seu negócio, não de um template</li>
-            <li><span class="mark">✓</span>Chamada direta no WhatsApp com resposta automatizada por IA</li>
-            <li><span class="mark">✓</span>Execução acompanhada pessoalmente pelo fundador do estúdio</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.15] mb-8">
+                Transformamos a sua presença digital em um <span class="gradient-text">canal de vendas contínuo.</span>
+            </h1>
 
-  <!-- SOLUÇÕES -->
-  <section id="solucoes">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Ecossistema de soluções</div>
-        <h2>Três frentes trabalhando juntas pela sua conversão</h2>
-        <p>Não entregamos peças soltas. Cada solução foi desenhada para reforçar a seguinte, criando um ecossistema que atrai, aparece e responde.</p>
-      </div>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path><path d="M8 4v5"></path></svg>
-          </div>
-          <h3>Landing Pages de Alta Performance</h3>
-          <p>Design exclusivo para o seu negócio, responsivo em qualquer tela e construído com um único objetivo: levar o visitante até o botão de WhatsApp.</p>
-          <div class="service-tags"><span>Design exclusivo</span><span>Responsivo total</span><span>Integração WhatsApp</span></div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 2a15 15 0 0 1 0 20"></path><path d="M12 2a15 15 0 0 0 0 20"></path><path d="M3 12h18"></path></svg>
-          </div>
-          <h3>Presença e Otimização para Google</h3>
-          <p>Estruturamos seu perfil e seus dados locais para que sua empresa apareça no topo do mapa e das buscas de quem já está pronto para comprar.</p>
-          <div class="service-tags"><span>Google Meu Negócio</span><span>SEO local</span><span>Busca por mapa</span></div>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"></path></svg>
-          </div>
-          <h3>Automação Inteligente & Atendimento</h3>
-          <p>Respostas automáticas por IA que acolhem e qualificam o lead nos primeiros segundos, para nenhum contato esfriar esperando alguém digitar.</p>
-          <div class="service-tags"><span>Resposta imediata</span><span>Qualificação de lead</span><span>IA aplicada</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
+            <p class="text-slate-400 text-lg md:text-xl max-w-3xl mx-auto mb-10 leading-relaxed">
+                Desenvolvemos landing pages de alta conversão e sistemas web sob medida. Otimizados para posicionar a sua empresa com autoridade e acelerar o seu crescimento no mercado.
+            </p>
 
-  <!-- FUNDADOR -->
-  <section id="fundador">
-    <div class="wrap">
-      <div class="founder-grid">
-        <div class="founder-card">
-          <img class="founder-avatar-img" src="arthurfotodeperfil.jpeg" alt="Arthur Andrade — Fundador da Artan Studio">
-          <h3>Arthur Andrade</h3>
-          <div class="role">Fundador & Diretor de Tecnologia</div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Quero%20solicitar%20um%20diagn%C3%B3stico%20digital%20gratuito%20para%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-8 py-4 rounded-xl transition-all shadow-xl shadow-cyan-500/25 hover:scale-[1.02]">
+                    <i data-lucide="zap" class="w-5 h-5"></i>
+                    Solicitar Diagnóstico Gratuito
+                </a>
+                <a href="#servicos" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-slate-300 font-semibold px-8 py-4 rounded-xl border border-slate-800 transition-all">
+                    Conhecer Soluções
+                </a>
+            </div>
         </div>
-        <div class="founder-copy">
-          <p class="founder-quote">"Todo projeto que sai da Artan Studio passa pela minha mesa antes de ir ao ar. Não terceirizo a arquitetura, e não entrego nada que eu mesmo não usaria no meu próprio negócio."</p>
-          <p>Arthur Andrade lidera pessoalmente a estratégia e a engenharia por trás de cada projeto da Artan Studio. Formado na prática de construir produtos digitais rápidos e sob medida, ele estruturou o estúdio para operar como uma equipe de tecnologia enxuta — sem camadas de atendimento entre você e quem decide.</p>
-          <div class="founder-points">
-            <div class="point"><span class="dot"></span><div><strong>Compromisso direto do fundador —</strong> <span class="d">você fala com quem constrói, não com um intermediário comercial.</span></div></div>
-            <div class="point"><span class="dot"></span><div><strong>Transparência técnica —</strong> <span class="d">cada decisão de arquitetura é explicada em linguagem que faz sentido para o seu negócio.</span></div></div>
-            <div class="point"><span class="dot"></span><div><strong>Execução de nível elite —</strong> <span class="d">os mesmos padrões de estúdios internacionais aplicados a empresas locais.</span></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PILOTO -->
-  <section id="piloto">
-    <div class="wrap">
-      <div class="pilot-shell">
-        <div class="pilot-grid">
-          <div>
-            <div class="pilot-tag">Seleção exclusiva de parceiros locais</div>
-            <h2>Projeto piloto de expansão da Artan Studio</h2>
-            <p>Estamos selecionando um número limitado de empresas da região para o projeto piloto de expansão do estúdio.</p>
-            <a href="https://wa.me/5548998354558?text=Ol%C3%A1%20Arthur,%20quero%20concorrer%20a%20uma%20vaga%20no%20Projeto%20Piloto%20da%20Artan%20Studio." target="_blank" class="btn-primary" style="margin-top:28px;display:inline-block;">Quero concorrer a uma vaga</a>
-          </div>
-          <div class="pilot-side">
-            <div class="pilot-counter">Vagas limitadas por região — <strong>atendimento por ordem de chegada no WhatsApp</strong>.</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- SEÇÃO DE SERVIÇOS E SOLUÇÕES -->
+    <section id="servicos" class="py-24 bg-slate-950 border-y border-slate-900">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-4">Engenharia Digital para o seu Negócio</h2>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg">
+                    Da atração de novos clientes à automação da sua operação interna.
+                </p>
+            </div>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow">Perguntas frequentes</div>
-        <h2>Antes de você chamar no WhatsApp</h2>
-      </div>
-      <div class="faq-list" id="faqList">
-        <div class="faq-item open">
-          <button class="faq-q">Quanto tempo leva para o site ficar no ar?
-            <span class="plus">+</span>
-          </button>
-          <div class="faq-a"><p>Projetos piloto da Artan Studio são entregues em tempo recorde (48h a 7 dias úteis) após o envio das informações básicas da empresa.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">A hospedagem está incluída?
-            <span class="plus">+</span>
-          </button>
-          <div class="faq-a"><p>Sim. Utilizamos infraestrutura de nuvem moderna, garantindo velocidade extrema e estabilidade.</p></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q">E se eu precisar de suporte depois do site pronto?
-            <span class="plus">+</span>
-          </button>
-          <div class="faq-a"><p>Todo projeto sai com suporte direto comigo pelo WhatsApp, garantindo que qualquer dúvida ou ajuste seja resolvido na hora.</p></div>
-        </div>
-      </div>
-    </div>
-  </section>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Card 1: Landing Pages & Sites -->
+                <div class="bg-slate-900/60 p-8 md:p-10 rounded-2xl border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 glow-effect">
+                    <div class="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center font-bold text-xl mb-6 border border-cyan-500/20">
+                        01
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Landing Pages & Sites de Alta Conversão</h3>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Páginas ultrarrápidas projetadas para transformar visitantes em chamadas diretas no seu WhatsApp. Estrutura focada em autoridade e vendas para empresas locais.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-400 border-t border-slate-800/80 pt-6">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i> Design moderno e responsivo para telemóvel</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i> Carregamento instantâneo e integração com WhatsApp</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-cyan-400"></i> Otimizado para aparecer nas buscas do Google</li>
+                    </ul>
+                </div>
 
-  <!-- FINAL CTA -->
-  <section class="final-cta" id="diagnostico">
-    <div class="wrap">
-      <h2>Descubra onde sua presença digital está perdendo clientes</h2>
-      <p>O Diagnóstico Digital é uma análise direta do seu negócio no Google e redes sociais com o plano prático do que a Artan Studio vai construir para você.</p>
-      <a href="https://wa.me/5548998354558?text=Ol%C3%A1%20Arthur,%20quero%20solicitar%20meu%20Diagn%C3%B3stico%20Digital%20gratuito." target="_blank" class="btn-primary">Solicitar Diagnóstico pelo WhatsApp</a>
-    </div>
-  </section>
-</main>
+                <!-- Card 2: Sistemas & CRM Sob Medida -->
+                <div class="bg-slate-900/60 p-8 md:p-10 rounded-2xl border border-slate-800 hover:border-indigo-500/50 transition-all duration-300 glow-effect">
+                    <div class="w-12 h-12 bg-indigo-500/10 text-indigo-400 rounded-xl flex items-center justify-center font-bold text-xl mb-6 border border-indigo-500/20">
+                        02
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Sistemas Web & CRM Sob Medida</h3>
+                    <p class="text-slate-300 mb-6 leading-relaxed">
+                        Plataformas e painéis inteligentes para organizar sua empresa. Agendamentos automáticos, gestão de clientes (CRM) e controle de processos sem mensalidades abusivas.
+                    </p>
+                    <ul class="space-y-3 text-sm text-slate-400 border-t border-slate-800/80 pt-6">
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400"></i> Painéis de gestão e agendamento automático</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400"></i> CRM personalizado para a rotina da sua equipe</li>
+                        <li class="flex items-center gap-2"><i data-lucide="check-circle-2" class="w-4 h-4 text-indigo-400"></i> Automação de processos para economizar tempo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="brand">Artan Studio</div>
-        <p>Engenharia digital e automação com IA para negócios que querem operar como marcas de escala nacional.</p>
-      </div>
-      <div class="footer-col">
-        <h5>Estúdio</h5>
-        <a href="#metodologia">Metodologia</a>
-        <a href="#solucoes">Soluções</a>
-        <a href="#fundador">Fundador</a>
-      </div>
-      <div class="footer-col">
-        <h5>Soluções</h5>
-        <span>Landing Pages</span>
-        <span>Presença no Google</span>
-        <span>Automação com IA</span>
-      </div>
-      <div class="footer-col">
-        <h5>Contato</h5>
-        <a href="https://wa.me/5548998354558" target="_blank">WhatsApp Direct</a>
-        <span>Arthur Andrade — Fundador</span>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Artan Studio. Todos os direitos reservados.</span>
-      <span>Feito com engenharia própria — sem templates.</span>
-    </div>
-  </div>
-</footer>
+    <!-- SEÇÃO SOBRE O FUNDADOR -->
+    <section id="sobre" class="py-24 bg-slate-900/30">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-10">
+                <div class="relative w-44 h-44 md:w-52 md:h-52 flex-shrink-0">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-cyan-500 to-indigo-500 rounded-2xl rotate-3 blur opacity-30"></div>
+                    <img src="arthurfotodeperfil.jpeg" alt="Arthur - Fundador da Artan Studio" class="relative w-full h-full object-cover rounded-2xl border border-slate-700 shadow-2xl">
+                </div>
+                
+                <div>
+                    <span class="text-cyan-400 font-semibold text-sm uppercase tracking-wider">Fundador & Liderança Técnica</span>
+                    <h3 class="text-3xl font-extrabold text-white mt-1 mb-4">Atendimento Direto com Especialista</h3>
+                    <p class="text-slate-300 leading-relaxed mb-6">
+                        Na Artan Studio, encurtamos a distância entre a engenharia de software e os resultados reais do seu negócio. Acompanho cada projeto desde a fase de diagnóstico até à entrega final, garantindo alta performance, segurança e código otimizado sem burocracias.
+                    </p>
+                    <div class="flex items-center gap-4 text-slate-400 text-sm">
+                        <span class="flex items-center gap-1.5"><i data-lucide="shield-check" class="w-4 h-4 text-cyan-400"></i> Suporte Dedicado</span>
+                        <span class="flex items-center gap-1.5"><i data-lucide="code" class="w-4 h-4 text-cyan-400"></i> Código Próprio</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<script>
-  document.querySelectorAll('.faq-item').forEach(function (item) {
-    item.querySelector('.faq-q').addEventListener('click', function () {
-      var wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('open'); });
-      if (!wasOpen) item.classList.add('open');
-    });
-  });
-</script>
+    <!-- CALL TO ACTION FINAL -->
+    <section class="py-20 bg-gradient-to-b from-slate-900 to-slate-950 text-center relative">
+        <div class="max-w-4xl mx-auto px-6">
+            <h2 class="text-3xl sm:text-5xl font-extrabold text-white mb-6">Pronto para elevar o nível digital da sua empresa?</h2>
+            <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
+                Entre em contacto diretamente comigo pelo WhatsApp e solicite um diagnóstico sem qualquer compromisso.
+            </p>
+            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20conversa%20para%20avaliar%20um%20projeto%20com%20a%20Artan%20Studio." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold px-10 py-5 rounded-2xl transition-all shadow-2xl shadow-cyan-500/30 hover:scale-105 text-lg">
+                <i data-lucide="message-circle" class="w-6 h-6"></i>
+                Falar pelo WhatsApp Agora
+            </a>
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="py-8 border-t border-slate-800/60 bg-slate-950 text-slate-500 text-sm text-center">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; Artan Studio. Todos os direitos reservados.</p>
+            <p class="flex items-center gap-1">Desenvolvido por <span class="text-slate-300 font-semibold">Artan Studio</span></p>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializa os ícones do Lucide
+        lucide.createIcons();
+    </script>
 </body>
 </html>
