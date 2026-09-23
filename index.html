@@ -1,19 +1,31 @@
 <!DOCTYPE html>
-<html lang="pt-BR" class="scroll-smooth">
+<html lang="pt-BR" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#030712">
     <title>Artan Studio - Engenharia Digital & Sistemas Web</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
         
-        body {
+        :root {
+            color-scheme: dark;
+        }
+
+        html, body {
+            background-color: #030712 !important;
             font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at 50% 30%, #1e1b4b 0%, #0f172a 45%, #030712 100%);
-            background-attachment: fixed;
             color: #cbd5e1;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #0f172a 50%, #030712 100%) no-repeat center center fixed !important;
+            background-size: cover !important;
         }
 
         /* Efeitos Neon Glow */
@@ -28,22 +40,24 @@
         }
 
         .bg-glass {
-            background: rgba(3, 7, 18, 0.8);
+            background: rgba(3, 7, 18, 0.92);
             backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
         }
 
         .bg-card {
-            background: rgba(15, 23, 42, 0.75);
+            background: rgba(15, 23, 42, 0.88);
             backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-cyan-500 selection:text-slate-950 relative overflow-x-hidden">
+<body class="antialiased selection:bg-cyan-500 selection:text-slate-950 relative bg-slate-950">
 
-    <!-- LUZES NEON DE FUNDO (GLOW ROXO E AZUL) -->
-    <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-purple-600/25 rounded-full blur-[140px] pointer-events-none -z-10"></div>
-    <div class="fixed top-2/3 left-1/3 w-[550px] h-[550px] bg-cyan-500/15 rounded-full blur-[130px] pointer-events-none -z-10"></div>
+    <!-- LUZES NEON DE FUNDO (GLOW ROXO E AZUL CONTROLADOS) -->
+    <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[650px] h-[350px] sm:h-[650px] bg-purple-600/20 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none -z-10"></div>
+    <div class="fixed top-2/3 left-1/3 w-[300px] sm:w-[550px] h-[300px] sm:h-[550px] bg-cyan-500/15 rounded-full blur-[90px] sm:blur-[130px] pointer-events-none -z-10"></div>
 
     <!-- NAVBAR -->
     <header class="fixed top-0 w-full z-50 bg-glass border-b border-slate-800/80">
@@ -67,7 +81,7 @@
     </header>
 
     <!-- HERO SECTION -->
-    <section class="pt-36 pb-20 md:pt-44 md:pb-28 max-w-6xl mx-auto px-6">
+    <section class="pt-32 pb-16 md:pt-44 md:pb-28 max-w-6xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             
             <!-- Lado Esquerdo: Texto Principal -->
@@ -77,22 +91,21 @@
                     ARTAN STUDIO • ENGENHARIA DIGITAL & IA
                 </div>
 
-                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
+                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
                     Negócios locais tratados como marcas de escala nacional
                 </h1>
 
-                <p class="text-slate-300 text-lg sm:text-xl mb-8 leading-relaxed max-w-xl">
+                <p class="text-slate-300 text-base sm:text-xl mb-8 leading-relaxed max-w-xl">
                     Projetamos presenças digitais que carregam em menos de 1,2s, ocupam o topo do Google e transformam cada visita em uma chamada de WhatsApp — com engenharia de ponta, sistemas CRM e automações de IA.
                 </p>
             </div>
 
             <!-- Lado Direito: Tabela de Métricas (COM ILUMINAÇÃO ROXA NEON) -->
             <div class="lg:col-span-5">
-                <div class="bg-card rounded-2xl p-7 shadow-2xl neon-border-purple relative">
-                    <!-- Luz interna de destaque na tabela -->
+                <div class="bg-card rounded-2xl p-6 sm:p-7 shadow-2xl neon-border-purple relative">
                     <div class="absolute -right-8 -top-8 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl pointer-events-none"></div>
 
-                    <div class="space-y-4 text-base relative z-10">
+                    <div class="space-y-4 text-sm sm:text-base relative z-10">
                         <div class="flex items-center justify-between pb-3.5 border-b border-slate-800/80">
                             <span class="text-slate-300">Tempo de carregamento</span>
                             <span class="font-semibold text-white flex items-center gap-2">
@@ -125,7 +138,7 @@
     </section>
 
     <!-- METRICS STRIP -->
-    <section class="py-14 border-y border-slate-800/80 bg-slate-950/80 backdrop-blur-md">
+    <section class="py-12 sm:py-14 border-y border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                 <span class="text-3xl font-extrabold text-cyan-400 block mb-2">&lt; 1.2s</span>
@@ -153,10 +166,10 @@
     </section>
 
     <!-- COMPARATIVO: A DIFERENÇA ESTÁ NA ARQUITETURA -->
-    <section id="metodologia" class="py-24 max-w-6xl mx-auto px-6">
+    <section id="metodologia" class="py-20 sm:py-24 max-w-6xl mx-auto px-6">
         <div class="mb-12">
             <span class="text-sm font-semibold text-cyan-400 tracking-wider uppercase block mb-2">Por que a Artan Studio</span>
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white">
                 A diferença está na arquitetura, não na aparência
             </h2>
             <p class="text-slate-300 text-base mt-3 max-w-2xl leading-relaxed">
@@ -166,7 +179,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
             <!-- O que o mercado entrega -->
-            <div class="bg-card rounded-2xl p-8">
+            <div class="bg-card rounded-2xl p-6 sm:p-8">
                 <h3 class="text-lg font-bold text-slate-200 mb-6">O que o mercado entrega</h3>
                 <ul class="space-y-4 text-sm text-slate-300">
                     <li class="flex items-start gap-3">
@@ -189,8 +202,8 @@
             </div>
 
             <!-- O que a Artan Studio entrega -->
-            <div class="bg-card rounded-2xl p-8 neon-border-cyan relative overflow-hidden">
-                <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl"></div>
+            <div class="bg-card rounded-2xl p-6 sm:p-8 neon-border-cyan relative overflow-hidden">
+                <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
                 <h3 class="text-lg font-bold text-cyan-400 mb-6">O que a Artan Studio entrega</h3>
                 <ul class="space-y-4 text-sm text-slate-200">
                     <li class="flex items-start gap-3">
@@ -219,10 +232,10 @@
     </section>
 
     <!-- TRÊS FRENTES TRABALHANDO JUNTAS (TODOS EM TOM AZUL/CIANO) -->
-    <section id="solucoes" class="py-20 bg-slate-950/70 border-y border-slate-800/80 backdrop-blur-md">
+    <section id="solucoes" class="py-20 bg-slate-950/80 border-y border-slate-800/80 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-6">
             <div class="mb-14">
-                <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-3">
+                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
                     Soluções trabalhando juntas pela sua conversão
                 </h2>
                 <p class="text-slate-300 text-base max-w-2xl">
@@ -248,7 +261,7 @@
                     </div>
                 </div>
 
-                <!-- Frente 2 (Padrão Azul Mantido) -->
+                <!-- Frente 2 -->
                 <div class="bg-card rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
                     <div>
                         <div class="w-12 h-12 bg-cyan-950 text-cyan-400 rounded-lg flex items-center justify-center mb-6 border border-cyan-800/80 shadow-lg shadow-cyan-500/10">
@@ -286,9 +299,9 @@
     </section>
 
     <!-- SEÇÃO DO FUNDADOR -->
-    <section id="fundador" class="py-24 max-w-5xl mx-auto px-6">
-        <div class="bg-card rounded-3xl p-8 md:p-12 neon-border-purple relative">
-            <blockquote class="text-xl sm:text-2xl font-semibold text-slate-100 leading-relaxed mb-8">
+    <section id="fundador" class="py-20 sm:py-24 max-w-5xl mx-auto px-6">
+        <div class="bg-card rounded-3xl p-6 sm:p-12 neon-border-purple relative">
+            <blockquote class="text-lg sm:text-2xl font-semibold text-slate-100 leading-relaxed mb-8">
                 "Todo projeto que sai da Artan Studio passa pela minha mesa antes de ir ao ar. Não terceirizo a arquitetura, e não entrego nada que eu mesmo não usaria no meu próprio negócio."
             </blockquote>
 
@@ -308,15 +321,15 @@
 
                     <ul class="space-y-2 pt-2">
                         <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 shrink-0"></span>
                             <strong class="text-slate-100">Compromisso direto do fundador</strong> — você fala com quem constrói, não com um intermediário comercial.
                         </li>
                         <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 shrink-0"></span>
                             <strong class="text-slate-100">Transparência técnica</strong> — cada decisão de arquitetura é explicada em linguagem que faz sentido para o seu negócio.
                         </li>
                         <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                            <span class="w-2 h-2 rounded-full bg-cyan-400 shrink-0"></span>
                             <strong class="text-slate-100">Execução de nível elite</strong> — os mesmos padrões de estúdios internacionais aplicados a empresas locais.
                         </li>
                     </ul>
@@ -325,15 +338,15 @@
         </div>
     </section>
 
-    <!-- PROJETO PILOTO (EXPANDIDO, MAIOR E COM LETRAS MAIORES) -->
+    <!-- PROJETO PILOTO -->
     <section id="piloto" class="py-16 max-w-6xl mx-auto px-6">
-        <div class="bg-card rounded-3xl p-10 md:p-14 neon-border-cyan relative overflow-hidden">
+        <div class="bg-card rounded-3xl p-8 sm:p-14 neon-border-cyan relative overflow-hidden">
             <div class="absolute -right-16 -top-16 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
                 <div class="lg:col-span-8">
-                    <span class="text-sm font-bold text-cyan-400 tracking-wider uppercase block mb-3">Seleção exclusiva de parceiros locais</span>
-                    <h3 class="text-3xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">Projeto piloto de expansão da Artan Studio</h3>
+                    <span class="text-xs sm:text-sm font-bold text-cyan-400 tracking-wider uppercase block mb-3">Seleção exclusiva de parceiros locais</span>
+                    <h3 class="text-2xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">Projeto piloto de expansão da Artan Studio</h3>
                     <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed">
                         Estamos selecionando um número limitado de empresas da região para o projeto piloto de expansão do estúdio. Receba atendimento prioritário e infraestrutura completa.
                     </p>
@@ -341,7 +354,7 @@
                         Quero concorrer a uma vaga
                     </a>
                 </div>
-                <div class="lg:col-span-4 text-right">
+                <div class="lg:col-span-4 text-left lg:text-right">
                     <p class="text-sm text-slate-300 leading-relaxed bg-slate-950/90 p-6 rounded-2xl border border-slate-800 inline-block text-left shadow-xl">
                         <strong class="text-white text-base block mb-2 font-bold">Vagas limitadas por região</strong>
                         Atendimento e aplicação por ordem de chegada no WhatsApp.
@@ -352,17 +365,17 @@
     </section>
 
     <!-- FAQ -->
-    <section id="faq" class="py-24 max-w-4xl mx-auto px-6">
+    <section id="faq" class="py-20 sm:py-24 max-w-4xl mx-auto px-6">
         <div class="mb-12">
             <span class="text-xs font-semibold text-cyan-400 tracking-wider uppercase block mb-1">Perguntas frequentes</span>
-            <h2 class="text-3xl font-extrabold text-white">Antes de você chamar no WhatsApp</h2>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Antes de você chamar no WhatsApp</h2>
         </div>
 
         <div class="space-y-4">
             <div class="bg-card rounded-xl p-6 border border-slate-800">
                 <h4 class="text-base font-bold text-white mb-2 flex items-center justify-between">
                     Quanto tempo leva para o site ou sistema ficar no ar?
-                    <i data-lucide="x" class="w-5 h-5 text-slate-400"></i>
+                    <i data-lucide="x" class="w-5 h-5 text-slate-400 shrink-0"></i>
                 </h4>
                 <p class="text-sm text-slate-300 leading-relaxed">
                     Projetos piloto da Artan Studio são entregues em tempo recorde (48h a 7 dias úteis) após o envio das informações básicas da empresa.
@@ -372,7 +385,7 @@
             <div class="bg-card rounded-xl p-6 border border-slate-800">
                 <h4 class="text-base font-bold text-white mb-2 flex items-center justify-between">
                     A hospedagem está incluída?
-                    <i data-lucide="plus" class="w-5 h-5 text-slate-400"></i>
+                    <i data-lucide="plus" class="w-5 h-5 text-slate-400 shrink-0"></i>
                 </h4>
                 <p class="text-sm text-slate-300 leading-relaxed">
                     Sim! Configuramos tudo em infraestrutura em nuvem de altíssima velocidade para você não se preocupar com servidores.
@@ -382,7 +395,7 @@
             <div class="bg-card rounded-xl p-6 border border-slate-800">
                 <h4 class="text-base font-bold text-white mb-2 flex items-center justify-between">
                     E se eu precisar de suporte depois do site pronto?
-                    <i data-lucide="plus" class="w-5 h-5 text-slate-400"></i>
+                    <i data-lucide="plus" class="w-5 h-5 text-slate-400 shrink-0"></i>
                 </h4>
                 <p class="text-sm text-slate-300 leading-relaxed">
                     Você fala diretamente com o fundador pelo WhatsApp para qualquer ajuste ou melhoria técnica sem burocracias.
@@ -392,10 +405,10 @@
     </section>
 
     <!-- CTA FINAL BANNER -->
-    <section class="py-24 bg-slate-950/80 border-t border-slate-800/80 text-center backdrop-blur-md relative overflow-hidden">
-        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <section class="py-20 sm:py-24 bg-slate-950/90 border-t border-slate-800/80 text-center backdrop-blur-md relative overflow-hidden">
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="max-w-3xl mx-auto px-6 relative z-10">
-            <h2 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+            <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4">
                 Descubra onde sua presença digital está perdendo clientes
             </h2>
             <p class="text-slate-300 text-base mb-8 leading-relaxed">
