@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="color-scheme" content="dark">
     <meta name="theme-color" content="#030712">
-    <title>G-Local | Presença Digital & Parceiro de Soluções Google</title>
+    <title>G-Local | Soluções Digitais</title>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
         :root {
             color-scheme: dark;
@@ -17,7 +18,7 @@
 
         html, body {
             background-color: #030712 !important;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', 'Plus Jakarta Sans', sans-serif;
             color: #cbd5e1;
             overflow-x: hidden;
             width: 100%;
@@ -28,32 +29,35 @@
             background-size: cover !important;
         }
 
-        /* Fundo com grade sutil para seções estruturais */
+        /* BARRA DE PROGRESSO DE ROLAGEM */
+        #scroll-progress {
+            position: fixed;
+            top: 80px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #EA4335 0%, #FBBC05 33%, #34A853 66%, #4285F4 100%);
+            z-index: 60;
+            transition: width 0.1s ease-out;
+            box-shadow: 0 0 10px rgba(66, 133, 244, 0.8);
+        }
+
         .bg-grid-pattern {
             background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
             background-size: 24px 24px;
         }
 
-        /* Gradiente do Google Exato */
-        .text-google-exact-sequence {
-            background: linear-gradient(90deg, #EA4335 0%, #34A853 33%, #FBBC05 66%, #4285F4 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* Card da estrutura com Neon Azul */
         .card-structure-neon {
             position: relative;
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(66, 133, 244, 0.4);
             box-shadow: 0 0 50px rgba(66, 133, 244, 0.25), inset 0 0 30px rgba(66, 133, 244, 0.1);
         }
 
-        /* Card com borda neon e gradiente ao passar o cursor */
         .card-neon-gradient {
             position: relative;
-            background: rgba(15, 23, 42, 0.88);
+            background: rgba(15, 23, 42, 0.5);
             backdrop-filter: blur(12px);
             border-radius: 1rem;
             transition: all 0.4s ease;
@@ -84,79 +88,74 @@
             transform: translateY(-2px);
         }
 
-        /* Pill tags com efeito de borda neon gradiente */
         .pill-gradient-border {
             position: relative;
-            background: rgba(15, 23, 42, 0.9);
+            background: rgba(15, 23, 42, 0.8);
             border-radius: 9999px;
             transition: all 0.3s ease;
             border: 1px solid transparent;
-            background-image: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)), linear-gradient(135deg, rgba(234,67,53,0.7), rgba(52,168,83,0.7), rgba(251,188,5,0.7), rgba(66,133,244,0.7));
+            background-image: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), linear-gradient(135deg, rgba(234,67,53,0.7), rgba(52,168,83,0.7), rgba(251,188,5,0.7), rgba(66,133,244,0.7));
             background-origin: border-box;
             background-clip: padding-box, border-box;
-            box-shadow: 0 0 10px rgba(66, 133, 244, 0.15);
         }
 
-        .pill-gradient-border:hover {
-            box-shadow: 0 0 15px rgba(66, 133, 244, 0.4);
-            transform: scale(1.02);
-        }
-
-        /* LINHA DO TEMPO COM GRADIENTE GOOGLE */
         .timeline-google-line {
             background: linear-gradient(180deg, #EA4335 0%, #FBBC05 35%, #34A853 70%, #4285F4 100%);
             box-shadow: 0 0 15px rgba(66, 133, 244, 0.4);
         }
 
         .card-timeline {
-            background: rgba(15, 23, 42, 0.85);
+            background: rgba(15, 23, 42, 0.5);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
         }
 
-        /* Estilo para aplicar gradiente aos ícones SVG */
         .svg-gradient-icon svg {
             stroke: url(#google-icon-gradient) !important;
         }
 
         .bg-glass {
-            background: rgba(3, 7, 18, 0.92);
+            background: rgba(3, 7, 18, 0.85);
             backdrop-filter: blur(16px);
         }
 
-        .bg-card {
-            background: rgba(15, 23, 42, 0.88);
-            backdrop-filter: blur(12px);
-        }
-
+        .text-google-blue { color: #4285F4 !important; }
+        .text-google-green { color: #34A853 !important; }
+        .text-google-yellow { color: #FBBC05 !important; }
         .bg-google-blue { background-color: #4285F4; }
         .bg-google-green { background-color: #34A853; }
         .bg-google-yellow { background-color: #FBBC05; }
         .bg-google-red { background-color: #EA4335; }
 
-        /* Selos de Segurança no Estilo Badge/Imagem Trust */
-        .trust-badge-img {
-            display: flex;
-            align-items: center;
-            background: #ffffff;
-            border-radius: 8px;
-            padding: 6px 14px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-decoration: none;
+        /* Animação suave e lenta dos elementos ao rolar a página[cite: 21] */
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translate3d(0, 48px, 0);
+            transition:
+                opacity 1.35s ease,
+                transform 1.35s cubic-bezier(0.20, 0.65, 0.25, 1);
+            will-change: opacity, transform;
         }
-
-        .trust-badge-img:hover {
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.4);
+        .reveal-on-scroll.is-visible {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-on-scroll,
+            .reveal-on-scroll.is-visible {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+                will-change: auto;
+            }
         }
     </style>
 </head>
-<body class="antialiased selection:bg-blue-500 selection:text-white relative bg-slate-950">
+<body class="antialiased selection:bg-blue-500 selection:text-white relative">
 
-    <!-- Definição SVG do Gradiente Mesclado para Ícones -->
+    <!-- BARRA DE PROGRESSO DE ROLAGEM -->
+    <div id="scroll-progress"></div>
+
     <svg width="0" height="0" class="absolute block">
       <defs>
         <linearGradient id="google-icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -168,32 +167,38 @@
       </defs>
     </svg>
 
-    <!-- Luzes de Fundo Globais -->
+    <!-- Luzes de Fundo -->
     <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[650px] h-[350px] sm:h-[650px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
     <div class="fixed top-2/3 left-1/3 w-[300px] sm:w-[550px] h-[300px] sm:h-[550px] bg-green-500/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
 
     <!-- NAVBAR -->
-    <header class="fixed top-0 w-full z-50 bg-glass border-b border-slate-800/80">
-        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="#" class="text-white font-bold text-xl tracking-tight flex items-center gap-2">
-                <span class="flex gap-1">
-                    <span class="w-2.5 h-2.5 rounded-full bg-google-blue"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-google-red"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-google-yellow"></span>
-                    <span class="w-2.5 h-2.5 rounded-full bg-google-green"></span>
-                </span>
-                G-Local <span class="text-slate-400 font-normal text-sm hidden sm:inline">| Soluções Digitais</span>
+    <header class="fixed top-0 w-full z-50 bg-glass border-b border-slate-800/80 h-20">
+        <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
+            
+            <!-- LOGO COM TIPOGRAFIA MAIS FINA -->
+            <a href="#" class="flex items-center gap-3.5 group select-none">
+                <svg class="w-9 h-9 drop-shadow-[0_0_10px_rgba(66,133,244,0.4)]" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M500 256C500 238.5 498.3 221.7 495.2 205.3H256V301.6H393.2C387.2 333.6 368.8 360.7 341.2 379.2V443.7H425.2C474.4 398.5 500 332.1 500 256Z" fill="#4285F4"/>
+                    <path d="M256 504C326.8 504 386.1 480.6 425.2 443.7L341.2 379.2C318 394.8 289.4 404.2 256 404.2C187.7 404.2 130 358 109.3 295.8H22.3V362.8C61.4 440.4 151.7 504 256 504Z" fill="#34A853"/>
+                    <path d="M109.3 295.8C104 280 101 263.3 101 246C101 228.7 104 212 109.3 196.2V129.2H22.3C7.9 157.9 0 190.9 0 246C0 301.1 7.9 334.1 22.3 362.8L109.3 295.8Z" fill="#FBBC05"/>
+                    <path d="M256 87.8C294.6 87.8 329.2 101 356.5 127.1L426.8 56.8C385.9 18.7 326.8 0 256 0C151.7 0 61.4 63.6 22.3 141.2L109.3 208.2C130 146 187.7 87.8 256 87.8Z" fill="#EA4335"/>
+                </svg>
+                <div class="flex flex-col justify-center text-left leading-tight">
+                    <span class="text-xl font-bold text-white tracking-tight">G-Local</span>
+                    <span class="text-[10px] font-semibold text-slate-400 tracking-widest uppercase">SOLUÇÕES DIGITAIS</span>
+                </div>
             </a>
 
             <nav class="hidden md:flex items-center gap-8 text-base font-medium text-slate-300">
                 <a href="#estrutura" class="hover:text-blue-400 transition">Estrutura</a>
-                <a href="#solucoes" class="hover:text-blue-400 transition">O Combo 3 em 1</a>
+                <a href="#solucoes" class="hover:text-blue-400 transition">Soluções</a>
+                <a href="#seo-geo" class="hover:text-blue-400 transition">SEO + GEO</a>
                 <a href="#como-funciona" class="hover:text-blue-400 transition">Como Funciona</a>
                 <a href="#faq" class="hover:text-blue-400 transition">FAQ</a>
             </nav>
 
-            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20diagn%C3%B3stico%20da%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="bg-google-blue hover:bg-blue-600 text-white text-base font-bold px-6 py-2.5 rounded-lg transition shadow-lg shadow-blue-500/25 hover:shadow-blue-400/50">
-                Solicitar Diagnóstico
+            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Quero%20aparecer%20melhor%20no%20Google.%20Podemos%20conversar%3F" target="_blank" rel="noopener noreferrer" class="bg-google-blue hover:bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition shadow-lg shadow-blue-500/25 hover:shadow-blue-400/50">
+                Quero aparecer no Google
             </a>
         </div>
     </header>
@@ -203,77 +208,85 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
             <div class="lg:col-span-7">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-blue-500/40 text-blue-400 text-sm font-semibold tracking-wide mb-6 shadow-lg shadow-blue-500/10">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/60 border border-blue-500/40 text-blue-400 text-xs font-semibold tracking-wide mb-6 shadow-lg shadow-blue-500/10">
                     <span class="w-2 h-2 rounded-full bg-google-green animate-pulse"></span>
                     AGÊNCIA ESPECIALISTA EM ECOSSISTEMA GOOGLE
                 </div>
 
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
-                    Mais clientes encontrando sua empresa no <span class="text-google-exact-sequence font-black">Google</span> e falando no WhatsApp
+                <!-- TÍTULO COM TIPOGRAFIA MAIS FINA -->
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15] mb-6">
+                    Sua empresa mais fácil de encontrar no <span class="font-bold inline-block"><span class="text-[#4285F4]">G</span><span class="text-[#EA4335]">o</span><span class="text-[#FBBC05]">o</span><span class="text-[#4285F4]">g</span><span class="text-[#34A853]">l</span><span class="text-[#EA4335]">e</span></span> e mais fácil de contatar
                 </h1>
 
-                <p class="text-slate-300 text-base sm:text-xl mb-8 leading-relaxed max-w-xl">
+                <p class="text-slate-300 text-base sm:text-lg mb-8 leading-relaxed max-w-xl font-normal">
                     Unimos um site rápido, um Perfil da Empresa no Google bem estruturado e um caminho direto para o WhatsApp. Assim, quem procura pelos seus serviços na região encontra informações claras e entra em contato imediatamente.
                 </p>
             </div>
 
-            <!-- CARD ESTRUTURA COM BRILHO NEON AZUL EM DESTAQUE -->
             <div class="lg:col-span-5 relative">
-                <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl blur-2xl opacity-40 animate-pulse pointer-events-none"></div>
-
-                <div class="card-structure-neon rounded-2xl p-6 sm:p-7 shadow-2xl relative z-10">
-                    <div class="space-y-4 text-sm sm:text-base relative z-10">
-                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
-                            <span class="text-slate-300">Estrutura de Vendas</span>
-                            <span class="font-semibold text-white">Parceiro Estratégico</span>
+                <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl blur-2xl opacity-30 pointer-events-none"></div>
+                <div class="card-structure-neon rounded-2xl p-5 sm:p-6 shadow-2xl relative z-10">
+                    <div class="flex items-center gap-3 pb-4 border-b border-slate-700">
+                        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-xl font-bold text-blue-600">G</div>
+                        <div>
+                            <p class="text-white font-semibold">Perfil da Empresa</p>
+                            <p class="text-xs text-slate-400">Exemplo ilustrativo de apresentação</p>
                         </div>
-                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
-                            <span class="text-slate-300">Tempo de carregamento</span>
-                            <span class="font-semibold text-white flex items-center gap-2">
-                                1.08s <span class="text-xs bg-emerald-950 text-google-green border border-green-800 px-2 py-0.5 rounded">ótimo</span>
-                            </span>
+                    </div>
+                    <div class="pt-5">
+                        <div class="rounded-xl bg-slate-900/80 border border-slate-700 p-4 mb-4">
+                            <div class="flex items-start gap-3">
+                                <div class="w-16 h-16 rounded-lg bg-gradient-to-br from-blue-500/30 to-green-500/30 flex items-center justify-center shrink-0">
+                                    <i data-lucide="store" class="w-8 h-8 text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-base font-bold text-white">Nome da sua empresa</h3>
+                                    <p class="text-sm text-slate-300">Serviços • Sua cidade</p>
+                                    <p class="text-xs text-slate-400 mt-2">Informações, serviços e formas de contato</p>
+                                </div>
+                            </div>
                         </div>
-                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
-                            <span class="text-slate-300">Origem do lead</span>
-                            <span class="font-semibold text-white">WhatsApp direto</span>
+                        <div class="grid grid-cols-3 gap-2 text-center text-xs">
+                            <div class="rounded-lg bg-slate-900/80 border border-slate-700 p-3">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-google-green mx-auto mb-2"></i>
+                                <span class="text-slate-200">Localização</span>
+                            </div>
+                            <div class="rounded-lg bg-slate-900/80 border border-slate-700 p-3">
+                                <i data-lucide="clock" class="w-5 h-5 text-google-yellow mx-auto mb-2"></i>
+                                <span class="text-slate-200">Horários</span>
+                            </div>
+                            <div class="rounded-lg bg-slate-900/80 border border-slate-700 p-3">
+                                <i data-lucide="phone" class="w-5 h-5 text-google-blue mx-auto mb-2"></i>
+                                <span class="text-slate-200">Contato</span>
+                            </div>
                         </div>
-                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
-                            <span class="text-slate-300">Presença Google</span>
-                            <span class="font-semibold text-white flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-google-green animate-pulse"></span> Otimizada
-                            </span>
-                        </div>
-                        <div class="flex items-center justify-between">
-                            <span class="text-slate-300">Infraestrutura</span>
-                            <span class="font-semibold text-white text-xs bg-slate-800 px-3 py-1 rounded-md border border-slate-700">HTML5 • Tailwind • Cloudflare</span>
-                        </div>
+                        <p class="text-xs text-slate-400 mt-4">A organização do perfil ajuda as pessoas a conhecerem sua empresa e encontrarem informações úteis.</p>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
     <!-- METRICS STRIP -->
-    <section id="estrutura" class="py-12 sm:py-14 border-y border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
+    <section id="estrutura" class="py-12 sm:py-14 border-y border-slate-800/80">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-                <span class="text-3xl font-extrabold text-google-blue block mb-2">&lt; 1.2s</span>
+                <span class="text-2xl font-bold block mb-2"><span class="text-white">Site </span><span class="text-google-blue">profissional</span></span>
                 <p class="text-sm text-slate-300 leading-relaxed">
-                    Uma experiência leve e ágil, pensada para facilitar o acesso ao seu negócio, inclusive em conexões mais lentas.
+                    Uma apresentação clara da sua empresa, dos seus serviços e das formas de contato.
                 </p>
             </div>
             <div>
-                <span class="text-3xl font-extrabold block mb-2">
-                    <span class="text-google-green">100%</span> <span class="text-white">mobile</span>
+                <span class="text-2xl font-bold block mb-2">
+                    <span class="text-google-green">Adaptado</span> <span class="text-white"> ao celular</span>
                 </span>
                 <p class="text-sm text-slate-300 leading-relaxed">
                     Layout adaptado a diferentes telas, para que seus clientes encontrem o que precisam com praticidade pelo celular.
                 </p>
             </div>
             <div>
-                <span class="text-3xl font-extrabold block mb-2">
-                    <span class="text-white">Foco em</span> <span class="text-google-yellow">conversão</span>
+                <span class="text-2xl font-bold block mb-2">
+                    <span class="text-white">Foco em </span><span class="text-google-yellow">conversão</span>
                 </span>
                 <p class="text-sm text-slate-300 leading-relaxed">
                     Botões e caminhos de contato estrategicamente posicionados para facilitar conversas com potenciais clientes no WhatsApp.
@@ -283,26 +296,25 @@
     </section>
 
     <!-- COMBO 3 EM 1 -->
-    <section id="solucoes" class="py-20 bg-slate-950/80 border-b border-slate-800/80 backdrop-blur-md">
+    <section id="solucoes" class="py-20 border-b border-slate-800/80">
         <div class="max-w-6xl mx-auto px-6">
             <div class="mb-14">
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">
                     Sua presença digital trabalhando em conjunto para conquistar novos contatos
                 </h2>
-                <p class="text-slate-300 text-base max-w-2xl">
+                <p class="text-slate-300 text-base max-w-2xl font-normal">
                     Conectamos seu site, seu Perfil da Empresa no Google e o atendimento pelo WhatsApp para tornar mais simples o caminho entre a busca local e o primeiro contato.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Frente 1 -->
                 <div class="card-neon-gradient p-6 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
                             <i data-lucide="layout" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-white">Um site rápido que valoriza sua empresa</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                        <h3 class="text-lg font-bold mb-3 text-white">Um site rápido que valoriza sua empresa</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
                             Criamos um site alinhado à identidade da sua marca, com navegação intuitiva, informações essenciais e chamadas claras para o cliente entrar em contato.
                         </p>
                     </div>
@@ -312,14 +324,13 @@
                     </div>
                 </div>
 
-                <!-- Frente 2 -->
                 <div class="card-neon-gradient p-6 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
                             <i data-lucide="map-pin" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-white">Perfil da Empresa no Google bem estruturado</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                        <h3 class="text-lg font-bold mb-3 text-white">Perfil da Empresa no Google bem estruturado</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
                             Organizamos as informações, categorias e imagens do seu perfil para apresentar sua empresa com clareza e ajudar clientes da região a encontrá-la nas buscas e no Maps.
                         </p>
                     </div>
@@ -329,14 +340,13 @@
                     </div>
                 </div>
 
-                <!-- Frente 3 -->
                 <div class="card-neon-gradient p-6 flex flex-col justify-between">
                     <div>
                         <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
                             <i data-lucide="message-square" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold mb-3 text-white">Do Google ao WhatsApp, sem complicação</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                        <h3 class="text-lg font-bold mb-3 text-white">Do Google ao WhatsApp, sem complicação</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
                             Facilitamos o contato com links para o WhatsApp no site e no perfil, ajudando o potencial cliente a iniciar uma conversa com sua equipe.
                         </p>
                     </div>
@@ -349,18 +359,41 @@
         </div>
     </section>
 
-    <!-- SEÇÃO COMO FUNCIONA (TIMELINE INTERATIVA - PALETA GOOGLE) -->
+    <!-- SEO E GEO -->
+    <section id="seo-geo" class="py-20 border-b border-slate-800/80">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="max-w-3xl mb-10">
+                <span class="text-xs font-semibold text-google-green tracking-wider uppercase block mb-3">Visibilidade nas buscas</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">SEO e GEO: sua empresa preparada para ser encontrada</h2>
+                <p class="text-slate-300 text-base leading-relaxed font-normal">Organizamos o conteúdo e as informações do seu site para facilitar a compreensão por mecanismos de busca e ferramentas de inteligência artificial. Esse cuidado pode contribuir para aumentar sua visibilidade e relevância ao longo do tempo.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="card-neon-gradient p-6">
+                    <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-5 border border-slate-700 svg-gradient-icon">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">SEO — Otimização para mecanismos de busca</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed font-normal">Estruturamos páginas, títulos, conteúdo e informações locais para que buscadores como o Google entendam melhor os serviços da sua empresa e sua área de atuação.</p>
+                </div>
+                <div class="card-neon-gradient p-6">
+                    <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-5 border border-slate-700 svg-gradient-icon">
+                        <i data-lucide="brain-circuit" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">GEO — Otimização para mecanismos de IA</h3>
+                    <p class="text-sm text-slate-300 leading-relaxed font-normal">Organizamos informações claras, consistentes e úteis para facilitar a compreensão da sua empresa por ferramentas de IA, como ChatGPT, Gemini e Perplexity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMO FUNCIONA -->
     <section id="como-funciona" class="py-24 relative overflow-hidden bg-grid-pattern border-b border-slate-800/80">
-        
-        <!-- Luzes de fundo nas cores Google -->
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[140px] pointer-events-none"></div>
         <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
 
         <div class="max-w-6xl mx-auto px-6 relative z-10">
-            
-            <!-- CABEÇALHO DA SEÇÃO -->
             <div class="text-center mb-20">
-                <span class="text-xs font-bold tracking-widest uppercase text-white bg-slate-900 px-4 py-1.5 rounded-full border border-slate-700/80 mb-3 inline-flex items-center gap-2">
+                <span class="text-xs font-semibold tracking-widest uppercase text-white bg-slate-900/80 px-4 py-1.5 rounded-full border border-slate-700/80 mb-3 inline-flex items-center gap-2">
                     <span class="flex gap-1">
                         <span class="w-2 h-2 rounded-full bg-[#EA4335]"></span>
                         <span class="w-2 h-2 rounded-full bg-[#FBBC05]"></span>
@@ -369,164 +402,106 @@
                     </span>
                     COMO FUNCIONA
                 </span>
-                <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
-                    Mapeie, Construa e <span class="text-google-exact-sequence">Converta</span>
+                <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">
+                    Mapeie, Construa e <span class="text-white">Converta</span>
                 </h2>
-                <p class="text-slate-400 text-base sm:text-lg mt-4 max-w-2xl mx-auto">
-                    Um processo direto em 3 passos para colocar sua empresa no topo das buscas locais e gerar novos clientes no WhatsApp.
+                <p class="text-slate-400 text-base mt-4 max-w-2xl mx-auto font-normal">
+                    Um processo direto em 3 passos para fortalecer a presença da sua empresa nas buscas locais e gerar novos clientes no WhatsApp.
                 </p>
             </div>
 
-            <!-- ESTRUTURA DA TIMELINE -->
             <div class="relative">
-                
-                <!-- Linha Vertical Central em Gradiente Google -->
                 <div class="hidden md:block absolute left-1/2 top-4 bottom-4 w-[3px] -translate-x-1/2 timeline-google-line rounded-full"></div>
 
                 <div class="space-y-16 md:space-y-24">
-
-                    <!-- MOVIMENTO 01 - GOOGLE RED -->
+                    <!-- PASSO 1 -->
                     <div class="relative flex flex-col md:flex-row items-center justify-between gap-8">
-                        
-                        <!-- Lado Esquerdo: Texto -->
                         <div class="w-full md:w-[45%] text-left md:text-right order-2 md:order-1">
-                            <span class="text-xs font-bold tracking-widest text-[#EA4335] uppercase block mb-1">MOVIMENTO 01</span>
-                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">Mapeie</h3>
-                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                            <span class="text-xs font-semibold tracking-widest text-[#EA4335] uppercase block mb-1">MOVIMENTO 01</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Mapeie</h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4 font-normal">
                                 Analisamos sua cidade, seu nicho de atuação e a concorrência local para identificar exatamente como potenciais clientes procuram seus serviços no Google.
                             </p>
-                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300">
-                                <i data-lucide="search" class="w-4 h-4 text-[#EA4335]"></i>
-                                Análise de nicho e palavra-chave local
-                            </div>
                         </div>
-
-                        <!-- Círculo Central Numerado (Google Red) -->
                         <div class="relative z-20 flex items-center justify-center shrink-0 order-1 md:order-2">
                             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-slate-950 border-2 border-[#EA4335] flex items-center justify-center shadow-[0_0_20px_rgba(234,67,53,0.5)]">
                                 <i data-lucide="search" class="w-5 h-5 sm:w-6 sm:h-6 text-[#EA4335]"></i>
                             </div>
-                            <span class="absolute -z-10 text-6xl sm:text-7xl font-black text-slate-800/40 select-none">01</span>
                         </div>
-
-                        <!-- Lado Direito: Preview/Card Demonstrativo -->
                         <div class="w-full md:w-[45%] order-3">
                             <div class="card-timeline p-6 rounded-2xl border-l-2 border-l-[#EA4335]">
                                 <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-4">
                                     <span class="text-xs font-mono text-slate-400">DIAGNÓSTICO INICIAL</span>
-                                    <span class="w-2.5 h-2.5 rounded-full bg-[#EA4335] animate-pulse"></span>
                                 </div>
                                 <div class="space-y-3">
-                                    <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800 flex items-center justify-between text-xs">
+                                    <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800 flex items-center justify-between text-xs">
                                         <span class="text-slate-400">Região Alvo:</span>
-                                        <span class="text-white font-semibold">Sua Cidade / Bairro</span>
-                                    </div>
-                                    <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800 flex items-center justify-between text-xs">
-                                        <span class="text-slate-400">Demanda Local:</span>
-                                        <span class="text-[#34A853] font-semibold flex items-center gap-1">
-                                            <i data-lucide="trending-up" class="w-3.5 h-3.5"></i> Alta Busca
-                                        </span>
+                                        <span class="text-white font-medium">Sua Cidade / Bairro</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
-                    <!-- MOVIMENTO 02 - GOOGLE GREEN -->
+                    <!-- PASSO 2 -->
                     <div class="relative flex flex-col md:flex-row items-center justify-between gap-8">
-                        
-                        <!-- Lado Esquerdo: Card Demonstrativo (Invertido) -->
                         <div class="w-full md:w-[45%] order-3 md:order-1">
                             <div class="card-timeline p-6 rounded-2xl border-r-2 md:border-r-2 border-l-2 md:border-l-0 border-[#34A853]">
                                 <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-4">
                                     <span class="text-xs font-mono text-slate-400">ECOSSISTEMA ESTRUTURADO</span>
-                                    <span class="w-2.5 h-2.5 rounded-full bg-[#34A853] animate-pulse"></span>
                                 </div>
                                 <div class="grid grid-cols-2 gap-3 text-xs">
-                                    <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800 text-center">
-                                        <i data-lucide="globe" class="w-5 h-5 text-[#4285F4] mx-auto mb-1"></i>
-                                        <span class="font-bold text-white block">Site Ultra-Rápido</span>
-                                        <span class="text-[10px] text-slate-400">&lt; 1.1s carregamento</span>
+                                    <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800 text-center">
+                                        <span class="font-medium text-white block">Site Ultra-Rápido</span>
                                     </div>
-                                    <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800 text-center">
-                                        <i data-lucide="map-pin" class="w-5 h-5 text-[#34A853] mx-auto mb-1"></i>
-                                        <span class="font-bold text-white block">Perfil Google</span>
-                                        <span class="text-[10px] text-slate-400">Otimização completa</span>
+                                    <div class="bg-slate-900/80 p-3 rounded-lg border border-slate-800 text-center">
+                                        <span class="font-medium text-white block">Perfil Google</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Círculo Central Numerado (Google Green) -->
                         <div class="relative z-20 flex items-center justify-center shrink-0 order-1 md:order-2">
                             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-slate-950 border-2 border-[#34A853] flex items-center justify-center shadow-[0_0_20px_rgba(52,168,83,0.5)]">
                                 <i data-lucide="code" class="w-5 h-5 sm:w-6 sm:h-6 text-[#34A853]"></i>
                             </div>
-                            <span class="absolute -z-10 text-6xl sm:text-7xl font-black text-slate-800/40 select-none">02</span>
                         </div>
-
-                        <!-- Lado Direito: Texto -->
                         <div class="w-full md:w-[45%] text-left order-2 md:order-3">
-                            <span class="text-xs font-bold tracking-widest text-[#34A853] uppercase block mb-1">MOVIMENTO 02</span>
-                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">Construa</h3>
-                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                            <span class="text-xs font-semibold tracking-widest text-[#34A853] uppercase block mb-1">MOVIMENTO 02</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Construa</h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4 font-normal">
                                 Estruturamos seu site moderno, leve e adaptado para celulares, além de otimizar todas as informações do seu Perfil da Empresa no Google Maps.
                             </p>
-                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300">
-                                <i data-lucide="cpu" class="w-4 h-4 text-[#34A853]"></i>
-                                Design moderno + Google Meu Negócio
-                            </div>
                         </div>
-
                     </div>
 
-                    <!-- MOVIMENTO 03 - GOOGLE BLUE -->
+                    <!-- PASSO 3 -->
                     <div class="relative flex flex-col md:flex-row items-center justify-between gap-8">
-                        
-                        <!-- Lado Esquerdo: Texto -->
                         <div class="w-full md:w-[45%] text-left md:text-right order-2 md:order-1">
-                            <span class="text-xs font-bold tracking-widest text-[#4285F4] uppercase block mb-1">MOVIMENTO 03</span>
-                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">Converta</h3>
-                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                            <span class="text-xs font-semibold tracking-widest text-[#4285F4] uppercase block mb-1">MOVIMENTO 03</span>
+                            <h3 class="text-xl sm:text-2xl font-bold text-white mb-3">Converta</h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4 font-normal">
                                 Conectamos seu site e seu perfil no Google diretamente ao WhatsApp do seu negócio. O cliente encontra sua empresa e clica para falar imediatamente.
                             </p>
-                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300">
-                                <i data-lucide="message-square" class="w-4 h-4 text-[#4285F4]"></i>
-                                Lead direcionado para fechamento
-                            </div>
                         </div>
-
-                        <!-- Círculo Central Numerado (Google Blue) -->
                         <div class="relative z-20 flex items-center justify-center shrink-0 order-1 md:order-2">
                             <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-slate-950 border-2 border-[#4285F4] flex items-center justify-center shadow-[0_0_20px_rgba(66,133,244,0.5)]">
                                 <i data-lucide="zap" class="w-5 h-5 sm:w-6 sm:h-6 text-[#4285F4]"></i>
                             </div>
-                            <span class="absolute -z-10 text-6xl sm:text-7xl font-black text-slate-800/40 select-none">03</span>
                         </div>
-
-                        <!-- Lado Direito: Card Demonstrativo -->
                         <div class="w-full md:w-[45%] order-3">
                             <div class="card-timeline p-6 rounded-2xl border-l-2 border-l-[#4285F4]">
                                 <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-4">
                                     <span class="text-xs font-mono text-slate-400">FLUXO DE CONTATO</span>
-                                    <span class="w-2.5 h-2.5 rounded-full bg-[#4285F4] animate-pulse"></span>
                                 </div>
-                                <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 text-center">
-                                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 mb-2">
-                                        <i data-lucide="phone-call" class="w-5 h-5"></i>
-                                    </div>
-                                    <p class="text-xs font-semibold text-white">Clique direto para o WhatsApp</p>
-                                    <p class="text-[11px] text-slate-400 mt-1">Mensagem pré-formatada para agilizar o atendimento</p>
+                                <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 text-center">
+                                    <p class="text-xs font-medium text-white">Clique direto para o WhatsApp</p>
                                 </div>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -534,121 +509,179 @@
     <section id="faq" class="py-20 sm:py-24 max-w-4xl mx-auto px-6">
         <div class="mb-12">
             <span class="text-xs font-semibold text-google-blue tracking-wider uppercase block mb-1">Dúvidas comuns</span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Tire suas dúvidas antes de dar o próximo passo</h2>
+            <h2 class="text-2xl sm:text-3xl font-bold text-white">Tire suas dúvidas antes de dar o próximo passo</h2>
         </div>
 
         <div class="space-y-4">
-            <div class="bg-card rounded-xl p-6 border border-slate-800">
+            <div class="card-neon-gradient p-6 border border-slate-800">
                 <h4 class="text-base font-bold text-white mb-2 flex items-center justify-between">
                     Em quanto tempo meu site e meu perfil ficam prontos?
                     <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
                 </h4>
-                <p class="text-sm text-slate-300 leading-relaxed">
+                <p class="text-sm text-slate-300 leading-relaxed font-normal">
                     O prazo depende do escopo e do envio dos materiais necessários. Após alinharmos as informações e os objetivos, informamos um cronograma para o desenvolvimento do site e a configuração do perfil.
                 </p>
             </div>
 
-            <div class="bg-card rounded-xl p-6 border border-slate-800">
+            <div class="card-neon-gradient p-6 border border-slate-800">
                 <div class="text-base font-bold text-white mb-2 flex items-center justify-between">
                     Preciso ter logotipo e identidade visual definidos?
                     <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
                 </div>
-                <p class="text-sm text-slate-300 leading-relaxed">
+                <p class="text-sm text-slate-300 leading-relaxed font-normal">
                     Não. Podemos partir dos elementos visuais que você já utiliza ou conversar sobre a criação de uma identidade visual para apresentar sua empresa de forma consistente.
                 </p>
             </div>
 
-            <div class="bg-card rounded-xl p-6 border border-slate-800">
+            <div class="card-neon-gradient p-6 border border-slate-800">
                 <div class="text-base font-bold text-white mb-2 flex items-center justify-between">
-                    Como funciona a estrutura do site com Cloudflare?
+                    Se eu contratar vocês, minha empresa vai ficar em primeiro lugar no Google?
                     <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
                 </div>
-                <p class="text-sm text-slate-300 leading-relaxed">
-                    Podemos utilizar a infraestrutura da Cloudflare para publicar e distribuir o site. O desempenho e a disponibilidade dependem da configuração, do conteúdo e das condições de acesso; explicamos os recursos incluídos no seu projeto.
+                <p class="text-sm text-slate-300 leading-relaxed font-normal">
+                    Não é possível garantir a primeira posição ou um número específico de contatos. O que fazemos é estruturar seu site e seu Perfil da Empresa com boas práticas de SEO local, informações claras e caminhos simples para o contato. Nosso trabalho é criar uma base mais preparada para melhorar sua presença nas buscas, sabendo que os resultados também dependem de fatores externos e levam tempo.
+                </p>
+            </div>
+
+            <div class="card-neon-gradient p-6 border border-slate-800">
+                <div class="text-base font-bold text-white mb-2 flex items-center justify-between">
+                    O que vocês fazem para ajudar minha empresa a ser encontrada?
+                    <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
+                </div>
+                <p class="text-sm text-slate-300 leading-relaxed font-normal">
+                    Organizamos as informações da empresa, estruturamos um site adaptado para celulares e trabalhamos a presença no Perfil da Empresa no Google. Também facilitamos o contato pelo WhatsApp, para que quem encontrar seu negócio consiga dar o próximo passo com praticidade.
                 </p>
             </div>
         </div>
     </section>
 
     <!-- CTA FINAL BANNER -->
-    <section class="py-20 sm:py-24 bg-slate-950/90 border-t border-slate-800/80 text-center backdrop-blur-md relative overflow-hidden">
+    <section class="py-20 sm:py-24 text-center relative overflow-hidden">
         <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="max-w-3xl mx-auto px-6 relative z-10">
-            <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4">
-                Vamos fortalecer a presença digital da sua empresa na sua região?
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mb-4">
+                Seus concorrentes já estão sendo encontrados. E sua empresa?
             </h2>
-            <p class="text-slate-300 text-base mb-8 leading-relaxed">
-                Peça uma análise da presença digital da sua empresa e veja como um site, um perfil no Google bem organizado e um contato fácil pelo WhatsApp podem ajudar clientes da região a encontrar você.
+            <p class="text-slate-300 text-base mb-8 leading-relaxed font-normal">
+                Não deixe sua empresa passar despercebida nas buscas locais. Fortaleça sua presença no Google e facilite o contato de novos clientes pelo WhatsApp.
             </p>
-            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Gostaria%20de%20um%20diagn%C3%B3stico%20pelo%20WhatsApp." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-google-blue hover:bg-blue-600 text-white font-bold text-base px-8 py-4 rounded-xl transition shadow-xl shadow-blue-500/20 hover:shadow-blue-400/40">
-                Solicitar Diagnóstico pelo WhatsApp
+            <!-- BOTÃO COM O NOVO TEXTO SOLICITADO -->
+            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Quero%20destacar%20minha%20empresa%20no%20Google." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-google-blue hover:bg-blue-600 text-white font-semibold text-sm px-8 py-4 rounded-xl transition shadow-xl shadow-blue-500/20 hover:shadow-blue-400/40">
+                Quero destacar minha empresa no Google
             </a>
         </div>
     </section>
 
-    <!-- FOOTER COM SELOS EM FORMATO DE IMAGEM/EMBLEMA TRUST BADGES -->
-    <footer class="py-12 border-t border-slate-900 bg-slate-950/95 text-sm text-slate-400">
-        <div class="max-w-6xl mx-auto px-6">
+    <!-- FOOTER LIMPO E POSICIONADO ACIMA -->
+    <footer class="py-12 border-t border-slate-800/80 bg-slate-950/50">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
             
-            <div class="pb-8 mb-8 border-b border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-6">
-                <span class="text-slate-400 font-semibold uppercase tracking-wider text-xs text-center md:text-left">
-                    Garantias & Verificações de Segurança:
-                </span>
-
-                <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-                    
-                    <!-- Selo Imagem 1: SSL SECURED (Estilo Comodo / Norton) -->
-                    <a href="https://www.cloudflare.com/ssl/" target="_blank" rel="noopener noreferrer" class="trust-badge-img border border-emerald-500/40">
-                        <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white mr-3 shadow-md shrink-0">
-                            <i data-lucide="shield-check" class="w-5 h-5"></i>
-                        </div>
-                        <div class="text-left">
-                            <div class="text-[10px] font-extrabold uppercase text-emerald-600 tracking-wider leading-none">256-BIT SSL</div>
-                            <div class="text-xs font-black text-slate-900 leading-tight">SECURED & ENCRYPTED</div>
-                            <div class="text-[9px] text-slate-500 font-semibold">Conexão Segura</div>
-                        </div>
-                    </a>
-
-                    <!-- Selo Imagem 2: GOOGLE SAFE BROWSING (Estilo Verified Badge) -->
-                    <a href="https://transparencyreport.google.com/safe-browsing/search" target="_blank" rel="noopener noreferrer" class="trust-badge-img border border-blue-500/40">
-                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white mr-3 shadow-md shrink-0">
-                            <i data-lucide="check-circle" class="w-5 h-5"></i>
-                        </div>
-                        <div class="text-left">
-                            <div class="text-[10px] font-extrabold uppercase text-blue-600 tracking-wider leading-none">Google Safe Browsing</div>
-                            <div class="text-xs font-black text-slate-900 leading-tight">VERIFIED & PROTECTED</div>
-                            <div class="text-[9px] text-slate-500 font-semibold">Site Autenticado</div>
-                        </div>
-                    </a>
-
-                    <!-- Selo Imagem 3: W3C VALIDATED (Estilo Certificado Oficial) -->
-                    <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer" class="trust-badge-img border border-amber-500/40">
-                        <div class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white mr-3 shadow-md shrink-0">
-                            <i data-lucide="award" class="w-5 h-5"></i>
-                        </div>
-                        <div class="text-left">
-                            <div class="text-[10px] font-extrabold uppercase text-amber-600 tracking-wider leading-none">W3C STANDARDS</div>
-                            <div class="text-xs font-black text-slate-900 leading-tight">HTML5 & CSS3 VALIDATED</div>
-                            <div class="text-[9px] text-slate-500 font-semibold">Código Otimizado</div>
-                        </div>
-                    </a>
-
+            <!-- LOGO COM O G DO GOOGLE -->
+            <a href="#" class="flex items-center gap-3.5 group select-none">
+                <svg class="w-9 h-9 drop-shadow-[0_0_10px_rgba(66,133,244,0.4)]" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M500 256C500 238.5 498.3 221.7 495.2 205.3H256V301.6H393.2C387.2 333.6 368.8 360.7 341.2 379.2V443.7H425.2C474.4 398.5 500 332.1 500 256Z" fill="#4285F4"/>
+                    <path d="M256 504C326.8 504 386.1 480.6 425.2 443.7L341.2 379.2C318 394.8 289.4 404.2 256 404.2C187.7 404.2 130 358 109.3 295.8H22.3V362.8C61.4 440.4 151.7 504 256 504Z" fill="#34A853"/>
+                    <path d="M109.3 295.8C104 280 101 263.3 101 246C101 228.7 104 212 109.3 196.2V129.2H22.3C7.9 157.9 0 190.9 0 246C0 301.1 7.9 334.1 22.3 362.8L109.3 295.8Z" fill="#FBBC05"/>
+                    <path d="M256 87.8C294.6 87.8 329.2 101 356.5 127.1L426.8 56.8C385.9 18.7 326.8 0 256 0C151.7 0 61.4 63.6 22.3 141.2L109.3 208.2C130 146 187.7 87.8 256 87.8Z" fill="#EA4335"/>
+                </svg>
+                <div class="flex flex-col justify-center text-left leading-tight">
+                    <span class="text-xl font-bold text-white tracking-tight">G-Local</span>
+                    <span class="text-[10px] font-semibold text-slate-400 tracking-widest uppercase">SOLUÇÕES DIGITAIS</span>
                 </div>
-            </div>
+            </a>
 
-            <!-- COPYRIGHT -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-xs">
-                <p>© G-Local Soluções Digitais. Todos os direitos reservados.</p>
-                <p class="flex items-center gap-2">
-                    <span class="w-2 h-2 rounded-full bg-google-green animate-pulse"></span>
-                    Especialistas em Otimização Local & Presença Google
-                </p>
-            </div>
+            <!-- DIREITOS AUTORAIS -->
+            <p class="text-slate-400 text-xs sm:text-sm font-medium tracking-wide">
+                © 2026 G-LOCAL Soluções Digitais. Todos os direitos reservados.
+            </p>
+
         </div>
     </footer>
 
     <script>
         lucide.createIcons();
+
+        // Elementos surgem devagarinho conforme entram na tela durante a rolagem.[cite: 21]
+        function initScrollReveal() {
+            const sections = document.querySelectorAll(
+                'main section:not(#hero), body > section:not(#hero)'
+            );
+            const targets = new Set();
+
+            sections.forEach((section) => {
+                const content = section.querySelector(':scope > .max-w-6xl, :scope > div');
+                if (!content) {
+                    targets.add(section);
+                    return;
+                }
+
+                // Revela os blocos principais em sequência, sem esconder a seção inteira.[cite: 21]
+                Array.from(content.children).forEach((child) => {
+                    if (child.matches('h2, p, .grid, .flex, .space-y-16, .card-neon-gradient')) {
+                        targets.add(child);
+                    } else if (child.children.length) {
+                        Array.from(child.children).forEach((nested) => targets.add(nested));
+                    } else {
+                        targets.add(child);
+                    }
+                });
+            });
+
+            // Também anima cartões e itens de conteúdo em grades.[cite: 21]
+            document.querySelectorAll(
+                '#estrutura .grid > div, #solucoes .card-neon-gradient, ' +
+                '#seo-geo .card-neon-gradient, #faq .card-neon-gradient, ' +
+                '#como-funciona .space-y-16 > div'
+            ).forEach((el) => targets.add(el));
+
+            targets.delete(null);
+            targets.delete(document.querySelector('header'));
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+            const elements = Array.from(targets).filter((el) =>
+                el instanceof HTMLElement &&
+                !el.closest('header, footer') &&
+                el.id !== 'scroll-progress'
+            );
+
+            if (!('IntersectionObserver' in window)) {
+                elements.forEach((el) => el.classList.add('is-visible'));
+                return;
+            }
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.03,
+                rootMargin: '0px 0px -35px 0px'
+            });
+
+            elements.forEach((el, index) => {
+                el.classList.add('reveal-on-scroll');
+                // Pequeno intervalo entre itens para a aparição acontecer em sequência.[cite: 21]
+                el.style.transitionDelay = `${(index % 4) * 120}ms`;
+                observer.observe(el);
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initScrollReveal);
+        } else {
+            initScrollReveal();
+        }
+
+        // PROGRESSO DE ROLAGEM
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+        });
     </script>
 </body>
 </html>
