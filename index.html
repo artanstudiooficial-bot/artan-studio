@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="color-scheme" content="dark">
     <meta name="theme-color" content="#030712">
-    <title>Artan Studio - Engenharia Digital & Sistemas Web</title>
+    <title>G-Local | Presença Digital & Parceiro de Soluções Google</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+
         :root {
             color-scheme: dark;
         }
@@ -24,64 +24,175 @@
         }
 
         body {
-            background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #0f172a 50%, #030712 100%) no-repeat center center fixed !important;
+            background: radial-gradient(circle at 50% 20%, #0d1b2a 0%, #0f172a 50%, #030712 100%) no-repeat center center fixed !important;
             background-size: cover !important;
         }
 
-        /* Efeitos Neon Glow */
-        .neon-border-cyan {
-            border: 1px solid rgba(6, 182, 212, 0.4);
-            box-shadow: 0 0 20px rgba(6, 182, 212, 0.15), inset 0 0 15px rgba(6, 182, 212, 0.05);
+        /* Fundo com grade sutil para seções estruturais */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+            background-size: 24px 24px;
         }
 
-        .neon-border-purple {
-            border: 1px solid rgba(168, 85, 247, 0.5);
-            box-shadow: 0 0 30px rgba(168, 85, 247, 0.25), inset 0 0 15px rgba(168, 85, 247, 0.1);
+        /* Gradiente do Google Exato */
+        .text-google-exact-sequence {
+            background: linear-gradient(90deg, #EA4335 0%, #34A853 33%, #FBBC05 66%, #4285F4 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Card da estrutura com Neon Azul */
+        .card-structure-neon {
+            position: relative;
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(66, 133, 244, 0.4);
+            box-shadow: 0 0 50px rgba(66, 133, 244, 0.25), inset 0 0 30px rgba(66, 133, 244, 0.1);
+        }
+
+        /* Card com borda neon e gradiente ao passar o cursor */
+        .card-neon-gradient {
+            position: relative;
+            background: rgba(15, 23, 42, 0.88);
+            backdrop-filter: blur(12px);
+            border-radius: 1rem;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card-neon-gradient::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 1rem;
+            padding: 1px;
+            background: linear-gradient(135deg, rgba(234,67,53,0.6), rgba(52,168,83,0.6), rgba(251,188,5,0.6), rgba(66,133,244,0.6));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0.3;
+            transition: opacity 0.4s ease, box-shadow 0.4s ease;
+            pointer-events: none;
+        }
+
+        .card-neon-gradient:hover::before {
+            opacity: 1;
+        }
+
+        .card-neon-gradient:hover {
+            box-shadow: 0 0 25px rgba(66, 133, 244, 0.3), 0 0 12px rgba(234, 67, 53, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Pill tags com efeito de borda neon gradiente */
+        .pill-gradient-border {
+            position: relative;
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 9999px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.95)), linear-gradient(135deg, rgba(234,67,53,0.7), rgba(52,168,83,0.7), rgba(251,188,5,0.7), rgba(66,133,244,0.7));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+            box-shadow: 0 0 10px rgba(66, 133, 244, 0.15);
+        }
+
+        .pill-gradient-border:hover {
+            box-shadow: 0 0 15px rgba(66, 133, 244, 0.4);
+            transform: scale(1.02);
+        }
+
+        /* LINHA DO TEMPO COM GRADIENTE GOOGLE */
+        .timeline-google-line {
+            background: linear-gradient(180deg, #EA4335 0%, #FBBC05 35%, #34A853 70%, #4285F4 100%);
+            box-shadow: 0 0 15px rgba(66, 133, 244, 0.4);
+        }
+
+        .card-timeline {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Estilo para aplicar gradiente aos ícones SVG */
+        .svg-gradient-icon svg {
+            stroke: url(#google-icon-gradient) !important;
         }
 
         .bg-glass {
             background: rgba(3, 7, 18, 0.92);
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
         }
 
         .bg-card {
             background: rgba(15, 23, 42, 0.88);
             backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Gradiente no texto */
-        .text-gradient-cyan-purple {
-            background: linear-gradient(135deg, #22d3ee 0%, #818cf8 50%, #c084fc 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .bg-google-blue { background-color: #4285F4; }
+        .bg-google-green { background-color: #34A853; }
+        .bg-google-yellow { background-color: #FBBC05; }
+        .bg-google-red { background-color: #EA4335; }
+
+        /* Selos de Segurança no Estilo Badge/Imagem Trust */
+        .trust-badge-img {
+            display: flex;
+            align-items: center;
+            background: #ffffff;
+            border-radius: 8px;
+            padding: 6px 14px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .trust-badge-img:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(66, 133, 244, 0.4);
         }
     </style>
 </head>
-<body class="antialiased selection:bg-cyan-500 selection:text-slate-950 relative bg-slate-950">
+<body class="antialiased selection:bg-blue-500 selection:text-white relative bg-slate-950">
 
-    <!-- LUZES NEON DE FUNDO (GLOW ROXO E AZUL CONTROLADOS) -->
-    <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[650px] h-[350px] sm:h-[650px] bg-purple-600/20 rounded-full blur-[100px] sm:blur-[140px] pointer-events-none -z-10"></div>
-    <div class="fixed top-2/3 left-1/3 w-[300px] sm:w-[550px] h-[300px] sm:h-[550px] bg-cyan-500/15 rounded-full blur-[90px] sm:blur-[130px] pointer-events-none -z-10"></div>
+    <!-- Definição SVG do Gradiente Mesclado para Ícones -->
+    <svg width="0" height="0" class="absolute block">
+      <defs>
+        <linearGradient id="google-icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#EA4335" />
+          <stop offset="35%" stop-color="#34A853" />
+          <stop offset="70%" stop-color="#FBBC05" />
+          <stop offset="100%" stop-color="#4285F4" />
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <!-- Luzes de Fundo Globais -->
+    <div class="fixed top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[650px] h-[350px] sm:h-[650px] bg-blue-600/20 rounded-full blur-[120px] pointer-events-none -z-10"></div>
+    <div class="fixed top-2/3 left-1/3 w-[300px] sm:w-[550px] h-[300px] sm:h-[550px] bg-green-500/10 rounded-full blur-[100px] pointer-events-none -z-10"></div>
 
     <!-- NAVBAR -->
     <header class="fixed top-0 w-full z-50 bg-glass border-b border-slate-800/80">
         <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
             <a href="#" class="text-white font-bold text-xl tracking-tight flex items-center gap-2">
-                Artan Studio
+                <span class="flex gap-1">
+                    <span class="w-2.5 h-2.5 rounded-full bg-google-blue"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-google-red"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-google-yellow"></span>
+                    <span class="w-2.5 h-2.5 rounded-full bg-google-green"></span>
+                </span>
+                G-Local <span class="text-slate-400 font-normal text-sm hidden sm:inline">| Soluções Digitais</span>
             </a>
-            
+
             <nav class="hidden md:flex items-center gap-8 text-base font-medium text-slate-300">
-                <a href="#metodologia" class="hover:text-cyan-400 transition">Metodologia</a>
-                <a href="#solucoes" class="hover:text-cyan-400 transition">Soluções</a>
-                <a href="#fundador" class="hover:text-cyan-400 transition">Fundador</a>
-                <a href="#piloto" class="hover:text-cyan-400 transition">Projeto Piloto</a>
-                <a href="#faq" class="hover:text-cyan-400 transition">FAQ</a>
+                <a href="#estrutura" class="hover:text-blue-400 transition">Estrutura</a>
+                <a href="#solucoes" class="hover:text-blue-400 transition">O Combo 3 em 1</a>
+                <a href="#como-funciona" class="hover:text-blue-400 transition">Como Funciona</a>
+                <a href="#faq" class="hover:text-blue-400 transition">FAQ</a>
             </nav>
 
-            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Artan%20Studio%20e%20gostaria%20de%20solicitar%20um%20diagn%C3%B3stico." target="_blank" class="bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-base font-bold px-6 py-2.5 rounded-lg transition shadow-lg shadow-cyan-500/20 hover:shadow-cyan-400/40">
+            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Gostaria%20de%20solicitar%20um%20diagn%C3%B3stico%20da%20minha%20empresa." target="_blank" rel="noopener noreferrer" class="bg-google-blue hover:bg-blue-600 text-white text-base font-bold px-6 py-2.5 rounded-lg transition shadow-lg shadow-blue-500/25 hover:shadow-blue-400/50">
                 Solicitar Diagnóstico
             </a>
         </div>
@@ -90,51 +201,50 @@
     <!-- HERO SECTION -->
     <section class="pt-32 pb-16 md:pt-44 md:pb-28 max-w-6xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            
-            <!-- Lado Esquerdo: Texto Principal -->
+
             <div class="lg:col-span-7">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 neon-border-cyan text-cyan-300 text-sm font-semibold tracking-wide mb-6">
-                    <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-                    ARTAN STUDIO • ENGENHARIA DIGITAL & IA
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900 border border-blue-500/40 text-blue-400 text-sm font-semibold tracking-wide mb-6 shadow-lg shadow-blue-500/10">
+                    <span class="w-2 h-2 rounded-full bg-google-green animate-pulse"></span>
+                    AGÊNCIA ESPECIALISTA EM ECOSSISTEMA GOOGLE
                 </div>
 
                 <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
-                    Negócios locais tratados como <span class="text-gradient-cyan-purple">marcas de escala nacional</span>
+                    Mais clientes encontrando sua empresa no <span class="text-google-exact-sequence font-black">Google</span> e falando no WhatsApp
                 </h1>
 
                 <p class="text-slate-300 text-base sm:text-xl mb-8 leading-relaxed max-w-xl">
-                    Projetamos presenças digitais que carregam em menos de 1,2s, ocupam o topo do Google e transformam cada visita em uma chamada de WhatsApp — com engenharia de ponta, sistemas CRM e automações de IA.
+                    Unimos um site rápido, um Perfil da Empresa no Google bem estruturado e um caminho direto para o WhatsApp. Assim, quem procura pelos seus serviços na região encontra informações claras e entra em contato imediatamente.
                 </p>
             </div>
 
-            <!-- Lado Direito: Tabela de Métricas -->
-            <div class="lg:col-span-5">
-                <div class="bg-card rounded-2xl p-6 sm:p-7 shadow-2xl neon-border-purple relative">
-                    <div class="absolute -right-8 -top-8 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl pointer-events-none"></div>
+            <!-- CARD ESTRUTURA COM BRILHO NEON AZUL EM DESTAQUE -->
+            <div class="lg:col-span-5 relative">
+                <div class="absolute -inset-2 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl blur-2xl opacity-40 animate-pulse pointer-events-none"></div>
 
+                <div class="card-structure-neon rounded-2xl p-6 sm:p-7 shadow-2xl relative z-10">
                     <div class="space-y-4 text-sm sm:text-base relative z-10">
-                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800/80">
+                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
+                            <span class="text-slate-300">Estrutura de Vendas</span>
+                            <span class="font-semibold text-white">Parceiro Estratégico</span>
+                        </div>
+                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
                             <span class="text-slate-300">Tempo de carregamento</span>
                             <span class="font-semibold text-white flex items-center gap-2">
-                                1.08s <span class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800 px-2 py-0.5 rounded">ótimo</span>
+                                1.08s <span class="text-xs bg-emerald-950 text-google-green border border-green-800 px-2 py-0.5 rounded">ótimo</span>
                             </span>
                         </div>
-                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800/80">
+                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
                             <span class="text-slate-300">Origem do lead</span>
                             <span class="font-semibold text-white">WhatsApp direto</span>
                         </div>
-                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800/80">
-                            <span class="text-slate-300">Resposta automática</span>
+                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800">
+                            <span class="text-slate-300">Presença Google</span>
                             <span class="font-semibold text-white flex items-center gap-2">
-                                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span> ativa 24h
+                                <span class="w-2.5 h-2.5 rounded-full bg-google-green animate-pulse"></span> Otimizada
                             </span>
                         </div>
-                        <div class="flex items-center justify-between pb-3.5 border-b border-slate-800/80">
-                            <span class="text-slate-300">Posição no Google Maps</span>
-                            <span class="font-semibold text-white">#1 na região</span>
-                        </div>
                         <div class="flex items-center justify-between">
-                            <span class="text-slate-300">Stack</span>
+                            <span class="text-slate-300">Infraestrutura</span>
                             <span class="font-semibold text-white text-xs bg-slate-800 px-3 py-1 rounded-md border border-slate-700">HTML5 • Tailwind • Cloudflare</span>
                         </div>
                     </div>
@@ -145,267 +255,316 @@
     </section>
 
     <!-- METRICS STRIP -->
-    <section class="py-12 sm:py-14 border-y border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
+    <section id="estrutura" class="py-12 sm:py-14 border-y border-slate-800/80 bg-slate-950/90 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-                <span class="text-3xl font-extrabold text-cyan-400 block mb-2">&lt; 1.2s</span>
+                <span class="text-3xl font-extrabold text-google-blue block mb-2">&lt; 1.2s</span>
                 <p class="text-sm text-slate-300 leading-relaxed">
-                    Carregamento em qualquer conexão — cada segundo perdido é cliente que desiste antes de ligar.
+                    Uma experiência leve e ágil, pensada para facilitar o acesso ao seu negócio, inclusive em conexões mais lentas.
                 </p>
             </div>
             <div>
                 <span class="text-3xl font-extrabold block mb-2">
-                    <span class="text-cyan-400">100%</span> <span class="text-white">mobile</span>
+                    <span class="text-google-green">100%</span> <span class="text-white">mobile</span>
                 </span>
                 <p class="text-sm text-slate-300 leading-relaxed">
-                    Design pensado para o polegar: a maioria dos seus clientes chega pelo celular, não pelo desktop.
+                    Layout adaptado a diferentes telas, para que seus clientes encontrem o que precisam com praticidade pelo celular.
                 </p>
             </div>
             <div>
                 <span class="text-3xl font-extrabold block mb-2">
-                    <span class="text-white">Foco em</span> <span class="text-cyan-400">chamada</span>
+                    <span class="text-white">Foco em</span> <span class="text-google-yellow">conversão</span>
                 </span>
                 <p class="text-sm text-slate-300 leading-relaxed">
-                    Cada seção é construída para gerar uma ação direta no WhatsApp, não um formulário esquecido.
+                    Botões e caminhos de contato estrategicamente posicionados para facilitar conversas com potenciais clientes no WhatsApp.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- COMPARATIVO: A DIFERENÇA ESTÁ NA ARQUITETURA -->
-    <section id="metodologia" class="py-20 sm:py-24 max-w-6xl mx-auto px-6">
-        <div class="mb-12">
-            <span class="text-sm font-semibold text-cyan-400 tracking-wider uppercase block mb-2">Por que a Artan Studio</span>
-            <h2 class="text-2xl sm:text-4xl font-extrabold text-white">
-                A diferença está na arquitetura, não na aparência
-            </h2>
-            <p class="text-slate-300 text-base mt-3 max-w-2xl leading-relaxed">
-                A maioria dos sites de empresas locais é construída sobre plataformas genéricas, pesadas e lentas. Nós construímos como estúdios de tecnologia constroem produtos: código limpo, infraestrutura de ponta e zero fricção para você.
-            </p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- O que o mercado entrega -->
-            <div class="bg-card rounded-2xl p-6 sm:p-8">
-                <h3 class="text-lg font-bold text-slate-200 mb-6">O que o mercado entrega</h3>
-                <ul class="space-y-4 text-sm text-slate-300">
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="x-square" class="w-5 h-5 text-slate-500 shrink-0 mt-0.5"></i>
-                        <span>Construtores genéricos (Wix, templates prontos) que carregam devagar em 4G</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="x-square" class="w-5 h-5 text-slate-500 shrink-0 mt-0.5"></i>
-                        <span>Design que se parece com o de qualquer concorrente</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="x-square" class="w-5 h-5 text-slate-500 shrink-0 mt-0.5"></i>
-                        <span>Formulário de contato que ninguém responde a tempo</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="x-square" class="w-5 h-5 text-slate-500 shrink-0 mt-0.5"></i>
-                        <span>Suporte terceirizado e sem dono visível</span>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- O que a Artan Studio entrega -->
-            <div class="bg-card rounded-2xl p-6 sm:p-8 neon-border-cyan relative overflow-hidden">
-                <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-cyan-500/20 rounded-full blur-3xl pointer-events-none"></div>
-                <h3 class="text-lg font-bold text-cyan-400 mb-6">O que a Artan Studio entrega</h3>
-                <ul class="space-y-4 text-sm text-slate-200">
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="check-square" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
-                        <span>Arquitetura em HTML5 e Tailwind, hospedada em nuvem — leve, rápida e estável</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="check-square" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
-                        <span>Design exclusivo, desenhado a partir do seu negócio, não de um template</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="check-square" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
-                        <span>Chamada direta no WhatsApp com resposta automatizada por IA</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="check-square" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
-                        <span>Sistemas Web e CRM sob medida para gestão de clientes e agendamentos</span>
-                    </li>
-                    <li class="flex items-start gap-3">
-                        <i data-lucide="check-square" class="w-5 h-5 text-cyan-400 shrink-0 mt-0.5"></i>
-                        <span>Execução acompanhada pessoalmente pelo fundador do estúdio</span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <!-- TRÊS FRENTES TRABALHANDO JUNTAS -->
-    <section id="solucoes" class="py-20 bg-slate-950/80 border-y border-slate-800/80 backdrop-blur-md">
+    <!-- COMBO 3 EM 1 -->
+    <section id="solucoes" class="py-20 bg-slate-950/80 border-b border-slate-800/80 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-6">
             <div class="mb-14">
                 <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-3">
-                    Soluções trabalhando juntas pela sua conversão
+                    Sua presença digital trabalhando em conjunto para conquistar novos contatos
                 </h2>
                 <p class="text-slate-300 text-base max-w-2xl">
-                    Não entregamos peças soltas. Cada solução foi desenhada para reforçar a seguinte, criando um ecossistema que atrai, atende e gerencia.
+                    Conectamos seu site, seu Perfil da Empresa no Google e o atendimento pelo WhatsApp para tornar mais simples o caminho entre a busca local e o primeiro contato.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Frente 1 -->
-                <div class="bg-card rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+                <div class="card-neon-gradient p-6 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-cyan-950 text-cyan-400 rounded-lg flex items-center justify-center mb-6 border border-cyan-800/80 shadow-lg shadow-cyan-500/10">
+                        <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
                             <i data-lucide="layout" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Landing Pages de Alta Performance</h3>
+                        <h3 class="text-xl font-bold mb-3 text-white">Um site rápido que valoriza sua empresa</h3>
                         <p class="text-sm text-slate-300 leading-relaxed mb-6">
-                            Design exclusivo para o seu negócio, responsivo em qualquer tela e construído com um único objetivo: levar o visitante até o botão de WhatsApp.
+                            Criamos um site alinhado à identidade da sua marca, com navegação intuitiva, informações essenciais e chamadas claras para o cliente entrar em contato.
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800/80 px-3 py-1 rounded">Design exclusivo</span>
-                        <span class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800/80 px-3 py-1 rounded">Responsivo total</span>
+                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Design sob medida</span>
+                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Infraestrutura em nuvem</span>
                     </div>
                 </div>
 
                 <!-- Frente 2 -->
-                <div class="bg-card rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+                <div class="card-neon-gradient p-6 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-cyan-950 text-cyan-400 rounded-lg flex items-center justify-center mb-6 border border-cyan-800/80 shadow-lg shadow-cyan-500/10">
-                            <i data-lucide="globe" class="w-6 h-6"></i>
+                        <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
+                            <i data-lucide="map-pin" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Presença & Otimização para Google</h3>
+                        <h3 class="text-xl font-bold mb-3 text-white">Perfil da Empresa no Google bem estruturado</h3>
                         <p class="text-sm text-slate-300 leading-relaxed mb-6">
-                            Estruturamos seu perfil e seus dados locais para que sua empresa apareça no topo do mapa e das buscas de quem já está pronto para comprar.
+                            Organizamos as informações, categorias e imagens do seu perfil para apresentar sua empresa com clareza e ajudar clientes da região a encontrá-la nas buscas e no Maps.
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800/80 px-3 py-1 rounded">Google Meu Negócio</span>
-                        <span class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800/80 px-3 py-1 rounded">SEO local</span>
+                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Google Meu Negócio</span>
+                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Otimização local</span>
                     </div>
                 </div>
 
                 <!-- Frente 3 -->
-                <div class="bg-card rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+                <div class="card-neon-gradient p-6 flex flex-col justify-between">
                     <div>
-                        <div class="w-12 h-12 bg-cyan-950 text-cyan-400 rounded-lg flex items-center justify-center mb-6 border border-cyan-800/80 shadow-lg shadow-cyan-500/10">
-                            <i data-lucide="bot" class="w-6 h-6"></i>
+                        <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
+                            <i data-lucide="message-square" class="w-6 h-6"></i>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-3">Sistemas Web, CRM & IA</h3>
+                        <h3 class="text-xl font-bold mb-3 text-white">Do Google ao WhatsApp, sem complicação</h3>
                         <p class="text-sm text-slate-300 leading-relaxed mb-6">
-                            Respostas automáticas por IA e painéis CRM sob medida que acolhem e qualificam o lead nos primeiros segundos, sem deixar nenhum cliente esperando.
+                            Facilitamos o contato com links para o WhatsApp no site e no perfil, ajudando o potencial cliente a iniciar uma conversa com sua equipe.
                         </p>
                     </div>
                     <div class="flex flex-wrap gap-2">
-                        <span class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800/80 px-3 py-1 rounded">Resposta imediata</span>
-                        <span class="text-xs bg-cyan-950 text-cyan-400 border border-cyan-800/80 px-3 py-1 rounded">Gestão de CRM</span>
+                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Lead no WhatsApp</span>
+                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Agilidade no contato</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEÇÃO DO FUNDADOR -->
-    <section id="fundador" class="py-20 sm:py-24 max-w-5xl mx-auto px-6">
-        <div class="bg-card rounded-3xl p-6 sm:p-12 neon-border-purple relative">
-            <blockquote class="text-lg sm:text-2xl font-semibold text-slate-100 leading-relaxed mb-8">
-                "Todo projeto que sai da Artan Studio passa pela minha mesa antes de ir ao ar. Não terceirizo a arquitetura, e não entrego nada que eu mesmo não usaria no meu próprio negócio."
-            </blockquote>
+    <!-- SEÇÃO COMO FUNCIONA (TIMELINE INTERATIVA - PALETA GOOGLE) -->
+    <section id="como-funciona" class="py-24 relative overflow-hidden bg-grid-pattern border-b border-slate-800/80">
+        
+        <!-- Luzes de fundo nas cores Google -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                <div class="md:col-span-4 text-center md:text-left">
-                    <div class="w-28 h-28 mx-auto md:mx-0 rounded-full p-1 bg-gradient-to-tr from-cyan-400 via-indigo-500 to-purple-500 mb-4 shadow-lg shadow-purple-500/20">
-                        <img src="arthurfotodeperfil.jpeg" alt="Arthur Andrade" class="w-full h-full object-cover rounded-full border-2 border-slate-900">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            
+            <!-- CABEÇALHO DA SEÇÃO -->
+            <div class="text-center mb-20">
+                <span class="text-xs font-bold tracking-widest uppercase text-white bg-slate-900 px-4 py-1.5 rounded-full border border-slate-700/80 mb-3 inline-flex items-center gap-2">
+                    <span class="flex gap-1">
+                        <span class="w-2 h-2 rounded-full bg-[#EA4335]"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#FBBC05]"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#34A853]"></span>
+                        <span class="w-2 h-2 rounded-full bg-[#4285F4]"></span>
+                    </span>
+                    COMO FUNCIONA
+                </span>
+                <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+                    Mapeie, Construa e <span class="text-google-exact-sequence">Converta</span>
+                </h2>
+                <p class="text-slate-400 text-base sm:text-lg mt-4 max-w-2xl mx-auto">
+                    Um processo direto em 3 passos para colocar sua empresa no topo das buscas locais e gerar novos clientes no WhatsApp.
+                </p>
+            </div>
+
+            <!-- ESTRUTURA DA TIMELINE -->
+            <div class="relative">
+                
+                <!-- Linha Vertical Central em Gradiente Google -->
+                <div class="hidden md:block absolute left-1/2 top-4 bottom-4 w-[3px] -translate-x-1/2 timeline-google-line rounded-full"></div>
+
+                <div class="space-y-16 md:space-y-24">
+
+                    <!-- MOVIMENTO 01 - GOOGLE RED -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between gap-8">
+                        
+                        <!-- Lado Esquerdo: Texto -->
+                        <div class="w-full md:w-[45%] text-left md:text-right order-2 md:order-1">
+                            <span class="text-xs font-bold tracking-widest text-[#EA4335] uppercase block mb-1">MOVIMENTO 01</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">Mapeie</h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                                Analisamos sua cidade, seu nicho de atuação e a concorrência local para identificar exatamente como potenciais clientes procuram seus serviços no Google.
+                            </p>
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300">
+                                <i data-lucide="search" class="w-4 h-4 text-[#EA4335]"></i>
+                                Análise de nicho e palavra-chave local
+                            </div>
+                        </div>
+
+                        <!-- Círculo Central Numerado (Google Red) -->
+                        <div class="relative z-20 flex items-center justify-center shrink-0 order-1 md:order-2">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-slate-950 border-2 border-[#EA4335] flex items-center justify-center shadow-[0_0_20px_rgba(234,67,53,0.5)]">
+                                <i data-lucide="search" class="w-5 h-5 sm:w-6 sm:h-6 text-[#EA4335]"></i>
+                            </div>
+                            <span class="absolute -z-10 text-6xl sm:text-7xl font-black text-slate-800/40 select-none">01</span>
+                        </div>
+
+                        <!-- Lado Direito: Preview/Card Demonstrativo -->
+                        <div class="w-full md:w-[45%] order-3">
+                            <div class="card-timeline p-6 rounded-2xl border-l-2 border-l-[#EA4335]">
+                                <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-4">
+                                    <span class="text-xs font-mono text-slate-400">DIAGNÓSTICO INICIAL</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-[#EA4335] animate-pulse"></span>
+                                </div>
+                                <div class="space-y-3">
+                                    <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800 flex items-center justify-between text-xs">
+                                        <span class="text-slate-400">Região Alvo:</span>
+                                        <span class="text-white font-semibold">Sua Cidade / Bairro</span>
+                                    </div>
+                                    <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800 flex items-center justify-between text-xs">
+                                        <span class="text-slate-400">Demanda Local:</span>
+                                        <span class="text-[#34A853] font-semibold flex items-center gap-1">
+                                            <i data-lucide="trending-up" class="w-3.5 h-3.5"></i> Alta Busca
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                    <h4 class="text-white font-bold text-lg">Arthur Andrade</h4>
-                    <p class="text-sm text-cyan-400">Fundador & Diretor de Tecnologia</p>
-                </div>
 
-                <div class="md:col-span-8 space-y-4 text-sm text-slate-300 leading-relaxed">
-                    <p>
-                        Arthur Andrade lidera pessoalmente a estratégia e a engenharia por trás de cada projeto da Artan Studio. Formado na prática de construir produtos digitais rápidos e sob medida, ele estruturou o estúdio para operar como uma equipe de tecnologia enxuta — sem camadas de atendimento entre você e quem decide.
-                    </p>
+                    <!-- MOVIMENTO 02 - GOOGLE GREEN -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between gap-8">
+                        
+                        <!-- Lado Esquerdo: Card Demonstrativo (Invertido) -->
+                        <div class="w-full md:w-[45%] order-3 md:order-1">
+                            <div class="card-timeline p-6 rounded-2xl border-r-2 md:border-r-2 border-l-2 md:border-l-0 border-[#34A853]">
+                                <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-4">
+                                    <span class="text-xs font-mono text-slate-400">ECOSSISTEMA ESTRUTURADO</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-[#34A853] animate-pulse"></span>
+                                </div>
+                                <div class="grid grid-cols-2 gap-3 text-xs">
+                                    <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800 text-center">
+                                        <i data-lucide="globe" class="w-5 h-5 text-[#4285F4] mx-auto mb-1"></i>
+                                        <span class="font-bold text-white block">Site Ultra-Rápido</span>
+                                        <span class="text-[10px] text-slate-400">&lt; 1.1s carregamento</span>
+                                    </div>
+                                    <div class="bg-slate-900/90 p-3 rounded-lg border border-slate-800 text-center">
+                                        <i data-lucide="map-pin" class="w-5 h-5 text-[#34A853] mx-auto mb-1"></i>
+                                        <span class="font-bold text-white block">Perfil Google</span>
+                                        <span class="text-[10px] text-slate-400">Otimização completa</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                    <ul class="space-y-2 pt-2">
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-cyan-400 shrink-0"></span>
-                            <strong class="text-slate-100">Compromisso direto do fundador</strong> — você fala com quem constrói, não com um intermediário comercial.
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-cyan-400 shrink-0"></span>
-                            <strong class="text-slate-100">Transparência técnica</strong> — cada decisão de arquitetura é explicada em linguagem que faz sentido para o seu negócio.
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <span class="w-2 h-2 rounded-full bg-cyan-400 shrink-0"></span>
-                            <strong class="text-slate-100">Execução de nível elite</strong> — os mesmos padrões de estúdios internacionais aplicados a empresas locais.
-                        </li>
-                    </ul>
+                        <!-- Círculo Central Numerado (Google Green) -->
+                        <div class="relative z-20 flex items-center justify-center shrink-0 order-1 md:order-2">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-slate-950 border-2 border-[#34A853] flex items-center justify-center shadow-[0_0_20px_rgba(52,168,83,0.5)]">
+                                <i data-lucide="code" class="w-5 h-5 sm:w-6 sm:h-6 text-[#34A853]"></i>
+                            </div>
+                            <span class="absolute -z-10 text-6xl sm:text-7xl font-black text-slate-800/40 select-none">02</span>
+                        </div>
+
+                        <!-- Lado Direito: Texto -->
+                        <div class="w-full md:w-[45%] text-left order-2 md:order-3">
+                            <span class="text-xs font-bold tracking-widest text-[#34A853] uppercase block mb-1">MOVIMENTO 02</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">Construa</h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                                Estruturamos seu site moderno, leve e adaptado para celulares, além de otimizar todas as informações do seu Perfil da Empresa no Google Maps.
+                            </p>
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300">
+                                <i data-lucide="cpu" class="w-4 h-4 text-[#34A853]"></i>
+                                Design moderno + Google Meu Negócio
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- MOVIMENTO 03 - GOOGLE BLUE -->
+                    <div class="relative flex flex-col md:flex-row items-center justify-between gap-8">
+                        
+                        <!-- Lado Esquerdo: Texto -->
+                        <div class="w-full md:w-[45%] text-left md:text-right order-2 md:order-1">
+                            <span class="text-xs font-bold tracking-widest text-[#4285F4] uppercase block mb-1">MOVIMENTO 03</span>
+                            <h3 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">Converta</h3>
+                            <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-4">
+                                Conectamos seu site e seu perfil no Google diretamente ao WhatsApp do seu negócio. O cliente encontra sua empresa e clica para falar imediatamente.
+                            </p>
+                            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900 border border-slate-800 text-xs font-semibold text-slate-300">
+                                <i data-lucide="message-square" class="w-4 h-4 text-[#4285F4]"></i>
+                                Lead direcionado para fechamento
+                            </div>
+                        </div>
+
+                        <!-- Círculo Central Numerado (Google Blue) -->
+                        <div class="relative z-20 flex items-center justify-center shrink-0 order-1 md:order-2">
+                            <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-slate-950 border-2 border-[#4285F4] flex items-center justify-center shadow-[0_0_20px_rgba(66,133,244,0.5)]">
+                                <i data-lucide="zap" class="w-5 h-5 sm:w-6 sm:h-6 text-[#4285F4]"></i>
+                            </div>
+                            <span class="absolute -z-10 text-6xl sm:text-7xl font-black text-slate-800/40 select-none">03</span>
+                        </div>
+
+                        <!-- Lado Direito: Card Demonstrativo -->
+                        <div class="w-full md:w-[45%] order-3">
+                            <div class="card-timeline p-6 rounded-2xl border-l-2 border-l-[#4285F4]">
+                                <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-4">
+                                    <span class="text-xs font-mono text-slate-400">FLUXO DE CONTATO</span>
+                                    <span class="w-2.5 h-2.5 rounded-full bg-[#4285F4] animate-pulse"></span>
+                                </div>
+                                <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 text-center">
+                                    <div class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-400 mb-2">
+                                        <i data-lucide="phone-call" class="w-5 h-5"></i>
+                                    </div>
+                                    <p class="text-xs font-semibold text-white">Clique direto para o WhatsApp</p>
+                                    <p class="text-[11px] text-slate-400 mt-1">Mensagem pré-formatada para agilizar o atendimento</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- PROJETO PILOTO -->
-    <section id="piloto" class="py-16 max-w-6xl mx-auto px-6">
-        <div class="bg-card rounded-3xl p-8 sm:p-14 neon-border-cyan relative overflow-hidden">
-            <div class="absolute -right-16 -top-16 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
-                <div class="lg:col-span-8">
-                    <span class="text-xs sm:text-sm font-bold text-cyan-400 tracking-wider uppercase block mb-3">Seleção exclusiva de parceiros locais</span>
-                    <h3 class="text-2xl sm:text-4xl font-extrabold text-white mb-4 leading-tight">Projeto piloto de expansão da Artan Studio</h3>
-                    <p class="text-base sm:text-lg text-slate-300 mb-8 leading-relaxed">
-                        Estamos selecionando um número limitado de empresas da região para o projeto piloto de expansão do estúdio. Receba atendimento prioritário e infraestrutura completa.
-                    </p>
-                    <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Quero%20concorrer%20a%20uma%20vaga%20no%20Projeto%20Piloto." target="_blank" class="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-base px-8 py-4 rounded-xl transition shadow-xl shadow-cyan-500/20 hover:shadow-cyan-400/40">
-                        Quero concorrer a uma vaga
-                    </a>
-                </div>
-                <div class="lg:col-span-4 text-left lg:text-right">
-                    <p class="text-sm text-slate-300 leading-relaxed bg-slate-950/90 p-6 rounded-2xl border border-slate-800 inline-block text-left shadow-xl">
-                        <strong class="text-white text-base block mb-2 font-bold">Vagas limitadas por região</strong>
-                        Atendimento e aplicação por ordem de chegada no WhatsApp.
-                    </p>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- FAQ -->
     <section id="faq" class="py-20 sm:py-24 max-w-4xl mx-auto px-6">
         <div class="mb-12">
-            <span class="text-xs font-semibold text-cyan-400 tracking-wider uppercase block mb-1">Perguntas frequentes</span>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Antes de você chamar no WhatsApp</h2>
+            <span class="text-xs font-semibold text-google-blue tracking-wider uppercase block mb-1">Dúvidas comuns</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Tire suas dúvidas antes de dar o próximo passo</h2>
         </div>
 
         <div class="space-y-4">
             <div class="bg-card rounded-xl p-6 border border-slate-800">
                 <h4 class="text-base font-bold text-white mb-2 flex items-center justify-between">
-                    Quanto tempo leva para o site ou sistema ficar no ar?
-                    <i data-lucide="x" class="w-5 h-5 text-slate-400 shrink-0"></i>
+                    Em quanto tempo meu site e meu perfil ficam prontos?
+                    <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
                 </h4>
                 <p class="text-sm text-slate-300 leading-relaxed">
-                    Projetos piloto da Artan Studio são entregues em tempo recorde (48h a 7 dias úteis) após o envio das informações básicas da empresa.
+                    O prazo depende do escopo e do envio dos materiais necessários. Após alinharmos as informações e os objetivos, informamos um cronograma para o desenvolvimento do site e a configuração do perfil.
                 </p>
             </div>
 
             <div class="bg-card rounded-xl p-6 border border-slate-800">
-                <h4 class="text-base font-bold text-white mb-2 flex items-center justify-between">
-                    A hospedagem está incluída?
-                    <i data-lucide="plus" class="w-5 h-5 text-slate-400 shrink-0"></i>
-                </h4>
+                <div class="text-base font-bold text-white mb-2 flex items-center justify-between">
+                    Preciso ter logotipo e identidade visual definidos?
+                    <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
+                </div>
                 <p class="text-sm text-slate-300 leading-relaxed">
-                    Sim! Configuramos tudo em infraestrutura em nuvem de altíssima velocidade para você não se preocupar com servidores.
+                    Não. Podemos partir dos elementos visuais que você já utiliza ou conversar sobre a criação de uma identidade visual para apresentar sua empresa de forma consistente.
                 </p>
             </div>
 
             <div class="bg-card rounded-xl p-6 border border-slate-800">
-                <h4 class="text-base font-bold text-white mb-2 flex items-center justify-between">
-                    E se eu precisar de suporte depois do site pronto?
-                    <i data-lucide="plus" class="w-5 h-5 text-slate-400 shrink-0"></i>
-                </h4>
+                <div class="text-base font-bold text-white mb-2 flex items-center justify-between">
+                    Como funciona a estrutura do site com Cloudflare?
+                    <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
+                </div>
                 <p class="text-sm text-slate-300 leading-relaxed">
-                    Você fala diretamente com o fundador pelo WhatsApp para qualquer ajuste ou melhoria técnica sem burocracias.
+                    Podemos utilizar a infraestrutura da Cloudflare para publicar e distribuir o site. O desempenho e a disponibilidade dependem da configuração, do conteúdo e das condições de acesso; explicamos os recursos incluídos no seu projeto.
                 </p>
             </div>
         </div>
@@ -413,25 +572,78 @@
 
     <!-- CTA FINAL BANNER -->
     <section class="py-20 sm:py-24 bg-slate-950/90 border-t border-slate-800/80 text-center backdrop-blur-md relative overflow-hidden">
-        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div class="max-w-3xl mx-auto px-6 relative z-10">
             <h2 class="text-2xl sm:text-4xl font-extrabold text-white mb-4">
-                Descubra onde sua presença digital está perdendo clientes
+                Vamos fortalecer a presença digital da sua empresa na sua região?
             </h2>
             <p class="text-slate-300 text-base mb-8 leading-relaxed">
-                O Diagnóstico Digital é uma análise direta do seu negócio no Google e redes sociais com o plano prático do que a Artan Studio vai construir para você.
+                Peça uma análise da presença digital da sua empresa e veja como um site, um perfil no Google bem organizado e um contato fácil pelo WhatsApp podem ajudar clientes da região a encontrar você.
             </p>
-            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Gostaria%20de%20um%20diagn%C3%B3stico%20pelo%20WhatsApp." target="_blank" class="inline-flex items-center gap-2 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-base px-8 py-4 rounded-xl transition shadow-xl shadow-cyan-500/20 hover:shadow-cyan-400/40">
+            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Gostaria%20de%20um%20diagn%C3%B3stico%20pelo%20WhatsApp." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-google-blue hover:bg-blue-600 text-white font-bold text-base px-8 py-4 rounded-xl transition shadow-xl shadow-blue-500/20 hover:shadow-blue-400/40">
                 Solicitar Diagnóstico pelo WhatsApp
             </a>
         </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="py-8 border-t border-slate-900 text-center text-sm text-slate-500">
-        <div class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>© Artan Studio. Todos os direitos reservados.</p>
-            <p>Engenharia Digital & Automações de IA</p>
+    <!-- FOOTER COM SELOS EM FORMATO DE IMAGEM/EMBLEMA TRUST BADGES -->
+    <footer class="py-12 border-t border-slate-900 bg-slate-950/95 text-sm text-slate-400">
+        <div class="max-w-6xl mx-auto px-6">
+            
+            <div class="pb-8 mb-8 border-b border-slate-800/80 flex flex-col md:flex-row items-center justify-between gap-6">
+                <span class="text-slate-400 font-semibold uppercase tracking-wider text-xs text-center md:text-left">
+                    Garantias & Verificações de Segurança:
+                </span>
+
+                <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+                    
+                    <!-- Selo Imagem 1: SSL SECURED (Estilo Comodo / Norton) -->
+                    <a href="https://www.cloudflare.com/ssl/" target="_blank" rel="noopener noreferrer" class="trust-badge-img border border-emerald-500/40">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center text-white mr-3 shadow-md shrink-0">
+                            <i data-lucide="shield-check" class="w-5 h-5"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[10px] font-extrabold uppercase text-emerald-600 tracking-wider leading-none">256-BIT SSL</div>
+                            <div class="text-xs font-black text-slate-900 leading-tight">SECURED & ENCRYPTED</div>
+                            <div class="text-[9px] text-slate-500 font-semibold">Conexão Segura</div>
+                        </div>
+                    </a>
+
+                    <!-- Selo Imagem 2: GOOGLE SAFE BROWSING (Estilo Verified Badge) -->
+                    <a href="https://transparencyreport.google.com/safe-browsing/search" target="_blank" rel="noopener noreferrer" class="trust-badge-img border border-blue-500/40">
+                        <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white mr-3 shadow-md shrink-0">
+                            <i data-lucide="check-circle" class="w-5 h-5"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[10px] font-extrabold uppercase text-blue-600 tracking-wider leading-none">Google Safe Browsing</div>
+                            <div class="text-xs font-black text-slate-900 leading-tight">VERIFIED & PROTECTED</div>
+                            <div class="text-[9px] text-slate-500 font-semibold">Site Autenticado</div>
+                        </div>
+                    </a>
+
+                    <!-- Selo Imagem 3: W3C VALIDATED (Estilo Certificado Oficial) -->
+                    <a href="https://validator.w3.org/" target="_blank" rel="noopener noreferrer" class="trust-badge-img border border-amber-500/40">
+                        <div class="w-8 h-8 rounded-full bg-amber-500 flex items-center justify-center text-white mr-3 shadow-md shrink-0">
+                            <i data-lucide="award" class="w-5 h-5"></i>
+                        </div>
+                        <div class="text-left">
+                            <div class="text-[10px] font-extrabold uppercase text-amber-600 tracking-wider leading-none">W3C STANDARDS</div>
+                            <div class="text-xs font-black text-slate-900 leading-tight">HTML5 & CSS3 VALIDATED</div>
+                            <div class="text-[9px] text-slate-500 font-semibold">Código Otimizado</div>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-slate-500 text-xs">
+                <p>© G-Local Soluções Digitais. Todos os direitos reservados.</p>
+                <p class="flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-google-green animate-pulse"></span>
+                    Especialistas em Otimização Local & Presença Google
+                </p>
+            </div>
         </div>
     </footer>
 
