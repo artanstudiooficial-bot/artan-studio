@@ -51,6 +51,13 @@
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        /* Gradiente no texto */
+        .text-gradient-cyan-purple {
+            background: linear-gradient(135deg, #22d3ee 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body class="antialiased selection:bg-cyan-500 selection:text-slate-950 relative bg-slate-950">
@@ -92,7 +99,7 @@
                 </div>
 
                 <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.15] mb-6">
-                    Negócios locais tratados como marcas de escala nacional
+                    Negócios locais tratados como <span class="text-gradient-cyan-purple">marcas de escala nacional</span>
                 </h1>
 
                 <p class="text-slate-300 text-base sm:text-xl mb-8 leading-relaxed max-w-xl">
@@ -100,7 +107,7 @@
                 </p>
             </div>
 
-            <!-- Lado Direito: Tabela de Métricas (COM ILUMINAÇÃO ROXA NEON) -->
+            <!-- Lado Direito: Tabela de Métricas -->
             <div class="lg:col-span-5">
                 <div class="bg-card rounded-2xl p-6 sm:p-7 shadow-2xl neon-border-purple relative">
                     <div class="absolute -right-8 -top-8 w-32 h-32 bg-purple-500/20 rounded-full blur-2xl pointer-events-none"></div>
@@ -231,7 +238,7 @@
         </div>
     </section>
 
-    <!-- TRÊS FRENTES TRABALHANDO JUNTAS (TODOS EM TOM AZUL/CIANO) -->
+    <!-- TRÊS FRENTES TRABALHANDO JUNTAS -->
     <section id="solucoes" class="py-20 bg-slate-950/80 border-y border-slate-800/80 backdrop-blur-md">
         <div class="max-w-6xl mx-auto px-6">
             <div class="mb-14">
