@@ -6,9 +6,12 @@
     <meta name="color-scheme" content="dark">
     <meta name="theme-color" content="#030712">
     <title>G-Local | Soluções Digitais</title>
+    <meta name="description" content="G-Local - Landing Pages de Alta Performance, Sites Institucionais, Sistemas de Gestão e Automação / Micro-SaaS e Presença no Ecossistema Google.">
 
+    <!-- Tailwind CSS & Lucide Icons CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 
@@ -127,7 +130,7 @@
         .bg-google-yellow { background-color: #FBBC05; }
         .bg-google-red { background-color: #EA4335; }
 
-        /* Animação suave e lenta dos elementos ao rolar a página[cite: 21] */
+        /* Animação suave dos elementos ao rolar a página */
         .reveal-on-scroll {
             opacity: 0;
             transform: translate3d(0, 48px, 0);
@@ -156,7 +159,8 @@
     <!-- BARRA DE PROGRESSO DE ROLAGEM -->
     <div id="scroll-progress"></div>
 
-    <svg width="0" height="0" class="absolute block">
+    <!-- Definição de Gradiente para Ícones -->
+    <svg width="0" height="0" class="absolute block" aria-hidden="true">
       <defs>
         <linearGradient id="google-icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stop-color="#EA4335" />
@@ -175,7 +179,7 @@
     <header class="fixed top-0 w-full z-50 bg-glass border-b border-slate-800/80 h-20">
         <div class="max-w-6xl mx-auto px-6 h-full flex items-center justify-between">
             
-            <!-- LOGO COM TIPOGRAFIA MAIS FINA -->
+            <!-- LOGO -->
             <a href="#" class="flex items-center gap-3.5 group select-none">
                 <svg class="w-9 h-9 drop-shadow-[0_0_10px_rgba(66,133,244,0.4)]" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M500 256C500 238.5 498.3 221.7 495.2 205.3H256V301.6H393.2C387.2 333.6 368.8 360.7 341.2 379.2V443.7H425.2C474.4 398.5 500 332.1 500 256Z" fill="#4285F4"/>
@@ -189,6 +193,7 @@
                 </div>
             </a>
 
+            <!-- NAV LINKS -->
             <nav class="hidden md:flex items-center gap-8 text-base font-medium text-slate-300">
                 <a href="#estrutura" class="hover:text-blue-400 transition">Estrutura</a>
                 <a href="#solucoes" class="hover:text-blue-400 transition">Soluções</a>
@@ -197,14 +202,15 @@
                 <a href="#faq" class="hover:text-blue-400 transition">FAQ</a>
             </nav>
 
-            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Quero%20aparecer%20melhor%20no%20Google.%20Podemos%20conversar%3F" target="_blank" rel="noopener noreferrer" class="bg-google-blue hover:bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition shadow-lg shadow-blue-500/25 hover:shadow-blue-400/50">
+            <!-- CTA WHATSAPP OFICIAL -->
+            <a href="https://wa.me/5548999459129?text=Ol%C3%A1!%20Quero%20aparecer%20melhor%20no%20Google.%20Podemos%20conversar%3F" target="_blank" rel="noopener noreferrer" class="bg-google-blue hover:bg-blue-600 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition shadow-lg shadow-blue-500/25 hover:shadow-blue-400/50">
                 Quero aparecer no Google
             </a>
         </div>
     </header>
 
     <!-- HERO SECTION -->
-    <section class="pt-32 pb-16 md:pt-44 md:pb-28 max-w-6xl mx-auto px-6">
+    <section id="hero" class="pt-32 pb-16 md:pt-44 md:pb-28 max-w-6xl mx-auto px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
             <div class="lg:col-span-7">
@@ -213,7 +219,6 @@
                     AGÊNCIA ESPECIALISTA EM ECOSSISTEMA GOOGLE
                 </div>
 
-                <!-- TÍTULO COM TIPOGRAFIA MAIS FINA -->
                 <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15] mb-6">
                     Sua empresa mais fácil de encontrar no <span class="font-bold inline-block"><span class="text-[#4285F4]">G</span><span class="text-[#EA4335]">o</span><span class="text-[#FBBC05]">o</span><span class="text-[#4285F4]">g</span><span class="text-[#34A853]">l</span><span class="text-[#EA4335]">e</span></span> e mais fácil de contatar
                 </h1>
@@ -267,7 +272,7 @@
         </div>
     </section>
 
-    <!-- METRICS STRIP -->
+    <!-- METRICS STRIP (#estrutura) -->
     <section id="estrutura" class="py-12 sm:py-14 border-y border-slate-800/80">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
@@ -295,10 +300,11 @@
         </div>
     </section>
 
-    <!-- COMBO 3 EM 1 -->
+    <!-- SOLUÇÕES (#solucoes) COM AS DUAS FRENTES ESTRUTURADAS -->
     <section id="solucoes" class="py-20 border-b border-slate-800/80">
         <div class="max-w-6xl mx-auto px-6">
             <div class="mb-14">
+                <span class="text-xs font-semibold text-google-blue tracking-wider uppercase block mb-2">Nossas Frentes de Soluções</span>
                 <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">
                     Sua presença digital trabalhando em conjunto para conquistar novos contatos
                 </h2>
@@ -307,59 +313,184 @@
                 </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="card-neon-gradient p-6 flex flex-col justify-between">
+            <!-- AS DUAS FRENTES DE SOLUÇÕES SOLICITADAS -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                <!-- FRENTE 1: Landing Pages de Alta Performance -->
+                <div class="card-neon-gradient p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
                     <div>
-                        <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
-                            <i data-lucide="layout" class="w-6 h-6"></i>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 bg-slate-900/90 rounded-xl flex items-center justify-center border border-slate-700/80 shadow-lg svg-gradient-icon">
+                                <i data-lucide="layout" class="w-7 h-7"></i>
+                            </div>
+                            <span class="text-xs font-semibold text-google-blue bg-blue-500/10 border border-blue-500/30 px-3.5 py-1 rounded-full">
+                                Frente 01
+                            </span>
                         </div>
-                        <h3 class="text-lg font-bold mb-3 text-white">Um site rápido que valoriza sua empresa</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
-                            Criamos um site alinhado à identidade da sua marca, com navegação intuitiva, informações essenciais e chamadas claras para o cliente entrar em contato.
+
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">
+                            Landing Pages de Alta Performance
+                        </h3>
+                        <p class="text-sm font-semibold text-blue-400 mb-4 flex items-center gap-2">
+                            <i data-lucide="scale" class="w-4 h-4 shrink-0"></i>
+                            Sites institucionais e páginas de conversão para advogados, profissionais liberais e negócios locais
                         </p>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                            Desenvolvemos sites institucionais elegantes e landing pages de conversão de alto impacto com carregamento ultra-rápido. Projetadas para transmitir autoridade imediata, apresentar seus serviços com clareza e transformar visitantes em contatos qualificados no WhatsApp.
+                        </p>
+
+                        <div class="space-y-3 mb-6 text-sm text-slate-200">
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-google-green shrink-0 mt-0.5"></i>
+                                <span><strong class="text-white">Autoridade e Credibilidade:</strong> Design refinado e sóbrio feito sob medida para advogados, clínicas e profissionais liberais transmitirem valor logo no primeiro contato.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-google-green shrink-0 mt-0.5"></i>
+                                <span><strong class="text-white">Sites Institucionais & Páginas de Venda:</strong> Apresentação clara do portfólio de serviços, diferenciais competitivos e navegação intuitiva.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-google-green shrink-0 mt-0.5"></i>
+                                <span><strong class="text-white">Velocidade Extrema & Mobile First:</strong> Carregamento instantâneo no celular para retenção máxima de visitantes vindos de buscas orgânicas e anúncios.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-google-green shrink-0 mt-0.5"></i>
+                                <span><strong class="text-white">Otimização para Anúncios & SEO Local:</strong> Estrutura técnica limpa pronta para Google Ads, Meta Ads e mecanismos de busca da sua região.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-google-green shrink-0 mt-0.5"></i>
+                                <span><strong class="text-white">Conversão Direta no WhatsApp:</strong> Pontos de contato estratégicos para iniciar conversas com rapidez e sem atritos.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Sites Institucionais</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Páginas de Conversão</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Advogados & Profissionais Liberais</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Negócios Locais</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Alta Performance</span>
+                        </div>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Design sob medida</span>
-                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Infraestrutura em nuvem</span>
-                    </div>
+
+                    <a href="https://wa.me/5548999459129?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20as%20Landing%20Pages%20e%20Sites%20Institucionais%20de%20Alta%20Performance%20para%20o%20meu%20neg%C3%B3cio." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-google-blue hover:bg-blue-600 text-white font-semibold text-sm px-6 py-3.5 rounded-xl transition shadow-lg shadow-blue-500/20 hover:shadow-blue-400/40 w-full">
+                        <span>Solicitar Landing Page / Site Institucional</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
                 </div>
 
-                <div class="card-neon-gradient p-6 flex flex-col justify-between">
+                <!-- FRENTE 2: Sistemas de Gestão e Automação / Micro-SaaS -->
+                <div class="card-neon-gradient p-6 sm:p-8 flex flex-col justify-between relative overflow-hidden">
                     <div>
-                        <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
-                            <i data-lucide="map-pin" class="w-6 h-6"></i>
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 bg-slate-900/90 rounded-xl flex items-center justify-center border border-slate-700/80 shadow-lg svg-gradient-icon">
+                                <i data-lucide="scissors" class="w-7 h-7"></i>
+                            </div>
+                            <span class="text-xs font-semibold text-google-green bg-green-500/10 border border-green-500/30 px-3.5 py-1 rounded-full">
+                                Frente 02 • Micro-SaaS
+                            </span>
                         </div>
-                        <h3 class="text-lg font-bold mb-3 text-white">Perfil da Empresa no Google bem estruturado</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
-                            Organizamos as informações, categorias e imagens do seu perfil para apresentar sua empresa com clareza e ajudar clientes da região a encontrá-la nas buscas e no Maps.
-                        </p>
-                    </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Google Meu Negócio</span>
-                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Otimização local</span>
-                    </div>
-                </div>
 
-                <div class="card-neon-gradient p-6 flex flex-col justify-between">
-                    <div>
-                        <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
-                            <i data-lucide="message-square" class="w-6 h-6"></i>
-                        </div>
-                        <h3 class="text-lg font-bold mb-3 text-white">Do Google ao WhatsApp, sem complicação</h3>
-                        <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
-                            Facilitamos o contato com links para o WhatsApp no site e no perfil, ajudando o potencial cliente a iniciar uma conversa com sua equipe.
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">
+                            Sistemas de Gestão e Automação / Micro-SaaS
+                        </h3>
+                        <p class="text-sm font-semibold text-emerald-400 mb-4 flex items-center gap-2">
+                            <i data-lucide="scissors" class="w-4 h-4 shrink-0"></i>
+                            Softwares sob medida, agendamento 24h, automação via WhatsApp e controle operacional/financeiro
                         </p>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                            Desenvolvemos soluções de software sob medida e Micro-SaaS focadas em negócios que exigem gestão precisa (como <strong>barbearias, salões, clínicas e prestadores de serviços</strong>). Elimine a sobrecarga manual, automatize a comunicação com clientes e tenha total controle operacional e financeiro do negócio.
+                        </p>
+
+                        <div class="space-y-3.5 mb-6 text-sm text-slate-200">
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="calendar" class="w-4 h-4 text-google-green shrink-0 mt-0.5"></i>
+                                <span><strong class="text-white">Sistemas de Agendamento 24h:</strong> Seus clientes marcam horários, serviços e profissionais a qualquer momento, 7 dias por semana, sem filas ou espera no atendimento.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="bell" class="w-4 h-4 text-google-yellow shrink-0 mt-0.5"></i>
+                                <span><strong class="text-white">Automação via WhatsApp & Anti-Furo:</strong> Confirmações imediatas e lembretes automáticos pré-agendamento que reduzem drasticamente o não comparecimento e horas vagas.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="calculator" class="w-4 h-4 text-google-blue shrink-0 mt-0.5"></i>
+                                <span><strong class="text-white">Controle Operacional & Financeiro:</strong> Gestão de fluxo de caixa, cálculo automatizado de comissões por colaborador/profissional e relatórios de faturamento em tempo real.</span>
+                            </div>
+                            <div class="flex items-start gap-2.5">
+                                <i data-lucide="check" class="w-4 h-4 text-google-green shrink-0 mt-0.5"></i>
+                                <span><strong class="text-white">Softwares Sob Medida para seu Nicho:</strong> Perfeito para barbearias de alto padrão, salões de beleza, clínicas, consultórios e prestadores de serviços com fluxos específicos.</span>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-wrap gap-2 mb-8">
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Micro-SaaS Sob Medida</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Agendamento 24h</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Automação via WhatsApp</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Controle Operacional & Financeiro</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Barbearias, Salões & Clínicas</span>
+                        </div>
                     </div>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Lead no WhatsApp</span>
-                        <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Agilidade no contato</span>
+
+                    <a href="https://wa.me/5548999459129?text=Ol%C3%A1!%20Quero%20conhecer%20os%20Sistemas%20de%20Gest%C3%A3o%2C%20Automa%C3%A7%C3%A3o%20e%20Micro-SaaS." target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-google-green hover:bg-green-600 text-white font-semibold text-sm px-6 py-3.5 rounded-xl transition shadow-lg shadow-green-500/20 hover:shadow-green-400/40 w-full">
+                        <span>Conhecer Sistemas de Gestão & Automação</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ESTRUTURA BASE DO ECOSSISTEMA GOOGLE (MANTIDA 100% INTACTA) -->
+            <div class="pt-8 border-t border-slate-800/80">
+                <span class="text-xs font-semibold text-slate-400 uppercase tracking-widest block mb-6">Estrutura Base do Ecossistema</span>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card-neon-gradient p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
+                                <i data-lucide="layout" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-3 text-white">Um site rápido que valoriza sua empresa</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                                Criamos um site alinhado à identidade da sua marca, com navegação intuitiva, informações essenciais e chamadas claras para o cliente entrar em contato.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Design sob medida</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Infraestrutura em nuvem</span>
+                        </div>
+                    </div>
+
+                    <div class="card-neon-gradient p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
+                                <i data-lucide="map-pin" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-3 text-white">Perfil da Empresa no Google bem estruturado</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                                Organizamos as informações, categorias e imagens do seu perfil para apresentar sua empresa com clareza e ajudar clientes da região a encontrá-la nas buscas e no Maps.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Google Meu Negócio</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Otimização local</span>
+                        </div>
+                    </div>
+
+                    <div class="card-neon-gradient p-6 flex flex-col justify-between">
+                        <div>
+                            <div class="w-12 h-12 bg-slate-900/90 rounded-lg flex items-center justify-center mb-6 border border-slate-700/80 shadow-lg svg-gradient-icon">
+                                <i data-lucide="message-square" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-lg font-bold mb-3 text-white">Do Google ao WhatsApp, sem complicação</h3>
+                            <p class="text-sm text-slate-300 leading-relaxed mb-6 font-normal">
+                                Facilitamos o contato com links para o WhatsApp no site e no perfil, ajudando o potencial cliente a iniciar uma conversa com sua equipe.
+                            </p>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Lead no WhatsApp</span>
+                            <span class="text-xs text-slate-200 px-3 py-1.5 rounded-full pill-gradient-border">Agilidade no contato</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SEO E GEO -->
+    <!-- SEO E GEO (#seo-geo) -->
     <section id="seo-geo" class="py-20 border-b border-slate-800/80">
         <div class="max-w-6xl mx-auto px-6">
             <div class="max-w-3xl mb-10">
@@ -386,7 +517,7 @@
         </div>
     </section>
 
-    <!-- COMO FUNCIONA -->
+    <!-- COMO FUNCIONA (#como-funciona) -->
     <section id="como-funciona" class="py-24 relative overflow-hidden bg-grid-pattern border-b border-slate-800/80">
         <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[140px] pointer-events-none"></div>
         <div class="absolute bottom-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] pointer-events-none"></div>
@@ -505,7 +636,7 @@
         </div>
     </section>
 
-    <!-- FAQ -->
+    <!-- FAQ (#faq) -->
     <section id="faq" class="py-20 sm:py-24 max-w-4xl mx-auto px-6">
         <div class="mb-12">
             <span class="text-xs font-semibold text-google-blue tracking-wider uppercase block mb-1">Dúvidas comuns</span>
@@ -515,7 +646,7 @@
         <div class="space-y-4">
             <div class="card-neon-gradient p-6 border border-slate-800">
                 <h4 class="text-base font-bold text-white mb-2 flex items-center justify-between">
-                    Em quanto tempo meu site e meu perfil ficam prontos?
+                    <span>Em quanto tempo meu site e meu perfil ficam prontos?</span>
                     <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
                 </h4>
                 <p class="text-sm text-slate-300 leading-relaxed font-normal">
@@ -525,7 +656,7 @@
 
             <div class="card-neon-gradient p-6 border border-slate-800">
                 <div class="text-base font-bold text-white mb-2 flex items-center justify-between">
-                    Preciso ter logotipo e identidade visual definidos?
+                    <span>Preciso ter logotipo e identidade visual definidos?</span>
                     <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
                 </div>
                 <p class="text-sm text-slate-300 leading-relaxed font-normal">
@@ -535,7 +666,7 @@
 
             <div class="card-neon-gradient p-6 border border-slate-800">
                 <div class="text-base font-bold text-white mb-2 flex items-center justify-between">
-                    Se eu contratar vocês, minha empresa vai ficar em primeiro lugar no Google?
+                    <span>Se eu contratar vocês, minha empresa vai ficar em primeiro lugar no Google?</span>
                     <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
                 </div>
                 <p class="text-sm text-slate-300 leading-relaxed font-normal">
@@ -545,7 +676,7 @@
 
             <div class="card-neon-gradient p-6 border border-slate-800">
                 <div class="text-base font-bold text-white mb-2 flex items-center justify-between">
-                    O que vocês fazem para ajudar minha empresa a ser encontrada?
+                    <span>O que vocês fazem para ajudar minha empresa a ser encontrada?</span>
                     <i data-lucide="check" class="w-5 h-5 text-google-green shrink-0"></i>
                 </div>
                 <p class="text-sm text-slate-300 leading-relaxed font-normal">
@@ -565,18 +696,21 @@
             <p class="text-slate-300 text-base mb-8 leading-relaxed font-normal">
                 Não deixe sua empresa passar despercebida nas buscas locais. Fortaleça sua presença no Google e facilite o contato de novos clientes pelo WhatsApp.
             </p>
-            <!-- BOTÃO COM O NOVO TEXTO SOLICITADO -->
-            <a href="https://wa.me/5548998354558?text=Ol%C3%A1!%20Quero%20destacar%20minha%20empresa%20no%20Google." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-google-blue hover:bg-blue-600 text-white font-semibold text-sm px-8 py-4 rounded-xl transition shadow-xl shadow-blue-500/20 hover:shadow-blue-400/40">
+            <!-- BOTÃO COM O WHATSAPP OFICIAL -->
+            <a href="https://wa.me/5548999459129?text=Ol%C3%A1!%20Quero%20destacar%20minha%20empresa%20no%20Google%20e%20conhecer%20as%20solu%C3%A7%C3%B5es%20da%20G-Local." target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-google-blue hover:bg-blue-600 text-white font-semibold text-sm px-8 py-4 rounded-xl transition shadow-xl shadow-blue-500/20 hover:shadow-blue-400/40">
                 Quero destacar minha empresa no Google
             </a>
+            <p class="text-xs text-slate-500 mt-4">
+                Atendimento direto via WhatsApp oficial: (48) 99945-9129
+            </p>
         </div>
     </section>
 
-    <!-- FOOTER LIMPO E POSICIONADO ACIMA -->
+    <!-- FOOTER -->
     <footer class="py-12 border-t border-slate-800/80 bg-slate-950/50">
         <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
             
-            <!-- LOGO COM O G DO GOOGLE -->
+            <!-- LOGO -->
             <a href="#" class="flex items-center gap-3.5 group select-none">
                 <svg class="w-9 h-9 drop-shadow-[0_0_10px_rgba(66,133,244,0.4)]" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M500 256C500 238.5 498.3 221.7 495.2 205.3H256V301.6H393.2C387.2 333.6 368.8 360.7 341.2 379.2V443.7H425.2C474.4 398.5 500 332.1 500 256Z" fill="#4285F4"/>
@@ -598,10 +732,12 @@
         </div>
     </footer>
 
+    <!-- SCRIPTS -->
     <script>
+        // Renderiza os ícones Lucide
         lucide.createIcons();
 
-        // Elementos surgem devagarinho conforme entram na tela durante a rolagem.[cite: 21]
+        // Elementos surgem suavemente conforme entram na tela
         function initScrollReveal() {
             const sections = document.querySelectorAll(
                 'main section:not(#hero), body > section:not(#hero)'
@@ -614,8 +750,6 @@
                     targets.add(section);
                     return;
                 }
-
-                // Revela os blocos principais em sequência, sem esconder a seção inteira.[cite: 21]
                 Array.from(content.children).forEach((child) => {
                     if (child.matches('h2, p, .grid, .flex, .space-y-16, .card-neon-gradient')) {
                         targets.add(child);
@@ -627,7 +761,6 @@
                 });
             });
 
-            // Também anima cartões e itens de conteúdo em grades.[cite: 21]
             document.querySelectorAll(
                 '#estrutura .grid > div, #solucoes .card-neon-gradient, ' +
                 '#seo-geo .card-neon-gradient, #faq .card-neon-gradient, ' +
@@ -663,7 +796,6 @@
 
             elements.forEach((el, index) => {
                 el.classList.add('reveal-on-scroll');
-                // Pequeno intervalo entre itens para a aparição acontecer em sequência.[cite: 21]
                 el.style.transitionDelay = `${(index % 4) * 120}ms`;
                 observer.observe(el);
             });
@@ -675,12 +807,13 @@
             initScrollReveal();
         }
 
-        // PROGRESSO DE ROLAGEM
+        // BARRA DE PROGRESSO DE ROLAGEM
         window.addEventListener('scroll', () => {
             const winScroll = document.documentElement.scrollTop || document.body.scrollTop;
             const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
             const scrolled = (winScroll / height) * 100;
-            document.getElementById('scroll-progress').style.width = scrolled + '%';
+            const bar = document.getElementById('scroll-progress');
+            if (bar) bar.style.width = scrolled + '%';
         });
     </script>
 </body>
