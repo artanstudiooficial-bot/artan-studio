@@ -1,0 +1,1684 @@
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import {
+  Bus,
+  MessageCircle,
+  Menu,
+  X,
+  Phone,
+  MapPin,
+  Clock,
+  Navigation,
+  ShieldCheck,
+  Check,
+  ArrowRight,
+  Calendar,
+  Eye,
+  Sparkles,
+  Star,
+  Award,
+  Users,
+  CreditCard,
+  QrCode,
+  FileText,
+  CheckCircle2,
+  Calculator,
+  Percent,
+  ChevronDown,
+  HelpCircle,
+  Instagram,
+  ArrowUp,
+} from 'lucide-react';
+
+/* ==========================================================================
+   1. DADOS, PACOTES E CONSTANTES
+   ========================================================================== */
+
+export interface TravelPackage {
+  id: string;
+  title: string;
+  tagline: string;
+  category: 'praia' | 'serra' | 'parque';
+  categoryLabel: string;
+  nextDate: string;
+  duration: string;
+  priceTotal: number;
+  installmentsCount: number;
+  installmentValue: number;
+  featuredImage: string;
+  highlights: string[];
+  included: string[];
+  itinerary: { day: string; title: string; description: string }[];
+  whatsappMessage: string;
+}
+
+export interface BoardingPoint {
+  city: 'Uberlândia' | 'Araguari';
+  locationName: string;
+  address: string;
+  notes: string;
+  departureTimeText: string;
+  badge: string;
+}
+
+export interface Testimonial {
+  name: string;
+  city: string;
+  destination: string;
+  travelDate: string;
+  quote: string;
+  familyType: string;
+  avatar: string;
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export const WHATSAPP_NUMBER = '5534988999247';
+export const WHATSAPP_DISPLAY = '(34) 98899-9247';
+export const INSTAGRAM_URL = 'https://www.instagram.com/fctransportesturismo';
+export const INSTAGRAM_HANDLE = '@fctransportesturismo';
+
+export const getWhatsAppUrl = (message?: string): string => {
+  const defaultMsg = 'Olá! Gostaria de mais informações sobre os pacotes de viagem da FC Transportes e Turismo.';
+  const encoded = encodeURIComponent(message || defaultMsg);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encoded}`;
+};
+
+export const PACKAGES: TravelPackage[] = [
+  {
+    id: 'ubatuba',
+    title: 'Ubatuba - Praias & Passeio de Escuna',
+    tagline: 'O paraíso do litoral norte paulista com mar cristalino, ilhas exuberantes e dias de sol inesquecíveis.',
+    category: 'praia',
+    categoryLabel: 'Litoral & Mar',
+    nextDate: 'Saída Confirmada: Feriado Prolongado',
+    duration: '4 dias (3 noites)',
+    priceTotal: 1380,
+    installmentsCount: 10,
+    installmentValue: 138,
+    featuredImage: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80',
+    highlights: [
+      'Passeio exclusivo de escuna pelas ilhas',
+      'Praia do Félix, Praia Grande e Tenório',
+      'Pousada aconchegante com café da manhã colonial',
+      'Ônibus leito turismo com poltronas soft reclináveis',
+    ],
+    included: [
+      'Transporte rodoviário leito turismo ida e volta',
+      '2 diárias em pousada selecionada com café da manhã',
+      'Passeio de escuna com parada para banho nas ilhas',
+      'Seguro viagem individual obrigatório ANTT',
+      'Guia credenciado e coordenador de grupo FC',
+      'Serviço de bordo na ida (água mineral e lanche)',
+    ],
+    itinerary: [
+      {
+        day: 'Quinta-feira à noite',
+        title: 'Embarque no Triângulo Mineiro',
+        description: 'Embarque em Araguari e Uberlândia em ônibus leito turismo climatizado. Viagem noturna com muito conforto e paradas planejadas.',
+      },
+      {
+        day: 'Sexta-feira',
+        title: 'Chegada em Ubatuba & Check-in',
+        description: 'Chegada pela manhã com café de boas-vindas, check-in na pousada e tarde livre na Praia do Tenório e Praia Grande.',
+      },
+      {
+        day: 'Sábado',
+        title: 'Passeio de Escuna & Ilhas',
+        description: 'Dia inteiro de navegação em escuna pelas ilhas paradisíacas, com paradas para mergulho livre e almoço típico caiçara.',
+      },
+      {
+        day: 'Domingo',
+        title: 'Manhã de Praia & Retorno Tranquilo',
+        description: 'Manhã livre para últimas compras e fotos no centro histórico. Saída às 13h com retorno previsto para a noite em Uberlândia e Araguari.',
+      },
+    ],
+    whatsappMessage: 'Olá! Gostaria de consultar vagas e reservar o pacote para Ubatuba com a FC Transportes e Turismo.',
+  },
+  {
+    id: 'campos-do-jordao',
+    title: 'Campos do Jordão - Natal Iluminado',
+    tagline: 'O charme europeu da serra da Mantiqueira decorado com milhares de luzes e a magia inigualável do Natal.',
+    category: 'serra',
+    categoryLabel: 'Serra & Natal',
+    nextDate: 'Temporada Especial: Novembro & Dezembro',
+    duration: '3 dias (2 noites)',
+    priceTotal: 1450,
+    installmentsCount: 10,
+    installmentValue: 145,
+    featuredImage: 'https://images.unsplash.com/photo-1543258103-a62bdc069871?auto=format&fit=crop&w=1200&q=80',
+    highlights: [
+      'Espetáculo de iluminação natalina na Vila Capivari',
+      'Visita guiada ao Morro do Elefante e Ducha de Prata',
+      'Degustação de chocolates artesanais e queijos da serra',
+      'Hospedagem charmosa em hotel com café da manhã',
+    ],
+    included: [
+      'Transporte leito turismo com Wi-Fi e ar condicionado',
+      'Hospedagem em hotel selecionado com café da manhã incluso',
+      'City Tour guiado pelos principais atrativos turísticos',
+      'Tempo livre na Vila Capivari com decorações natalinas',
+      'Seguro viagem passageiro integral',
+      'Acompanhamento de guia e equipe FC durante toda a estadia',
+    ],
+    itinerary: [
+      {
+        day: 'Sexta-feira à noite',
+        title: 'Saída de Uberlândia e Araguari',
+        description: 'Encontro nos pontos oficiais de embarque com nossa equipe para acomodação e início da viagem noturna.',
+      },
+      {
+        day: 'Sábado',
+        title: 'Campos do Jordão & Vila Capivari',
+        description: 'Chegada na serra, check-in, city tour pelos mirantes, visita à fábrica de chocolates e noite livre para vivenciar o Natal Iluminado.',
+      },
+      {
+        day: 'Domingo',
+        title: 'Passeios Livres & Retorno',
+        description: 'Manhã para compras de malhas e teleférico. Almoço livre e embarque às 14h para viagem de volta com todo conforto.',
+      },
+    ],
+    whatsappMessage: 'Olá! Quero saber valores e garantir vaga no pacote Campos do Jordão (Natal Iluminado) com a FC Transportes!',
+  },
+  {
+    id: 'lagoa-parque',
+    title: 'Lagoa Parque - Águas Termais & Lazer',
+    tagline: 'Piscinas termais quentes naturais, toboáguas radicais e relaxamento absoluto para a família inteira.',
+    category: 'parque',
+    categoryLabel: 'Termas & Parque Aquático',
+    nextDate: 'Saídas Quinzenais nos Fins de Semana',
+    duration: '2 dias (1 noite)',
+    priceTotal: 980,
+    installmentsCount: 10,
+    installmentValue: 98,
+    featuredImage: 'https://images.unsplash.com/photo-1582610116397-edb318620f90?auto=format&fit=crop&w=1200&q=80',
+    highlights: [
+      'Passaporte com acesso total às piscinas termais e toboáguas',
+      'Área kids completa com brinquedos aquáticos seguros',
+      'Hospedagem com café da manhã e piscinas aquecidas',
+      'Opção ideal e econômica para famílias com crianças',
+    ],
+    included: [
+      'Transporte rodoviário leito turismo ida e volta',
+      'Passaporte de entrada oficial para o complexo aquático',
+      'Hospedagem em hotel com café da manhã colonial',
+      'Seguro viagem rodoviário e cobertura médica de emergência',
+      'Coordenador de lazer dedicado',
+    ],
+    itinerary: [
+      {
+        day: 'Sábado de manhã',
+        title: 'Saída Rápida do Triângulo',
+        description: 'Embarque cedo em Uberlândia e Araguari, viagem tranquila de curta duração com chegada para abertura das atrações.',
+      },
+      {
+        day: 'Sábado o dia todo',
+        title: 'Diversão no Lagoa Parque',
+        description: 'Dia inteiro aproveitando piscinas termais quentes, toboáguas, ondas e ampla praça de alimentação.',
+      },
+      {
+        day: 'Domingo',
+        title: 'Manhã Termal & Retorno à Tarde',
+        description: 'Manhã para descansar nas águas termais do hotel/parque. Check-out após o almoço e retorno confortável para casa.',
+      },
+    ],
+    whatsappMessage: 'Olá! Gostaria de reservar o pacote do Lagoa Parque com a FC Transportes e Turismo.',
+  },
+];
+
+export const BOARDING_POINTS: BoardingPoint[] = [
+  {
+    city: 'Uberlândia',
+    locationName: 'Terminal Central de Uberlândia',
+    address: 'Praça Sérgio Pacheco, s/n - Centro',
+    notes: 'Ponto amplo com área de embarque coberta, fácil acesso por carro ou aplicativo e segurança 24h.',
+    departureTimeText: 'Horário de concentração 30 minutos antes do horário oficial',
+    badge: 'Ponto Central & Estratégico',
+  },
+  {
+    city: 'Araguari',
+    locationName: 'Praça Getúlio Vargas',
+    address: 'Centro, Araguari - MG',
+    notes: 'Ponto tradicional e de fácil localização no coração da cidade com iluminação e comodidade.',
+    departureTimeText: 'Embarque pontual com equipe de acolhimento',
+    badge: 'Centro de Araguari',
+  },
+  {
+    city: 'Araguari',
+    locationName: 'Praça da TV',
+    address: 'Av. Mato Grosso - Bairro Goiás, Araguari - MG',
+    notes: 'Opção facilitada para moradores da região norte e leste de Araguari com parada rápida e segura.',
+    departureTimeText: 'Segunda parada estratégica na cidade',
+    badge: 'Acesso Rápido',
+  },
+];
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    name: 'Mariana & Carlos Silva',
+    city: 'Uberlândia - MG',
+    destination: 'Ubatuba',
+    travelDate: 'Viagem em Família',
+    quote: 'Viajamos com dois filhos pequenos e foi maravilhoso! O ônibus da FC é impecável, limpo e super silencioso. Não tivemos que nos preocupar com nada do roteiro, a equipe foi atenciosa do início ao fim.',
+    familyType: 'Casal com 2 filhos',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    name: 'Dona Maria Helena e amigas',
+    city: 'Araguari - MG',
+    destination: 'Campos do Jordão (Natal Iluminado)',
+    travelDate: 'Grupo da Terceira Idade',
+    quote: 'Embarcamos na Praça Getúlio Vargas e fomos tratadas como rainhas! Os motoristas são calmos e prudentes, e o guia explicava cada detalhe. O Natal Iluminado parecia um sonho. Já queremos o próximo!',
+    familyType: 'Grupo de amigas aposentadas',
+    avatar: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=200&q=80',
+  },
+  {
+    name: 'Roberto Mendes & Amanda',
+    city: 'Uberlândia - MG',
+    destination: 'Lagoa Parque',
+    travelDate: 'Fim de semana a dois',
+    quote: 'Excelente custo-benefício. Dividimos em 10 vezes no cartão e nem pesou no orçamento. Ônibus pontual, ar condicionado na temperatura certa e o hotel parceiro foi nota dez.',
+    familyType: 'Casal de noivos',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80',
+  },
+];
+
+export const FAQS: FAQItem[] = [
+  {
+    question: 'Como funciona o pagamento parcelado em até 10x?',
+    answer: 'Aceitamos cartão de crédito em até 10 vezes com parcelamento facilitado. Também é possível pagar via PIX à vista ou parcelar no boleto bancário programado (com quitação prévia antes da data de embarque). Entre em contato pelo WhatsApp para simular sua condição.',
+  },
+  {
+    question: 'Como são os ônibus utilizados nas viagens?',
+    answer: 'Nossa frota é composta por ônibus modernos categoria Leito Turismo, equipados com poltronas reclináveis ultra confortáveis, ar-condicionado central, sanitário higienizado, tomadas USB individuais e conexão Wi-Fi. Todos os veículos passam por manutenção preventiva rigorosa e possuem registros na ANTT e DER.',
+  },
+  {
+    question: 'Onde encontro o coordenador da FC no embarque?',
+    answer: 'Em todos os nossos pontos oficiais (Terminal Central em Uberlândia, Praça Getúlio Vargas e Praça da TV em Araguari), nossa equipe estará devidamente identificada com uniforme da FC Transportes e Turismo para conferir documentação, acomodar bagagens e tirar dúvidas.',
+  },
+  {
+    question: 'Crianças pagam o valor integral?',
+    answer: 'Crianças de colo (até 5 anos incompletos) viajando no colo de um responsável não pagam passagem nem hospedagem na maioria dos roteiros. A partir de 6 anos ou com assento individual próprio, consulte nossa tabela com descontos especiais para famílias pelo WhatsApp.',
+  },
+  {
+    question: 'O que está incluso na hospedagem?',
+    answer: 'Trabalhamos exclusivamente com pousadas e hotéis parceiros aprovados previamente por nossa equipe. O café da manhã completo está sempre incluso, e os quartos contam com ar-condicionado/ventilador, TV e banheiro privativo.',
+  },
+  {
+    question: 'O que acontece em caso de chuva ou imprevistos?',
+    answer: 'Todas as viagens contam com seguro viagem obrigatório que cobre imprevistos de saúde e assistência emergencial. Nossos roteiros também possuem opções de passeios alternativos e cobertos em caso de variações climáticas, garantindo que o seu passeio seja sempre aproveitado ao máximo.',
+  },
+];
+
+export const BUS_BENEFITS = [
+  {
+    title: 'Ônibus Leito Turismo',
+    description: 'Poltronas anatômicas reclináveis, apoio para pernas, ar-condicionado e ambiente higienizado para você dormir e descansar.',
+    icon: 'Bus',
+  },
+  {
+    title: 'Segurança & ANTT Regulamentada',
+    description: 'Motoristas profissionais experientes em rotas turísticas, frota vistoriada e seguro integral a todos os passageiros.',
+    icon: 'ShieldCheck',
+  },
+  {
+    title: 'Hospedagem Selecionada',
+    description: 'Quartos privativos confortáveis com café da manhã reforçado incluso em hotéis e pousadas bem avaliadas.',
+    icon: 'Hotel',
+  },
+  {
+    title: 'Guias e Coordenadores FC',
+    description: 'Suporte humanizado do embarque ao retorno. Você não precisa se preocupar com trajetos, ingressos ou horários.',
+    icon: 'Users',
+  },
+];
+
+/* ==========================================================================
+   2. COMPONENTES MODULARES
+   ========================================================================== */
+
+function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-300 shadow-sm transition-all">
+      <div className="bg-[#1565C0] text-white text-xs py-1.5 px-4">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2 font-medium">
+            <span className="inline-block w-2 h-2 rounded-full bg-[#2ECC71] animate-pulse" />
+            <span>Saídas exclusivas de <strong>Uberlândia</strong> e <strong>Araguari</strong></span>
+            <span className="hidden sm:inline text-blue-200">· Parcelamento facilitado em até 10x</span>
+          </div>
+          <div className="flex items-center gap-4 text-blue-100">
+            <a
+              href={getWhatsAppUrl('Olá! Gostaria de consultar os pacotes da FC Transportes e Turismo.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <Phone className="w-3.5 h-3.5 text-[#2ECC71]" />
+              <span className="font-semibold">{WHATSAPP_DISPLAY}</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        <a href="#" className="flex items-center gap-3 group">
+          <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#1E88E5] to-[#1565C0] flex items-center justify-center text-white shadow-md shadow-blue-500/20 group-hover:scale-105 transition-transform">
+            <Bus className="w-6 h-6" />
+          </div>
+          <div>
+            <div className="flex items-center gap-1.5">
+              <span className="text-xl font-extrabold tracking-tight text-slate-900 group-hover:text-[#1E88E5] transition-colors">
+                FC Transportes
+              </span>
+              <span className="text-xs font-bold text-[#1E88E5] bg-blue-50 px-1.5 py-0.5 rounded-sm">
+                TURISMO
+              </span>
+            </div>
+            <p className="text-xs text-slate-500 font-medium">
+              Triângulo Mineiro · Conforto & Confiança
+            </p>
+          </div>
+        </a>
+
+        <nav className="hidden lg:flex items-center gap-8">
+          <a href="#embarque" className="text-sm font-semibold text-slate-700 hover:text-[#1E88E5] transition-colors">
+            Pontos de Embarque
+          </a>
+          <a href="#pacotes" className="text-sm font-semibold text-slate-700 hover:text-[#1E88E5] transition-colors">
+            Nossos Destinos
+          </a>
+          <a href="#seguranca" className="text-sm font-semibold text-slate-700 hover:text-[#1E88E5] transition-colors">
+            Por Que a FC?
+          </a>
+          <a href="#pagamento" className="text-sm font-semibold text-slate-700 hover:text-[#1E88E5] transition-colors">
+            Condições 10x
+          </a>
+          <a href="#duvidas" className="text-sm font-semibold text-slate-700 hover:text-[#1E88E5] transition-colors">
+            Dúvidas
+          </a>
+        </nav>
+
+        <div className="hidden sm:flex items-center gap-3">
+          <a
+            href={getWhatsAppUrl('Olá! Quero falar com um atendente da FC Transportes e Turismo.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#2ECC71] hover:bg-[#27AE60] text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm shadow-sm hover:shadow-md transition-all active:scale-95"
+          >
+            <MessageCircle className="w-4 h-4 fill-slate-950/20" />
+            <span>Falar no WhatsApp</span>
+          </a>
+        </div>
+
+        <button
+          type="button"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          className="lg:hidden p-2.5 text-slate-700 hover:text-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+          aria-label="Abrir menu"
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+      </div>
+
+      {mobileMenuOpen && (
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-4 shadow-xl">
+          <nav className="flex flex-col space-y-3">
+            <a href="#embarque" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-slate-800 font-semibold rounded-lg hover:bg-slate-100">
+              Pontos de Embarque (Uberlândia & Araguari)
+            </a>
+            <a href="#pacotes" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-slate-800 font-semibold rounded-lg hover:bg-slate-100">
+              Nossos Próximos Destinos
+            </a>
+            <a href="#seguranca" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-slate-800 font-semibold rounded-lg hover:bg-slate-100">
+              Segurança & Depoimentos
+            </a>
+            <a href="#pagamento" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-slate-800 font-semibold rounded-lg hover:bg-slate-100">
+              Condições de Pagamento em até 10x
+            </a>
+            <a href="#duvidas" onClick={() => setMobileMenuOpen(false)} className="px-3 py-2 text-slate-800 font-semibold rounded-lg hover:bg-slate-100">
+              Perguntas Frequentes
+            </a>
+          </nav>
+          <div className="pt-2 border-t border-slate-100">
+            <a
+              href={getWhatsAppUrl('Olá! Quero falar com um atendente da FC Transportes e Turismo.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full flex items-center justify-center gap-2 bg-[#2ECC71] hover:bg-[#27AE60] text-slate-950 font-bold px-4 py-3 rounded-xl text-sm shadow-md"
+            >
+              <MessageCircle className="w-5 h-5 fill-slate-950/20" />
+              <span>Falar no WhatsApp ({WHATSAPP_DISPLAY})</span>
+            </a>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
+
+function Hero() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#E2ECF7] via-[#EAF1F9] to-[#DDE7F3] pt-10 pb-16 md:pt-16 md:pb-24 border-b border-slate-300/80">
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-blue-200/40 rounded-full blur-3xl pointer-events-none -z-10" />
+      <div className="absolute bottom-10 left-10 w-80 h-80 bg-emerald-200/30 rounded-full blur-3xl pointer-events-none -z-10" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <motion.div
+            className="lg:col-span-7 space-y-6 text-left"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#1565C0] uppercase tracking-wider bg-white/95 px-3.5 py-1.5 rounded-lg border border-blue-200 shadow-2xs">
+              <Bus className="w-4 h-4 text-[#1E88E5]" />
+              <span>Turismo Rodoviário Seguro · Triângulo Mineiro</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-slate-950 tracking-tight leading-[1.15] text-balance">
+              Viagens Completas e Inesquecíveis.{' '}
+              <span className="text-[#1E88E5]">Deixe o Planejamento</span> com a Gente.
+            </h1>
+
+            <p className="text-base sm:text-lg md:text-xl text-slate-700 font-normal leading-relaxed max-w-2xl text-pretty">
+              Pacotes turísticos de autocarro com hospedagem, refeições e passeios inclusos. 
+              Saídas exclusivas de <strong className="text-slate-900">Uberlândia</strong> e <strong className="text-slate-900">Araguari</strong> para os melhores destinos do Brasil.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 pb-2">
+              <div className="flex items-center gap-2.5 text-slate-800 font-semibold text-sm bg-white/80 backdrop-blur-xs px-3.5 py-2.5 rounded-xl border border-slate-200/90 shadow-2xs">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                </div>
+                <span>Saídas de Uberlândia e Araguari</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-slate-800 font-semibold text-sm bg-white/80 backdrop-blur-xs px-3.5 py-2.5 rounded-xl border border-slate-200/90 shadow-2xs">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                </div>
+                <span>Ônibus Leito com Ar e Wi-Fi</span>
+              </div>
+              <div className="flex items-center gap-2.5 text-slate-800 font-semibold text-sm bg-white/80 backdrop-blur-xs px-3.5 py-2.5 rounded-xl border border-slate-200/90 shadow-2xs">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
+                  <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                </div>
+                <span>Parcelamento em até 10x</span>
+              </div>
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 pt-2">
+              <a
+                href={getWhatsAppUrl('Olá! Quero falar com o atendimento da FC Transportes e reservar meu pacote de viagem.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-3 bg-[#2ECC71] hover:bg-[#27AE60] text-slate-950 font-extrabold px-8 py-4 rounded-xl text-base sm:text-lg shadow-lg shadow-emerald-500/25 hover:shadow-xl transition-all active:scale-[0.98] group"
+              >
+                <MessageCircle className="w-6 h-6 fill-slate-950/20 group-hover:scale-110 transition-transform" />
+                <span>Falar com Atendimento e Reservar</span>
+              </a>
+
+              <a
+                href="#pacotes"
+                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 text-slate-800 font-bold px-6 py-4 rounded-xl text-base border border-slate-300 shadow-sm transition-colors"
+              >
+                <span>Ver Próximos Destinos</span>
+                <ArrowRight className="w-4 h-4 text-slate-500" />
+              </a>
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center gap-4 text-xs text-slate-600 font-semibold">
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck className="w-4 h-4 text-[#1E88E5]" />
+                Seguro viagem ANTT incluso
+              </span>
+              <span>·</span>
+              <span className="flex items-center gap-1.5">
+                <CreditCard className="w-4 h-4 text-emerald-600" />
+                Sem burocracia para parcelar
+              </span>
+              <span>·</span>
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-amber-600" />
+                Embarques no Terminal Central & Praças de Araguari
+              </span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="lg:col-span-5 relative"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <div className="relative mx-auto max-w-md lg:max-w-none">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border-4 border-white bg-slate-900 aspect-[4/3] sm:aspect-[16/12]">
+                <img
+                  src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=80"
+                  alt="Ônibus de turismo leito da FC Transportes"
+                  className="w-full h-full object-cover brightness-[0.97] hover:scale-105 transition-transform duration-700"
+                  loading="eager"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/20" />
+                <div className="absolute bottom-4 left-4 right-4 text-white">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-emerald-300 mb-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                    <span>Conforto Total em Estrada</span>
+                  </div>
+                  <h3 className="text-lg font-bold text-white leading-tight">
+                    Ônibus Leito Turismo com Poltronas Soft
+                  </h3>
+                  <p className="text-xs text-slate-200 mt-0.5">
+                    Ar-condicionado, Wi-Fi, tomadas individuais e equipe de apoio dedicada.
+                  </p>
+                </div>
+              </div>
+
+              <div className="absolute -top-4 -left-4 sm:-top-5 sm:-left-6 bg-white rounded-xl p-3.5 shadow-xl border border-slate-100 flex items-center gap-3 animate-fade-in hidden sm:flex">
+                <div className="w-10 h-10 rounded-lg bg-blue-50 text-[#1E88E5] flex items-center justify-center font-extrabold">
+                  <Bus className="w-5 h-5" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-900">Saídas Confirmadas</div>
+                  <div className="text-[11px] text-slate-500 font-medium">Uberlândia & Araguari</div>
+                </div>
+              </div>
+
+              <div className="absolute -bottom-5 -right-4 sm:-bottom-6 sm:-right-6 bg-white rounded-xl p-3.5 shadow-xl border border-slate-100 flex items-center gap-3 animate-fade-in">
+                <div className="w-10 h-10 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-black text-sm">
+                  10x
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-slate-900">Parcelamento em até 10x</div>
+                  <div className="text-[11px] text-emerald-700 font-semibold">Cartão, PIX ou Boleto</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function BoardingPoints() {
+  return (
+    <section id="embarque" className="py-16 md:py-24 bg-[#E9F0F8] border-b border-slate-300/80 scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
+          <div className="inline-flex items-center gap-2 text-xs font-bold text-[#1565C0] tracking-wider uppercase bg-white px-3.5 py-1.5 rounded-lg border border-blue-200 shadow-2xs">
+            <MapPin className="w-3.5 h-3.5 text-[#1E88E5]" />
+            <span>Localização e Pontualidade</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
+            Embarque Próximo e Facilitado
+          </h2>
+          <p className="text-base sm:text-lg text-slate-700 leading-relaxed text-pretty">
+            Iniciamos a sua viagem com conforto e pontualidade nos principais pontos da região.
+            Você embarca perto de casa, sem estresse com traslados caros ou distantes.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+          {BOARDING_POINTS.map((point, index) => {
+            const isUberlandia = point.city === 'Uberlândia';
+            return (
+              <motion.div
+                key={index}
+                className="relative bg-white rounded-2xl p-6 sm:p-7 border-2 border-slate-200/90 hover:border-[#1E88E5] shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-4">
+                    <span className={`inline-flex items-center gap-1.5 text-xs font-bold px-2.5 py-1 rounded-md ${
+                      isUberlandia ? 'bg-blue-100 text-blue-900 border border-blue-200' : 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                    }`}>
+                      <MapPin className="w-3.5 h-3.5" />
+                      {point.city}
+                    </span>
+                    <span className="text-xs text-slate-500 font-semibold">
+                      {point.badge}
+                    </span>
+                  </div>
+
+                  <h3 className="text-xl font-extrabold text-slate-950 group-hover:text-[#1E88E5] transition-colors mb-2">
+                    {point.locationName}
+                  </h3>
+
+                  <p className="text-sm font-semibold text-slate-700 flex items-start gap-1.5 mb-3">
+                    <Navigation className="w-4 h-4 text-[#1E88E5] shrink-0 mt-0.5" />
+                    <span>{point.address}</span>
+                  </p>
+
+                  <p className="text-sm text-slate-600 leading-relaxed mb-4">
+                    {point.notes}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-slate-100 space-y-3">
+                  <div className="flex items-center gap-2 text-xs text-slate-700 font-semibold bg-slate-50 px-3 py-2 rounded-lg border border-slate-200/80">
+                    <Clock className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <span>{point.departureTimeText}</span>
+                  </div>
+
+                  <a
+                    href={getWhatsAppUrl(`Olá! Gostaria de tirar uma dúvida sobre o ponto de embarque em ${point.city} (${point.locationName}).`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-1.5 text-xs font-bold text-[#1565C0] hover:text-blue-950 py-1.5 hover:underline"
+                  >
+                    <span>Dúvida sobre este embarque? Fale no WhatsApp</span>
+                    <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+                  </a>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        <div className="mt-12 bg-gradient-to-r from-slate-900 via-[#1565C0] to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 border border-blue-400/20">
+          <div className="flex items-start sm:items-center gap-4">
+            <div className="w-12 h-12 rounded-xl bg-white/10 text-white flex items-center justify-center shrink-0 shadow-md border border-white/20">
+              <Bus className="w-6 h-6 text-[#2ECC71]" />
+            </div>
+            <div>
+              <h4 className="text-base sm:text-lg font-bold text-white">
+                Acompanhamento com Coordenador FC em Todos os Pontos
+              </h4>
+              <p className="text-sm text-slate-200 mt-0.5">
+                Nossa equipe uniformizada estará no local conferindo sua lista de embarque e organizando suas malas. Você nunca viaja desamparado.
+              </p>
+            </div>
+          </div>
+          
+          <a
+            href={getWhatsAppUrl('Olá! Gostaria de consultar os horários exatos de embarque para o meu destino.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 bg-[#2ECC71] hover:bg-[#27AE60] text-slate-950 font-extrabold px-5 py-3 rounded-xl text-sm shadow-md transition-all active:scale-95"
+          >
+            Consultar Horários Exatos
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PackageModal({ pkg, onClose }: { pkg: TravelPackage | null; onClose: () => void }) {
+  if (!pkg) return null;
+
+  return (
+    <AnimatePresence>
+      <div className="fixed inset-0 z-50 overflow-y-auto bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-4 sm:p-6 animate-fade-in">
+        <div className="fixed inset-0" onClick={onClose} aria-hidden="true" />
+
+        <motion.div
+          className="relative bg-white rounded-2xl max-w-2xl w-full shadow-2xl overflow-hidden z-10 max-h-[90vh] flex flex-col"
+          initial={{ opacity: 0, scale: 0.95, y: 15 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.95, y: 15 }}
+          transition={{ duration: 0.2 }}
+        >
+          <div className="relative h-56 sm:h-64 shrink-0 bg-slate-900">
+            <img
+              src={pkg.featuredImage}
+              alt={pkg.title}
+              className="w-full h-full object-cover brightness-[0.9]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent" />
+            
+            <button
+              onClick={onClose}
+              className="absolute top-4 right-4 bg-black/50 hover:bg-black/80 text-white p-2 rounded-full backdrop-blur-sm transition-colors"
+              aria-label="Fechar detalhes"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="absolute bottom-4 left-4 right-4 text-white">
+              <span className="text-xs font-bold text-emerald-400 bg-emerald-950/70 px-2.5 py-1 rounded-md mb-2 inline-block">
+                {pkg.categoryLabel}
+              </span>
+              <h3 className="text-2xl font-extrabold text-white leading-tight">
+                {pkg.title}
+              </h3>
+              <p className="text-xs text-slate-200 mt-1 flex items-center gap-3">
+                <span className="flex items-center gap-1"><Calendar className="w-3.5 h-3.5 text-blue-300" /> {pkg.nextDate}</span>
+                <span className="flex items-center gap-1"><Clock className="w-3.5 h-3.5 text-blue-300" /> {pkg.duration}</span>
+              </p>
+            </div>
+          </div>
+
+          <div className="overflow-y-auto p-6 space-y-6 flex-1 text-left">
+            <div>
+              <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-2">
+                Sobre a Viagem
+              </h4>
+              <p className="text-sm text-slate-600 leading-relaxed">
+                {pkg.tagline}
+              </p>
+            </div>
+
+            <div>
+              <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-3">
+                Roteiro Programado
+              </h4>
+              <div className="space-y-3 border-l-2 border-blue-500/40 pl-4 ml-1">
+                {pkg.itinerary.map((item, idx) => (
+                  <div key={idx} className="relative">
+                    <span className="absolute -left-[23px] top-1 w-3 h-3 rounded-full bg-[#1E88E5] border-2 border-white" />
+                    <div className="text-xs font-bold text-[#1565C0]">{item.day}</div>
+                    <div className="text-sm font-bold text-slate-800">{item.title}</div>
+                    <p className="text-xs text-slate-600 mt-0.5 leading-relaxed">{item.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="bg-slate-50 rounded-xl p-4 border border-slate-200/80">
+              <h4 className="text-sm font-bold text-slate-900 mb-2.5 flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-[#1E88E5]" />
+                O Que Está Incluso no Pacote:
+              </h4>
+              <ul className="space-y-2">
+                {pkg.included.map((inc, idx) => (
+                  <li key={idx} className="flex items-start gap-2 text-xs text-slate-700">
+                    <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                    <span>{inc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-emerald-50/70 border border-emerald-200/70 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div>
+                <span className="text-xs text-emerald-800 font-bold uppercase">Parcelamento Sem Burocracia</span>
+                <div className="text-2xl font-black text-slate-900">
+                  {pkg.installmentsCount}x de R$ {pkg.installmentValue.toFixed(2).replace('.', ',')}
+                </div>
+                <div className="text-xs text-slate-600">
+                  ou R$ {pkg.priceTotal.toLocaleString('pt-BR')} à vista via PIX
+                </div>
+              </div>
+
+              <div className="text-xs text-slate-600 sm:text-right">
+                <p className="font-semibold text-slate-800">Saídas de:</p>
+                <p>Uberlândia (Terminal Central)</p>
+                <p>Araguari (Praças Centrais)</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="p-4 sm:p-5 bg-slate-50 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <button
+              onClick={onClose}
+              className="w-full sm:w-auto px-4 py-2.5 text-xs font-bold text-slate-600 hover:text-slate-900 border border-slate-300 rounded-xl hover:bg-slate-100 transition-colors"
+            >
+              Voltar aos Destinos
+            </button>
+
+            <a
+              href={getWhatsAppUrl(pkg.whatsappMessage)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#2ECC71] hover:bg-[#27AE60] text-slate-950 font-extrabold px-6 py-3 rounded-xl text-sm shadow-md transition-all active:scale-95"
+            >
+              <MessageCircle className="w-5 h-5 fill-slate-950/20" />
+              <span>Garantir Vaga no WhatsApp Agora</span>
+            </a>
+          </div>
+        </motion.div>
+      </div>
+    </AnimatePresence>
+  );
+}
+
+function PackagesSection() {
+  const [selectedFilter, setSelectedFilter] = useState<string>('todos');
+  const [activeModalPackage, setActiveModalPackage] = useState<TravelPackage | null>(null);
+
+  const filteredPackages = selectedFilter === 'todos'
+    ? PACKAGES
+    : PACKAGES.filter(p => p.category === selectedFilter);
+
+  return (
+    <section id="pacotes" className="py-16 md:py-24 bg-[#DFE8F4] border-b border-slate-300/80 scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-10">
+          <div className="inline-flex items-center gap-2 text-xs font-bold text-[#1565C0] tracking-wider uppercase bg-white px-3.5 py-1.5 rounded-lg border border-blue-200 shadow-2xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#1E88E5]" />
+            <span>Pacotes Completos & Exclusivos</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
+            Nossos Próximos Destinos
+          </h2>
+          <p className="text-base sm:text-lg text-slate-700 leading-relaxed text-pretty">
+            Escolha a sua próxima experiência. Todos os pacotes incluem transporte completo de autocarro, 
+            hospedagem selecionada e passeios guiados.
+          </p>
+        </div>
+
+        <div className="flex items-center justify-center mb-12">
+          <div className="inline-flex p-1.5 bg-white/90 rounded-2xl border border-slate-300 shadow-xs max-w-full overflow-x-auto gap-1">
+            <button
+              onClick={() => setSelectedFilter('todos')}
+              className={`px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all ${
+                selectedFilter === 'todos'
+                  ? 'bg-[#1565C0] text-white shadow-xs'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              Todos os Destinos ({PACKAGES.length})
+            </button>
+            <button
+              onClick={() => setSelectedFilter('praia')}
+              className={`px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all ${
+                selectedFilter === 'praia'
+                  ? 'bg-[#1565C0] text-white shadow-xs'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              Litoral & Praias
+            </button>
+            <button
+              onClick={() => setSelectedFilter('serra')}
+              className={`px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all ${
+                selectedFilter === 'serra'
+                  ? 'bg-[#1565C0] text-white shadow-xs'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              Campos do Jordão (Natal)
+            </button>
+            <button
+              onClick={() => setSelectedFilter('parque')}
+              className={`px-4 py-2 text-xs sm:text-sm font-bold rounded-xl transition-all ${
+                selectedFilter === 'parque'
+                  ? 'bg-[#1565C0] text-white shadow-xs'
+                  : 'text-slate-700 hover:text-slate-900 hover:bg-slate-100'
+              }`}
+            >
+              Parques & Termas
+            </button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {filteredPackages.map((pkg, idx) => (
+            <motion.div
+              key={pkg.id}
+              className="bg-white rounded-2xl overflow-hidden border-2 border-slate-200/90 hover:border-[#1E88E5] shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group"
+              initial={{ opacity: 0, y: 25 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
+            >
+              <div>
+                <div className="relative h-60 w-full overflow-hidden bg-slate-900">
+                  <img
+                    src={pkg.featuredImage}
+                    alt={pkg.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-black/30" />
+
+                  <div className="absolute top-3 left-3">
+                    <span className="text-xs font-bold text-white bg-slate-900/80 backdrop-blur-sm px-3 py-1 rounded-md">
+                      {pkg.categoryLabel}
+                    </span>
+                  </div>
+
+                  <div className="absolute bottom-3 left-3 right-3 text-white">
+                    <div className="flex items-center justify-between text-xs font-semibold text-slate-200">
+                      <span className="flex items-center gap-1">
+                        <Calendar className="w-3.5 h-3.5 text-blue-400" />
+                        {pkg.nextDate}
+                      </span>
+                      <span className="flex items-center gap-1">
+                        <Clock className="w-3.5 h-3.5 text-blue-400" />
+                        {pkg.duration}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="p-6 space-y-4">
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#1E88E5] transition-colors leading-snug">
+                      {pkg.title}
+                    </h3>
+                    <p className="text-sm text-slate-600 mt-1 line-clamp-2 leading-relaxed">
+                      {pkg.tagline}
+                    </p>
+                  </div>
+
+                  <div className="space-y-2 pt-2 border-t border-slate-100">
+                    <span className="text-xs font-bold text-slate-800 uppercase tracking-wide">
+                      O que está incluso:
+                    </span>
+                    <ul className="space-y-1.5">
+                      {pkg.highlights.map((highlight, hIdx) => (
+                        <li key={hIdx} className="flex items-start gap-2 text-xs text-slate-700">
+                          <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                          <span>{highlight}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-6 pt-0 space-y-4">
+                <div className="bg-blue-50/90 rounded-xl p-3.5 border border-blue-200/90 flex items-center justify-between">
+                  <div>
+                    <div className="text-[11px] font-bold text-[#1565C0] uppercase tracking-wider">
+                      Facilidade em até 10x
+                    </div>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-xs font-bold text-slate-700">10x de</span>
+                      <span className="text-2xl font-black text-slate-950 font-mono tabular-nums">
+                        R$ {pkg.installmentValue.toFixed(2).replace('.', ',')}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-[11px] text-slate-600 font-semibold block">Total à vista</span>
+                    <span className="text-xs font-bold text-slate-900">
+                      R$ {pkg.priceTotal.toLocaleString('pt-BR')}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <a
+                    href={getWhatsAppUrl(pkg.whatsappMessage)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full flex items-center justify-center gap-2 bg-[#2ECC71] hover:bg-[#27AE60] text-slate-950 font-extrabold px-4 py-3.5 rounded-xl text-sm shadow-md transition-all active:scale-[0.98]"
+                  >
+                    <MessageCircle className="w-4 h-4 fill-slate-950/20" />
+                    <span>Garantir Vaga via WhatsApp</span>
+                  </a>
+
+                  <button
+                    onClick={() => setActiveModalPackage(pkg)}
+                    className="w-full flex items-center justify-center gap-1.5 text-xs font-bold text-slate-600 hover:text-[#1565C0] py-2 transition-colors"
+                  >
+                    <Eye className="w-3.5 h-3.5" />
+                    <span>Ver Roteiro e Detalhes Completos</span>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-12 text-center text-xs text-slate-600">
+          <p>
+            * Vagas limitadas por ônibus para garantir o conforto de todos os passageiros. Reservas confirmadas mediante sinal ou aprovação do cartão.
+          </p>
+        </div>
+      </div>
+
+      <PackageModal pkg={activeModalPackage} onClose={() => setActiveModalPackage(null)} />
+    </section>
+  );
+}
+
+function SocialProof() {
+  return (
+    <section id="seguranca" className="py-16 md:py-24 bg-[#EAF0F8] border-b border-slate-300/80 scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
+          <div className="inline-flex items-center gap-2 text-xs font-bold text-[#1565C0] tracking-wider uppercase bg-white px-3.5 py-1.5 rounded-lg border border-blue-200 shadow-2xs">
+            <Award className="w-3.5 h-3.5 text-[#1E88E5]" />
+            <span>Credibilidade Comprovada</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 tracking-tight">
+            A Escolha Número 1 do Triângulo Mineiro
+          </h2>
+          <p className="text-base sm:text-lg text-slate-700 leading-relaxed text-pretty">
+            Mais de 5.000 passageiros transportados com total segurança e conforto.
+            Viaje sem a dor de cabeça de dirigir centenas de quilômetros ou organizar roteiros complexos.
+          </p>
+        </div>
+
+        <div className="relative bg-gradient-to-br from-slate-900 via-[#1565C0] to-slate-900 text-white rounded-3xl p-8 sm:p-12 mb-16 shadow-2xl overflow-hidden text-center border border-blue-400/20">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-white/10 via-transparent to-transparent pointer-events-none" />
+
+          <div className="relative z-10 max-w-4xl mx-auto space-y-6">
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-300 uppercase tracking-widest bg-emerald-950/80 border border-emerald-400/40 px-3.5 py-1.5 rounded-full">
+              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+              <span>Compromisso com o Passageiro Mineiro</span>
+            </div>
+
+            <div className="space-y-1">
+              <div className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight text-white font-mono tabular-nums">
+                +5.000
+              </div>
+              <div className="text-lg sm:text-2xl font-bold text-blue-100">
+                Passageiros Transportados em Segurança
+              </div>
+            </div>
+
+            <p className="text-sm sm:text-base text-slate-200 max-w-2xl mx-auto leading-relaxed">
+              De famílias com crianças de colo a grupos da melhor idade: proporcionamos viagens onde você só se preocupa em tirar fotos e criar memórias.
+            </p>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-white/15 text-left sm:text-center">
+              <div className="p-3 bg-white/10 rounded-xl border border-white/15">
+                <div className="text-xl sm:text-2xl font-black text-emerald-300 font-mono tabular-nums">100%</div>
+                <div className="text-xs text-blue-100 font-medium mt-0.5">Frota Regulamentada ANTT</div>
+              </div>
+              <div className="p-3 bg-white/10 rounded-xl border border-white/15">
+                <div className="text-xl sm:text-2xl font-black text-emerald-300 font-mono tabular-nums">10x</div>
+                <div className="text-xs text-blue-100 font-medium mt-0.5">Sem Complicação</div>
+              </div>
+              <div className="p-3 bg-white/10 rounded-xl border border-white/15">
+                <div className="text-xl sm:text-2xl font-black text-emerald-300 font-mono tabular-nums">02</div>
+                <div className="text-xs text-blue-100 font-medium mt-0.5">Cidades de Embarque</div>
+              </div>
+              <div className="p-3 bg-white/10 rounded-xl border border-white/15">
+                <div className="text-xl sm:text-2xl font-black text-emerald-300 font-mono tabular-nums">5★</div>
+                <div className="text-xs text-blue-100 font-medium mt-0.5">Avaliação dos Viajantes</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {BUS_BENEFITS.map((b, i) => (
+            <div
+              key={i}
+              className="bg-white rounded-2xl p-6 border-2 border-slate-200/90 shadow-md hover:shadow-xl hover:border-[#1E88E5] transition-all flex flex-col justify-between"
+            >
+              <div>
+                <div className="w-12 h-12 rounded-xl bg-blue-100 text-[#1565C0] flex items-center justify-center font-bold mb-4">
+                  {i === 0 && <Bus className="w-6 h-6" />}
+                  {i === 1 && <ShieldCheck className="w-6 h-6" />}
+                  {i === 2 && <Award className="w-6 h-6" />}
+                  {i === 3 && <Users className="w-6 h-6" />}
+                </div>
+                <h3 className="text-lg font-extrabold text-slate-950 mb-2">
+                  {b.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {b.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="space-y-6">
+          <div className="text-center max-w-2xl mx-auto">
+            <h3 className="text-2xl font-extrabold text-slate-950">
+              O que dizem os passageiros de Uberlândia e Araguari
+            </h3>
+            <p className="text-sm text-slate-600 mt-1">
+              Depoimentos reais de quem já viajou conosco e recomenda de olhos fechados.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+            {TESTIMONIALS.map((t, idx) => (
+              <motion.div
+                key={idx}
+                className="bg-white rounded-2xl p-6 sm:p-7 border-2 border-slate-200/90 shadow-md hover:shadow-xl transition-all flex flex-col justify-between"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.1 }}
+              >
+                <div>
+                  <div className="flex items-center gap-1 text-amber-400 mb-4">
+                    {[...Array(5)].map((_, s) => (
+                      <Star key={s} className="w-4 h-4 fill-amber-400" />
+                    ))}
+                    <span className="text-xs font-bold text-slate-500 ml-2">5.0</span>
+                  </div>
+
+                  <div className="text-xs font-bold text-[#1E88E5] mb-2">
+                    Destino: {t.destination}
+                  </div>
+
+                  <p className="text-sm text-slate-700 leading-relaxed italic mb-6">
+                    "{t.quote}"
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-3 pt-4 border-t border-slate-100">
+                  <img
+                    src={t.avatar}
+                    alt={t.name}
+                    className="w-11 h-11 rounded-full object-cover border-2 border-slate-200"
+                    loading="lazy"
+                  />
+                  <div>
+                    <h4 className="text-sm font-bold text-slate-900">
+                      {t.name}
+                    </h4>
+                    <p className="text-xs text-slate-500 font-medium">
+                      {t.city} · {t.familyType}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function PaymentSection() {
+  const [selectedPkgId, setSelectedPkgId] = useState<string>(PACKAGES[0].id);
+  const [travelersCount, setTravelersCount] = useState<number>(2);
+
+  const currentPkg = PACKAGES.find(p => p.id === selectedPkgId) || PACKAGES[0];
+  const totalPrice = currentPkg.priceTotal * travelersCount;
+  const installmentPrice = totalPrice / 10;
+
+  return (
+    <section id="pagamento" className="py-16 md:py-24 bg-gradient-to-b from-[#DFE8F4] via-[#E7EFF8] to-[#DAE5F2] border-b border-slate-300/80 scroll-mt-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto space-y-3 mb-14">
+          <div className="inline-flex items-center gap-2 text-xs font-bold text-[#1565C0] tracking-wider uppercase bg-white px-3.5 py-1.5 rounded-lg border border-blue-200 shadow-2xs">
+            <Percent className="w-3.5 h-3.5 text-[#1E88E5]" />
+            <span>Facilidade Financeira para a Família</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 tracking-tight">
+            Condições que Cabem no seu Bolso
+          </h2>
+          <p className="text-base sm:text-lg text-slate-700 leading-relaxed text-pretty">
+            Pague o seu pacote em até 10x no cartão, boleto ou PIX.
+            Planeje sua viagem com parcelas suaves que não apertam o orçamento da casa.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="bg-white rounded-2xl p-6 sm:p-7 border-2 border-slate-200/90 hover:border-[#1E88E5] shadow-md hover:shadow-xl transition-all relative overflow-hidden">
+            <div className="w-12 h-12 rounded-xl bg-blue-50 text-[#1E88E5] flex items-center justify-center font-bold mb-5 border border-blue-100">
+              <CreditCard className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-extrabold text-slate-950 mb-2">
+              Cartão de Crédito em até 10x
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed mb-4">
+              Divida em até 10 parcelas mensais fixas. Aceitamos as principais bandeiras (Visa, Mastercard, Elo, Hipercard).
+            </p>
+            <ul className="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3">
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Possibilidade de usar múltiplos cartões</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Aprovação rápida e reserva instantânea</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 sm:p-7 border-2 border-emerald-400 hover:border-emerald-500 shadow-md hover:shadow-xl transition-all relative overflow-hidden">
+            <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold mb-5 border border-emerald-200">
+              <QrCode className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-extrabold text-slate-950 mb-2">
+              PIX com Confirmação Imediata
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed mb-4">
+              Praticidade total. Garanta sua vaga em minutos com chave PIX oficial da empresa e receba o voucher na hora.
+            </p>
+            <ul className="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3">
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Sem intermediários ou taxas surpresa</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Condição especial negociada para famílias</span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="bg-white rounded-2xl p-6 sm:p-7 border-2 border-slate-200/90 hover:border-[#1E88E5] shadow-md hover:shadow-xl transition-all relative overflow-hidden">
+            <div className="w-12 h-12 rounded-xl bg-slate-100 text-slate-700 flex items-center justify-center font-bold mb-5 border border-slate-200">
+              <FileText className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-extrabold text-slate-950 mb-2">
+              Boleto Programado
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed mb-4">
+              Ideal para quem prefere planejar com antecedência sem comprometer o limite do cartão de crédito.
+            </p>
+            <ul className="space-y-2 text-xs text-slate-600 border-t border-slate-100 pt-3">
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Parcelas programadas até a data da viagem</span>
+              </li>
+              <li className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                <span>Quitação antes do embarque com tranquilidade</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-3xl p-6 sm:p-10 border-2 border-slate-300/90 shadow-2xl max-w-4xl mx-auto">
+          <div className="flex items-center gap-2 text-xs font-bold text-[#1E88E5] uppercase tracking-wider mb-2">
+            <Calculator className="w-4 h-4" />
+            <span>Simulador de Parcelamento</span>
+          </div>
+
+          <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-6">
+            Calcule sua viagem em 10x agora
+          </h3>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div className="space-y-5">
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                  Escolha o Destino Desejado:
+                </label>
+                <div className="space-y-2">
+                  {PACKAGES.map(pkg => (
+                    <button
+                      key={pkg.id}
+                      type="button"
+                      onClick={() => setSelectedPkgId(pkg.id)}
+                      className={`w-full text-left p-3 rounded-xl border text-sm font-semibold transition-all flex items-center justify-between ${
+                        selectedPkgId === pkg.id
+                          ? 'border-[#1E88E5] bg-blue-50/70 text-slate-900 shadow-xs'
+                          : 'border-slate-200 bg-white text-slate-600 hover:border-slate-300'
+                      }`}
+                    >
+                      <span>{pkg.title}</span>
+                      <span className="text-xs font-bold text-[#1565C0]">
+                        10x de R$ {pkg.installmentValue.toFixed(2).replace('.', ',')}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
+                  Quantidade de Passageiros:
+                </label>
+                <div className="grid grid-cols-4 gap-2">
+                  {[1, 2, 3, 4].map(num => (
+                    <button
+                      key={num}
+                      type="button"
+                      onClick={() => setTravelersCount(num)}
+                      className={`py-2.5 rounded-xl text-sm font-extrabold transition-all border ${
+                        travelersCount === num
+                          ? 'bg-[#1E88E5] text-white border-[#1E88E5] shadow-xs'
+                          : 'bg-slate-50 text-slate-700 border-slate-200 hover:bg-slate-100'
+                      }`}
+                    >
+                      {num} {num === 1 ? 'Pessoa' : 'Pessoas'}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-7 flex flex-col justify-between space-y-6">
+              <div>
+                <div className="text-xs text-emerald-400 font-bold uppercase tracking-wider mb-1">
+                  Resultado da Simulação
+                </div>
+                <div className="text-base font-bold text-slate-200">
+                  {currentPkg.title} ({travelersCount} {travelersCount === 1 ? 'passageiro' : 'passageiros'})
+                </div>
+                <div className="mt-4 pt-4 border-t border-slate-800">
+                  <span className="text-xs text-slate-400 block font-medium">Parcelamento facilitado em:</span>
+                  <div className="text-3xl sm:text-4xl font-black text-white font-mono tabular-nums">
+                    10x de R$ {installmentPrice.toFixed(2).replace('.', ',')}
+                  </div>
+                  <div className="text-xs text-slate-400 mt-1">
+                    Valor total: R$ {totalPrice.toLocaleString('pt-BR')} (sem surpresas no embarque)
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <a
+                  href={getWhatsAppUrl(`Olá! Fiz a simulação no site para ${travelersCount} pessoa(s) no pacote ${currentPkg.title} (10x de R$ ${installmentPrice.toFixed(2).replace('.', ',')}) e gostaria de reservar!`)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-[#2ECC71] hover:bg-[#27AE60] text-slate-950 font-extrabold py-3.5 px-4 rounded-xl text-sm shadow-md transition-all active:scale-95"
+                >
+                  <MessageCircle className="w-5 h-5 fill-slate-950/20" />
+                  <span>Garantir esta Condição no WhatsApp</span>
+                </a>
+                <p className="text-[11px] text-slate-400 text-center mt-2">
+                  Atendimento rápido com nossa equipe em Uberlândia e Araguari.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  const toggle = (idx: number) => {
+    setOpenIndex(openIndex === idx ? null : idx);
+  };
+
+  return (
+    <section id="duvidas" className="py-16 md:py-24 bg-[#EAF0F8] border-b border-slate-300/80 scroll-mt-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center space-y-3 mb-12">
+          <div className="inline-flex items-center gap-2 text-xs font-bold text-[#1565C0] tracking-wider uppercase bg-white px-3.5 py-1.5 rounded-lg border border-blue-200 shadow-2xs">
+            <HelpCircle className="w-3.5 h-3.5 text-[#1E88E5]" />
+            <span>Tire Suas Dúvidas</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-950 tracking-tight">
+            Perguntas Frequentes
+          </h2>
+          <p className="text-base sm:text-lg text-slate-700 leading-relaxed text-pretty">
+            Tudo o que você precisa saber antes de embarcar com a FC Transportes e Turismo.
+          </p>
+        </div>
+
+        <div className="space-y-3">
+          {FAQS.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div
+                key={index}
+                className="bg-white border-2 border-slate-200/90 rounded-2xl overflow-hidden shadow-xs hover:border-[#1E88E5] transition-all"
+              >
+                <button
+                  type="button"
+                  onClick={() => toggle(index)}
+                  className="w-full text-left px-5 py-4 sm:p-5 flex items-center justify-between gap-4 bg-white hover:bg-slate-50 transition-colors focus:outline-none"
+                >
+                  <span className="text-base sm:text-lg font-extrabold text-slate-950">
+                    {faq.question}
+                  </span>
+                  <div className={`p-1.5 rounded-full bg-slate-100 border border-slate-200 transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-180 text-[#1E88E5] bg-blue-50 border-blue-200' : 'text-slate-500'}`}>
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                </button>
+
+                {isOpen && (
+                  <div className="px-5 pb-5 pt-2 sm:px-6 sm:pb-6 text-sm text-slate-700 leading-relaxed bg-blue-50/30 border-t border-slate-100">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-10 p-6 bg-white rounded-2xl border-2 border-slate-200/90 shadow-md text-center space-y-3">
+          <h4 className="text-base font-bold text-slate-900">
+            Ainda tem alguma dúvida específica sobre seu embarque ou pacote?
+          </h4>
+          <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto">
+            Nosso time do Triângulo Mineiro está pronto para te responder no WhatsApp em minutos.
+          </p>
+          <div className="pt-1">
+            <a
+              href={getWhatsAppUrl('Olá! Tenho uma dúvida sobre uma das viagens e gostaria de falar com um atendente.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold text-[#1565C0] hover:text-blue-900 underline"
+            >
+              <MessageCircle className="w-4 h-4 text-emerald-600" />
+              <span>Conversar com um atendente agora</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FooterCTA() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <footer className="bg-slate-950 text-white relative overflow-hidden">
+      <div className="relative border-b border-slate-800/80 py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/10 blur-[120px] pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto text-center space-y-6 relative z-10">
+          <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-500/30 px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Atendimento Rápido e Humanizado</span>
+          </div>
+
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-white tracking-tight leading-[1.1] text-balance">
+            Pronto para sua próxima aventura?
+          </h2>
+
+          <p className="text-base sm:text-xl text-slate-300 font-normal max-w-2xl mx-auto leading-relaxed text-pretty">
+            Nossos atendentes estão online no WhatsApp prontos para tirar todas as suas dúvidas.
+            Garanta os melhores assentos e venha viajar com a gente!
+          </p>
+
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href={getWhatsAppUrl('Olá! Gostaria de conversar com um atendente agora e garantir minha vaga com a FC Transportes.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-[#2ECC71] hover:bg-[#27AE60] text-slate-950 font-black text-lg sm:text-xl px-10 py-5 rounded-2xl shadow-xl shadow-emerald-500/25 hover:shadow-2xl transition-all active:scale-[0.98] group"
+            >
+              <MessageCircle className="w-7 h-7 fill-slate-950/20 group-hover:scale-110 transition-transform" />
+              <span>Chamar no WhatsApp Agora</span>
+            </a>
+
+            <a
+              href={INSTAGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 bg-white/10 hover:bg-white/20 text-white font-bold text-base px-7 py-5 rounded-2xl border border-white/20 transition-colors"
+            >
+              <Instagram className="w-5 h-5 text-pink-400" />
+              <span>Seguir {INSTAGRAM_HANDLE}</span>
+            </a>
+          </div>
+
+          <p className="text-xs text-slate-400 pt-2">
+            Telefone & WhatsApp:{' '}
+            <a 
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white font-semibold hover:underline"
+            >
+              {WHATSAPP_DISPLAY}
+            </a>
+            {' '}· Atendimento para Uberlândia, Araguari e região.
+          </p>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-[#1E88E5] flex items-center justify-center text-white font-black shadow-md">
+                <Bus className="w-5 h-5" />
+              </div>
+              <div>
+                <span className="text-lg font-black text-white tracking-tight">
+                  FC Transportes
+                </span>
+                <span className="text-xs font-bold text-blue-400 block -mt-1">
+                  E TURISMO
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              FC Transportes e Turismo - Saídas exclusivas do Triângulo Mineiro. Viagens planejadas com foco no conforto da sua família.
+            </p>
+
+            <div className="pt-1">
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-slate-200 hover:text-pink-400 transition-colors group"
+              >
+                <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center group-hover:bg-pink-600 transition-colors">
+                  <Instagram className="w-4 h-4 text-white" />
+                </div>
+                <span>Instagram Oficial: <strong>{INSTAGRAM_HANDLE}</strong></span>
+              </a>
+            </div>
+          </div>
+
+          <div className="space-y-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white">
+              Navegação Rápida
+            </h4>
+            <ul className="space-y-2 text-sm text-slate-400">
+              <li><a href="#embarque" className="hover:text-white transition-colors">Pontos de Embarque</a></li>
+              <li><a href="#pacotes" className="hover:text-white transition-colors">Destinos Confirmados</a></li>
+              <li><a href="#seguranca" className="hover:text-white transition-colors">Segurança e Avaliações</a></li>
+              <li><a href="#pagamento" className="hover:text-white transition-colors">Parcelamento em até 10x</a></li>
+              <li><a href="#duvidas" className="hover:text-white transition-colors">Perguntas Frequentes</a></li>
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white">
+              Próximos Pacotes
+            </h4>
+            <ul className="space-y-2 text-sm text-slate-400">
+              <li><a href="#pacotes" className="hover:text-white transition-colors">Ubatuba (Litoral Norte)</a></li>
+              <li><a href="#pacotes" className="hover:text-white transition-colors">Campos do Jordão (Natal Iluminado)</a></li>
+              <li><a href="#pacotes" className="hover:text-white transition-colors">Lagoa Parque (Termas & Lazer)</a></li>
+              <li>
+                <a 
+                  href={getWhatsAppUrl('Olá! Gostaria de consultar destinos para grupos fechados ou excursões particulares.')}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-emerald-400 hover:underline flex items-center gap-1 font-medium"
+                >
+                  Fretamento para Grupos Fechados →
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-3">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-white">
+              Locais de Partida
+            </h4>
+            <div className="space-y-2 text-xs sm:text-sm text-slate-400">
+              <p className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-[#1E88E5] shrink-0 mt-0.5" />
+                <span><strong>Uberlândia:</strong> Terminal Central (Praça Sérgio Pacheco)</span>
+              </p>
+              <p className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span><strong>Araguari:</strong> Praça Getúlio Vargas e Praça da TV</span>
+              </p>
+              <p className="flex items-start gap-2 pt-1 text-slate-300">
+                <Phone className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span>WhatsApp: {WHATSAPP_DISPLAY}</span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-12 pt-8 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div>
+            © {new Date().getFullYear()} FC Transportes e Turismo. Todos os direitos reservados. Triângulo Mineiro - MG.
+          </div>
+
+          <div className="flex items-center gap-6">
+            <span>Transporte Rodoviário Turístico Regular</span>
+            <button
+              onClick={scrollToTop}
+              className="flex items-center gap-1 text-slate-400 hover:text-white transition-colors"
+            >
+              <span>Voltar ao topo</span>
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+function FloatingWhatsApp() {
+  const [showTooltip, setShowTooltip] = useState(true);
+
+  return (
+    <div className="fixed bottom-5 right-5 z-50 flex flex-col items-end">
+      {showTooltip && (
+        <div className="relative mb-2 bg-white text-slate-800 text-xs sm:text-sm font-semibold py-2 px-3.5 rounded-xl shadow-xl border border-slate-200/90 flex items-center gap-2 max-w-xs animate-bounce">
+          <span>Olá! Converse conosco no WhatsApp</span>
+          <button
+            onClick={() => setShowTooltip(false)}
+            className="text-slate-400 hover:text-slate-600 p-0.5 rounded-full"
+            aria-label="Fechar aviso"
+          >
+            <X className="w-3.5 h-3.5" />
+          </button>
+          <div className="absolute -bottom-1.5 right-6 w-3 h-3 bg-white border-r border-b border-slate-200/90 transform rotate-45" />
+        </div>
+      )}
+
+      <a
+        href={getWhatsAppUrl('Olá! Estou navegando na página da FC Transportes e Turismo e gostaria de tirar dúvidas sobre os pacotes.')}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Conversar no WhatsApp"
+        className="relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] hover:bg-[#20ba59] text-white shadow-2xl hover:scale-105 active:scale-95 transition-all group"
+      >
+        <span className="absolute inset-0 rounded-full bg-[#25D366] opacity-40 animate-ping pointer-events-none" />
+        <MessageCircle className="w-7 h-7 sm:w-8 sm:h-8 fill-white/20 transition-transform group-hover:scale-110" />
+      </a>
+    </div>
+  );
+}
+
+/* ==========================================================================
+   3. APP PRINCIPAL
+   ========================================================================== */
+
+export default function App() {
+  return (
+    <div className="min-h-screen bg-[#EDF2F7] text-slate-900 flex flex-col selection:bg-[#1E88E5] selection:text-white">
+      <Header />
+      <main className="flex-1">
+        <Hero />
+        <BoardingPoints />
+        <PackagesSection />
+        <SocialProof />
+        <PaymentSection />
+        <FAQSection />
+      </main>
+      <FooterCTA />
+      <FloatingWhatsApp />
+    </div>
+  );
+}
